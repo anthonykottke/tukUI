@@ -65,4 +65,8 @@ t9.01
 -> fix player debuff on deathknight and shaman with totem bar or rune bar.
 -> fix vehicule button and button #24.
 
+t9.02
+-> fix hps and dps stat when both are enabled.
+-> fix auto repair not disabled when disabled in config file.
+
 

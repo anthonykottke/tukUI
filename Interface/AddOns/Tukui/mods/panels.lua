@@ -1420,17 +1420,17 @@ if dps_text > 0 then
 
     local pet_id = UnitGUID("pet")
      
-    Text = ileft:CreateFontString(nil, "OVERLAY")
-    Text:SetFont(FONT, tfontsize)
-    Text:SetText("0.0 DPS")
-    Text:SetHeight(26)
+    dText = ileft:CreateFontString(nil, "OVERLAY")
+    dText:SetFont(FONT, tfontsize)
+    dText:SetText("0.0 dps")
+    dText:SetHeight(26)
 
-    panel_setpoint(dps_text, Text)
+    panel_setpoint(dps_text, dText)
 
     DPS_FEED:EnableMouse(true)
     DPS_FEED:SetHeight(20)
     DPS_FEED:SetWidth(100)
-    DPS_FEED:SetAllPoints(Text)
+    DPS_FEED:SetAllPoints(dText)
 
      
     DPS_FEED:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
@@ -1441,7 +1441,7 @@ if dps_text > 0 then
 			cmbt_time = cmbt_time + elap
         end
        
-        Text:SetText(getDPS())
+        dText:SetText(getDPS())
     end)
      
     function DPS_FEED:PLAYER_LOGIN()
@@ -1490,7 +1490,7 @@ if dps_text > 0 then
 
      
     function DPS_FEED:PLAYER_REGEN_ENABLED()
-        Text:SetText(getDPS())
+        dText:SetText(getDPS())
     end
 	
 	function DPS_FEED:PLAYER_REGEN_DISABLED()
@@ -1516,17 +1516,17 @@ if hps_text > 0 then
   local player_id = UnitGUID("player")
   local actual_heals_total, cmbt_time = 0
  
-  Text = ileft:CreateFontString(nil, "OVERLAY")
-  Text:SetFont(FONT,tfontsize)
-  Text:SetText("0.0 hps")
-  Text:SetHeight(26)
+  hText = ileft:CreateFontString(nil, "OVERLAY")
+  hText:SetFont(FONT,tfontsize)
+  hText:SetText("0.0 hps")
+  hText:SetHeight(26)
  
-  panel_setpoint(hps_text, Text)
+  panel_setpoint(hps_text, hText)
  
   HPS_FEED:EnableMouse(true)
   HPS_FEED:SetHeight(20)
   HPS_FEED:SetWidth(100)
-  HPS_FEED:SetAllPoints(Text)
+  HPS_FEED:SetAllPoints(hText)
  
   HPS_FEED:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
   HPS_FEED:RegisterEvent("PLAYER_LOGIN")
@@ -1538,7 +1538,7 @@ if hps_text > 0 then
 	  else
 		HPS_FEED:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 	  end
-	  Text:SetText(get_hps())
+	  hText:SetText(get_hps())
   end)
  
   function HPS_FEED:PLAYER_LOGIN()
@@ -1567,7 +1567,7 @@ if hps_text > 0 then
   end
  
   function HPS_FEED:PLAYER_REGEN_ENABLED()
-    Text:SetText(get_hps)
+    hText:SetText(get_hps)
   end
    
    function HPS_FEED:PLAYER_REGEN_DISABLED()

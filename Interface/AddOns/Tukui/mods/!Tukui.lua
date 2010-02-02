@@ -302,7 +302,7 @@ elseif(L=="deDE") then
 	}
 else
 	StaticPopupDialogs["DISABLE_UI"] = {
-	  text = "Tukui don't work for this resolution, do you want to disable Tukui? (Cancel if you want to try another resolution)",
+	  text = "Tukui doesn't work for this resolution, do you want to disable Tukui? (Cancel if you want to try another resolution)",
 	  button1 = ACCEPT,
 	  button2 = CANCEL,
 	  OnAccept = DisableTukui,
