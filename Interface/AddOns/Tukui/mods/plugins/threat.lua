@@ -37,7 +37,7 @@ local function update(self, event, unit)
 		
 		if( threatval < 30 ) then
 			self:SetStatusBarColor(unpack(self.Colors[1]))
-		elseif( threatval > 30 and threatval < 70 ) then
+		elseif( threatval >= 30 and threatval < 70 ) then
 			self:SetStatusBarColor(unpack(self.Colors[2]))
 		else
 			self:SetStatusBarColor(unpack(self.Colors[3]))

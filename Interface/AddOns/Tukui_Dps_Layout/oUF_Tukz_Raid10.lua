@@ -14,6 +14,18 @@ local function menu(self)
 	end
 end
 
+local function UpdateThreat(self, event, unit)
+      if (self.unit ~= unit) then
+        return
+      end
+        local threat = UnitThreatSituation(self.unit)
+        if (threat == 3) then
+         self.Health.name:SetTextColor(1,0.1,0.1)
+        else
+         self.Health.name:SetTextColor(1,1,1)
+        end 
+end
+
 local function CreateStyle(self, unit)
 	self.menu = menu
 	self.colors = colors

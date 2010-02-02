@@ -1,4 +1,4 @@
-if not TukuiChat == true then return end
+if not TukuiChat == true or IsAddOnLoaded("Prat") or IsAddOnLoaded("Chatter") then return end
 
 local AddOn = CreateFrame("Frame")
 local OnEvent = function(self, event, ...) self[event](self, event, ...) end

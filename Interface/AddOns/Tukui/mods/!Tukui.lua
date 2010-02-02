@@ -391,35 +391,37 @@ hooksecurefunc(VehicleSeatIndicator,"SetPoint",function(_,_,parent) -- vehicle s
 end);
 
 -- damn watchframe since 3.3 not movable
-local wf = WatchFrame
-local wfmove = false 
+if not IsAddOnLoaded("Who Framed Watcher Wabbit?") then -- conflict with a seerah mod
+	local wf = WatchFrame
+	local wfmove = false 
 
-wf:SetMovable(true);
-wf:SetClampedToScreen(false); 
-wf:ClearAllPoints()
-wf:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -6, -300)
-wf:SetWidth(250)
-wf:SetHeight(700)
-wf:SetUserPlaced(true)
-wf.SetPoint = function() end
+	wf:SetMovable(true);
+	wf:SetClampedToScreen(false); 
+	wf:ClearAllPoints()
+	wf:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -6, -300)
+	wf:SetWidth(250)
+	wf:SetHeight(700)
+	wf:SetUserPlaced(true)
+	wf.SetPoint = function() end
 
-local function WATCHFRAMELOCK()
-	if wfmove == false then
-		wfmove = true
-		print("WatchFrame unlocked for drag")
-		wf:EnableMouse(true);
-		wf:RegisterForDrag("LeftButton"); 
-		wf:SetScript("OnDragStart", wf.StartMoving); 
-		wf:SetScript("OnDragStop", wf.StopMovingOrSizing);
-	elseif wfmove == true then
-		wf:EnableMouse(false);
-		wfmove = false
-		print("WatchFrame locked")
+	local function WATCHFRAMELOCK()
+		if wfmove == false then
+			wfmove = true
+			print("WatchFrame unlocked for drag")
+			wf:EnableMouse(true);
+			wf:RegisterForDrag("LeftButton"); 
+			wf:SetScript("OnDragStart", wf.StartMoving); 
+			wf:SetScript("OnDragStop", wf.StopMovingOrSizing);
+		elseif wfmove == true then
+			wf:EnableMouse(false);
+			wfmove = false
+			print("WatchFrame locked")
+		end
 	end
-end
 
-SLASH_WATCHFRAMELOCK1 = "/wf"
-SlashCmdList["WATCHFRAMELOCK"] = WATCHFRAMELOCK
+	SLASH_WATCHFRAMELOCK1 = "/wf"
+	SlashCmdList["WATCHFRAMELOCK"] = WATCHFRAMELOCK
+end
 
 ------------------------------------------------------------------------
 --	UI HELP

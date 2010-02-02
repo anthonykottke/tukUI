@@ -1,4 +1,4 @@
-if not TukuiAutoRepair = true then return end
+if not TukuiAutoRepair == true then return end
 
 --------------------------------------------------------------------
 -- CREDIT : FatalEntity 

@@ -12,6 +12,17 @@ local function menu(self)
 	end
 end
 
+local function UpdateThreat(self, event, unit)
+      if (self.unit ~= unit) then
+        return
+      end
+        local threat = UnitThreatSituation(self.unit)
+        if (threat == 3) then
+         self.Health.name:SetTextColor(1,0.1,0.1)
+        else
+         self.Health.name:SetTextColor(1,1,1)
+        end 
+end
 
 local function CreateStyle(self, unit)
 	self.menu = menu
@@ -48,10 +59,17 @@ local function CreateStyle(self, unit)
 	--power:SetPoint('LEFT', 3, 0)
 	--self:Tag(power, '[smartpp]')
 
-	local name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
-	name:SetFont(fontlol, 13, "THINOUTLINE")
-	name:SetPoint('LEFT', self, 'RIGHT', 5, 1)
-	self:Tag(name, '[name( )][leader( )]')
+	self.Health.name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
+	self.Health.name:SetFont(fontlol, 13, "THINOUTLINE")
+	self.Health.name:SetPoint('LEFT', self, 'RIGHT', 5, 1)
+	self:Tag(self.Health.name, '[name( )][leader( )]')
+	
+	if gridaggro == true then
+      table.insert(self.__elements, UpdateThreat)
+      self:RegisterEvent('PLAYER_TARGET_CHANGED', UpdateThreat)
+      self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', UpdateThreat)
+      self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', UpdateThreat)
+    end
 
 
 	self.DebuffHighlightAlpha = 1

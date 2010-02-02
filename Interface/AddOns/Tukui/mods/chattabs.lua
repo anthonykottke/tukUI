@@ -1,3 +1,5 @@
+if not TukuiChat == true or IsAddOnLoaded("Prat") or IsAddOnLoaded("Chatter") then return end
+
 local event = CreateFrame"Frame"
 local dummy = function() end
 local inherit = GameFontNormalSmall

@@ -69,4 +69,16 @@ t9.02
 -> fix hps and dps stat when both are enabled.
 -> fix auto repair not disabled when disabled in config file.
 
+t9.03
+-> fix threat bar colored red instead of green at 30%
+-> fix dps/tank party alpha out of range always disabled
+-> added aggro on dps/tank layout, idea by elv22
+-> fix lua typo that crash auto-repair on loading
+-> turn off guild repair on default config because a lot of user stole money from their guild bank. hehe!
+-> fix chat error when prat or chatter is loaded
+-> disable my watchframe script if *Who Framed Watcher Wabbit?* by seerah is loaded bacause it crash watchframe.
+-> rolling loot frame moved because of "release" button while death over it on some specific reso.
+-> bind action button script added and made by nightcracker! (/hb)
+ 
+
 

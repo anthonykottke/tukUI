@@ -14,6 +14,18 @@ local function menu(self)
 	end
 end
 
+local function UpdateThreat(self, event, unit)
+      if (self.unit ~= unit) then
+        return
+      end
+        local threat = UnitThreatSituation(self.unit)
+        if (threat == 3) then
+         self.Health.name:SetTextColor(1,0.1,0.1)
+        else
+         self.Health.name:SetTextColor(1,1,1)
+        end 
+end
+
 oUF.Tags['[smarthp]'] = function(u)
 	local min, max = UnitHealth(u), UnitHealthMax(u)
 	return UnitIsDeadOrGhost(u) and oUF.Tags['[dead]'](u) or (min~=max) and format('|cffff8080%d|r|cff0090ff %.0f|r%%', min-max, min/max*100) or max
@@ -90,15 +102,22 @@ local function CreateStyle(self, unit)
 	local health = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallRight')
 	health:SetPoint('CENTER', 0, 1)
 	self:Tag(health, '[dead][offline( )][afk( )]')
-	
+		
 	--local power = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallLeft')
 	--power:SetPoint('LEFT', 3, 0)
 	--self:Tag(power, '[smartpp]')
 
-	local name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
-	name:SetFont(fontlol, 13, "THINOUTLINE")
-	name:SetPoint('LEFT', self, 'RIGHT', 5, 1)
-	self:Tag(name, '[name( )][leader( )]')
+	self.Health.name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
+	self.Health.name:SetFont(fontlol, 13, "THINOUTLINE")
+	self.Health.name:SetPoint('LEFT', self, 'RIGHT', 5, 1)
+	self:Tag(self.Health.name, '[name( )][leader( )]')
+	
+	if gridaggro == true then
+      table.insert(self.__elements, UpdateThreat)
+      self:RegisterEvent('PLAYER_TARGET_CHANGED', UpdateThreat)
+      self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', UpdateThreat)
+      self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', UpdateThreat)
+    end
 	
 	self.LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
     self.LFDRole:SetHeight(6)
@@ -116,8 +135,7 @@ local function CreateStyle(self, unit)
 	else
 		self.Range = false
 	end
-	
-	self.Range = false
+
 	self.Health.Smooth = true
 end
 
