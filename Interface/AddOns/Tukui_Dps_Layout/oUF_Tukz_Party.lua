@@ -53,7 +53,9 @@ local function CreateStyle(self, unit)
 	self:SetBackdropColor(0.1, 0.1, 0.1)
 
 	self.Health = CreateFrame('StatusBar', nil, self)
-	self.Health:SetAllPoints(self)
+    self.Health:SetPoint("TOPLEFT")
+    self.Health:SetPoint("TOPRIGHT")
+    self.Health:SetHeight(16)
 	self.Health:SetStatusBarTexture([=[Interface\AddOns\Tukui\media\normTex]=])
 	self.Health.colorDisconnected = true
 	self.Health.colorClass = true
@@ -64,7 +66,27 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
 	
+    self.Power = CreateFrame("StatusBar", nil, self)
+    self.Power:SetHeight(3)
+    self.Power:SetPoint("TOPLEFT", self.Health, "BOTTOMLEFT", 0, -1)
+    self.Power:SetPoint("TOPRIGHT", self.Health, "BOTTOMRIGHT", 0, -1)
+    self.Power:SetStatusBarTexture(normTex)
 
+    self.Power.colorTapping = true
+    self.Power.colorDisconnected = true
+    self.Power.colorPower = true
+    self.Power.colorClass = true
+    self.Power.colorReaction = true
+
+    self.Power.frequentUpdates = true
+    self.Power.Smooth = true
+
+    self.Power.bg = self.Power:CreateTexture(nil, "BORDER")
+    self.Power.bg:SetAllPoints(self.Power)
+    self.Power.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
+    self.Power.bg:SetAlpha(1)
+    self.Power.bg.multiplier = 0.4
+	
 	local health = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallRight')
 	health:SetPoint('CENTER', 0, 1)
 	self:Tag(health, '[dead][offline( )][afk( )]')
@@ -81,7 +103,7 @@ local function CreateStyle(self, unit)
 	self.LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
     self.LFDRole:SetHeight(6)
     self.LFDRole:SetWidth(6)
-	self.LFDRole:SetPoint("TOPRIGHT", -2, -2)
+	self.LFDRole:SetPoint("TOPLEFT", 2, -2)
 
 	self.DebuffHighlightAlpha = 1
 	self.DebuffHighlightBackdrop = true

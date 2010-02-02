@@ -43,12 +43,15 @@ local function update(self, event, unit)
 			self:SetStatusBarColor(unpack(self.Colors[3]))
 		end
 		
+		local numParty = GetNumPartyMembers()
+		local numRaid = GetNumRaidMembers() 
+
 		-- this part is an addition by tukz because he is tired
-		-- to see this fucking bar appear when pvp'ing		
-		if threatval == 0 then
-			self:SetAlpha(0)
-		else
+		-- to see this fucking bar appear when pvp'ing or in solo		
+		if (threatval > 0) and (numParty > 0 or numRaid > 0) then
 			self:SetAlpha(1)
+		else
+			self:SetAlpha(0)
 		end
 		-- end of hack
 		

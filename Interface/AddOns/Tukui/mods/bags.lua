@@ -1328,18 +1328,6 @@ function Stuffing.Menu(self, level)
 	end
 
 	wipe(info)
-	info.isTitle = 1
-	info.text = "Stuffing"
-	info.notCheckable = 1
-	UIDropDownMenu_AddButton(info, level)
-
-	wipe(info)
-	info.disabled = 1
-	info.text = nil
-	info.func = nil
-	UIDropDownMenu_AddButton(info, level)
-
-	wipe(info)
 	info.text = bags_sortmenu
 	info.notCheckable = 1
 	info.func = function()
@@ -1354,13 +1342,6 @@ function Stuffing.Menu(self, level)
 		Stuffing:SetBagsForSorting("d")
 		Stuffing:Restack()
 	end
-	UIDropDownMenu_AddButton(info, level)
-
-	wipe(info)
-	info.disabled = 1
-	info.notCheckable = 1
-	info.text = nil
-	info.func = nil
 	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)
@@ -1381,18 +1362,6 @@ function Stuffing.Menu(self, level)
 		end
 
 	end
-	UIDropDownMenu_AddButton(info, level)
-
-	wipe(info)
-	info.disabled = 1
-	info.text = nil
-	info.func = nil
-	UIDropDownMenu_AddButton(info, level)
-
-	wipe(info)
-	info.disabled = 1
-	info.text = nil
-	info.func = nil
 	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)

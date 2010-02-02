@@ -80,17 +80,13 @@ if_warning = true							-- innerfire warning icon when not active and in combat
 
 t_mt = false								-- enable main tank & main assist frame
 t_mt_power = false							-- enable power bar on main assist frame
-MTX = 500									-- UP/DOWN position on screen (from bottom)
-MTY = 460									-- LEFT(-)/Right(+) position on screnn (from bottom)
 
 -------------------------------------------------------------------------------------------------------------------------------
 -- ARENA OPTIONS
 -------------------------------------------------------------------------------------------------------------------------------
 
-arenatracker = true							-- enemy cooldown tracker in arena (mostly interrupt by default, see tukui.aurawatch.lua and TrakerIDs section)t_arena = true								
-t_arena = true								-- enable arena enemy unitframe, Alpha, feel free to complete finnish it if you want				
-ArenaX = 252								-- position X (left/right) on UI from bottom
-ArenaY = 260								-- position Y (up/down) on UI from bottom
+arenatracker = true							-- enemy cooldown tracker in arena (mostly interrupt by default, see tukui.aurawatch.lua and TrakerIDs section)							
+t_arena = true								-- enable arena enemy unitframe, Alpha, feel free to complete finnish it if you want
 
 -- set mouseover focus keybind
 arenamodifier = "shift" 					-- shift, alt or ctrl

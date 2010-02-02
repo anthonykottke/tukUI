@@ -399,7 +399,7 @@ wf:SetClampedToScreen(false);
 wf:ClearAllPoints()
 wf:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -6, -300)
 wf:SetWidth(250)
-wf:SetHeight(800)
+wf:SetHeight(700)
 wf:SetUserPlaced(true)
 wf.SetPoint = function() end
 
@@ -997,3 +997,19 @@ function LFDAutoJoin:LFG_PROPOSAL_SHOW()
 end
 
 
+----------------------------------------------------------------------------------------
+-- capture bar update position
+----------------------------------------------------------------------------------------
+
+local function captureupdate()
+	local nexty = 0
+	for i = 1, NUM_EXTENDED_UI_FRAMES do
+		local cb = _G["WorldStateCaptureBar"..i]
+		if cb and cb:IsShown() then
+			cb:ClearAllPoints()
+			cb:SetPoint("TOP", UIParent, "TOP", 0, -120)
+			nexty = nexty + cb:GetHeight()
+		end
+	end
+end
+hooksecurefunc("WorldStateAlwaysUpFrame_Update", captureupdate)

@@ -56,4 +56,13 @@ T9 changelog
 -> raid id added to time tooltip and only raid id, we don't care about 5 mans instances. Idea by garangar, implemented by Haleth.
 -> other undocumented changes.
 
+t9.01
+-> added power bar on dps party
+-> threatbar is now only show in raid or party. (yes we don't care about this bar when solo)
+-> FR localization fix. 
+-> removed some useless option in tukui.config.lua that we don't need anymore.
+-> fix player debuff when portrait is enabled.
+-> fix player debuff on deathknight and shaman with totem bar or rune bar.
+-> fix vehicule button and button #24.
+
 

@@ -613,7 +613,7 @@ local SetStyle = function(self, unit)
 
 	self:SetScript("OnEnter", UnitFrame_OnEnter)
 	self:SetScript("OnLeave", UnitFrame_OnLeave)
-
+	
 	self:SetBackdrop(backdrop)
 	self:SetBackdropColor(0, 0, 0)
 	self.Health = CreateFrame("StatusBar", self:GetName().."_Health", self)
@@ -883,8 +883,8 @@ local SetStyle = function(self, unit)
 	-- since t9, added a condition to threat bar, generally we don't care
 	-- about this bar when levelling a character, so bar only enabled at max level
 	
-	if showthreat == true then
-	   if unit == "player" and UnitLevel("player") == MAX_PLAYER_LEVEL then 
+	if (showthreat == true) then
+	   if (unit == "player") then 
 		  self.ThreatBar = CreateFrame("StatusBar", self:GetName()..'_ThreatBar', UIParent)
 		  self.ThreatBar:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 34, 20)
 		  self.ThreatBar:SetHeight(19)
@@ -1002,8 +1002,12 @@ local SetStyle = function(self, unit)
 				self.Debuffs["growth-y"] = "UP"
 			end
 			
-			if unit == "player" and PlayerDebuffs == true then			
-				self.Debuffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 36)
+			if unit == "player" and PlayerDebuffs == true then
+				if class == "SHAMAN" or class == "DEATHKNIGHT" then
+					self.Debuffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 44)
+				else			
+					self.Debuffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 36)
+				end
 				self.Debuffs.initialAnchor = "TOPRIGHT"
 				self.Debuffs["growth-y"] = "UP"
 				self.Debuffs["growth-x"] = "LEFT"
@@ -1017,7 +1021,7 @@ local SetStyle = function(self, unit)
 				end
 				
 				if TargetBuffs == true then
-					self.Debuffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 70)
+					self.Debuffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 68)
 				else
 					self.Debuffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 36)
 				end
@@ -1105,7 +1109,7 @@ local SetStyle = function(self, unit)
 		self.Castbar.bg:SetAllPoints(self.Castbar)
 		self.Castbar.bg:SetTexture(normTex)
 		self.Castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
-
+								
 		if unit == "player" then
 			self.Castbar:SetFrameLevel(6)
 			self.Castbar:SetHeight(17)
@@ -1116,27 +1120,49 @@ local SetStyle = function(self, unit)
 			self.Castbar:SetHeight(17)
 			self.Castbar:SetPoint("TOPLEFT", self.Power, "BOTTOMLEFT", 2, -3)
 			self.Castbar:SetPoint("TOPRIGHT", self.Power, "BOTTOMRIGHT", -2, -3)
+			
 		elseif unit == "focus" then
 			self.Castbar:SetFrameLevel(6)
-			self.Castbar:SetHeight(24)
+			self.Castbar:SetHeight(20)
 			self.Castbar:SetWidth(240)
 			self.Castbar:SetPoint("CENTER", UIParent, "CENTER", 0, 250)
 			self.Castbar:SetBackdrop(backdrop)
 			self.Castbar:SetStatusBarColor(6/255, 137/255, 0/255)
 			self.Castbar:SetBackdropColor(.6,.6,.6,1)
+						
+			self.Castbar.bg = self.Castbar:CreateTexture(nil, "BORDER")
+			self.Castbar.bg:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -1, 1)
+			self.Castbar.bg:SetPoint("TOPRIGHT", self.Castbar, "TOPRIGHT", 1, 1)
+			self.Castbar.bg:SetPoint("BOTTOMLEFT", self.Castbar, "BOTTOMLEFT", 1, -1)
+			self.Castbar.bg:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", -1, -1)
+			self.Castbar.bg:SetTexture(normTex)
+			self.Castbar.bg:SetVertexColor(0.1, 0.1, 0.1)
 			
-			self.CBBackdrop = CreateFrame("Frame", nil, self.Castbar)
-			self.CBBackdrop:SetHeight(24)
-			self.CBBackdrop:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -6, 5)
-			self.CBBackdrop:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", 5, -6)
-			self.CBBackdrop:SetFrameLevel(0)
-			--self.CBBackdrop:SetParent(self.Castbar)
-			self.CBBackdrop:SetBackdrop({
-				edgeFile = glowTex, edgeSize = 5,
+			self.CastbarBackdrop = CreateFrame("Frame", nil, self)
+			self.CastbarBackdrop:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -6, 6)
+			self.CastbarBackdrop:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", 6, -6)
+			self.CastbarBackdrop:SetParent(self.Castbar)
+			self.CastbarBackdrop:SetFrameStrata("BACKGROUND")
+			self.CastbarBackdrop:SetFrameLevel(0)
+			self.CastbarBackdrop:SetBackdrop({
+				edgeFile = glowTex, edgeSize = 4,
 				insets = {left = 3, right = 3, top = 3, bottom = 3}
 			})
-			self.CBBackdrop:SetBackdropColor(0, 0, 0, 0)
-			self.CBBackdrop:SetBackdropBorderColor(0, 0, 0, 1)
+			self.CastbarBackdrop:SetBackdropColor(0, 0, 0, 0)
+			self.CastbarBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
+			
+			self.CastbarBorder = CreateFrame("Frame", nil, self)
+			self.CastbarBorder:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -2, 2)
+			self.CastbarBorder:SetPoint("TOPRIGHT", self.Castbar, "TOPRIGHT", 2, 2)
+			self.CastbarBorder:SetPoint("BOTTOMLEFT", self.Castbar, "BOTTOMLEFT", 2, -2)
+			self.CastbarBorder:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", -2, -2)
+			self.CastbarBorder:SetParent(self.Castbar)
+			self.CastbarBorder:SetBackdrop({
+				edgeFile = BLANK_TEXTURE, edgeSize = 1,
+				insets = {left = -1, right = -1, top = -1, bottom = -1}
+			})
+			self.CastbarBorder:SetBackdropColor(0.1, 0.1, 0.1, 1)
+			self.CastbarBorder:SetBackdropBorderColor(0.6, 0.6, 0.6, 1)
 						
 		elseif(unit and unit:find("arena%d")) or (unit and unit:find("boss%d")) then
 			self.Castbar:SetFrameLevel(6)
@@ -1302,7 +1328,7 @@ local SetStyle = function(self, unit)
 	self.RaidIcon:SetPoint("TOP", 0, 8)
 	
 	------------------------------------------------------------------------
-	--      LFD Roles
+	-- LFD Roles
 	------------------------------------------------------------------------
 
     if not unit or unit == "player" then
@@ -1413,7 +1439,6 @@ local SetStyle = function(self, unit)
 
 	self.BarFade = false
 
-
 	self.PostUpdateHealth = PostUpdateHealth
 	self.PreUpdatePower = PreUpdatePower
 	self.PostUpdatePower = PostUpdatePower
@@ -1502,8 +1527,6 @@ end
 
 --[[ testmode ]]
 
---[[
-
 local testui = TestUI or function() end
 TestUI = function()
 	testui()
@@ -1522,5 +1545,5 @@ end
 SlashCmdList.TestUI = TestUI
 SLASH_TestUI1 = "/testui"
 
---]]
+
 

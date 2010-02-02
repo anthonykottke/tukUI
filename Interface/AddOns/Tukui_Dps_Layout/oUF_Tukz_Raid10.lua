@@ -32,7 +32,7 @@ local function CreateStyle(self, unit)
 	self:SetBackdropColor(0.1, 0.1, 0.1)
 
 	self.Health = CreateFrame('StatusBar', nil, self)
-	self.Health:SetAllPoints(self)
+    self.Health:SetAllPoints(self)
 	self.Health:SetStatusBarTexture([=[Interface\AddOns\Tukui\media\normTex]=])
 	self.Health.colorDisconnected = true
 	self.Health.colorClass = true
@@ -42,15 +42,10 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
-	
-
+		
 	local health = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallRight')
 	health:SetPoint('CENTER', 0, 1)
 	self:Tag(health, '[dead][offline( )][afk( )]')
-
-	--local power = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallLeft')
-	--power:SetPoint('LEFT', 3, 0)
-	--self:Tag(power, '[smartpp]')
 
 	local name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
 	name:SetFont(fontlol, 13, "THINOUTLINE")

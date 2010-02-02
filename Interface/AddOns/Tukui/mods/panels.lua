@@ -634,9 +634,9 @@ local function panel_setpoint(p, obj)
 	elseif p == 6 then
 		obj:SetPoint("RIGHT", iright, "RIGHT", -30, 1)
 	elseif p == 7 then
-		obj:SetPoint("CENTER", statpanel7, "CENTER", 0, 0)
+		obj:SetPoint("CENTER", statpanel7, "CENTER", 0, .5)
 	elseif p == 8 then
-		obj:SetPoint("CENTER", statpanel8, "CENTER", 0, 0)
+		obj:SetPoint("CENTER", statpanel8, "CENTER", 0, .5)
 	end
 end
 --------------------------------------------------------------------
