@@ -1203,7 +1203,7 @@ if wowtime > 0 then
                else
                if Hr24>=12 then
                   if pendingCalendarInvites > 0 then
-                     Text:SetText("|cffFF0000"..Hr..":"..Min.." |cffffffffam|r")
+                     Text:SetText("|cffFF0000"..Hr..":"..Min.." |cffffffffpm|r")
                   else
                      Text:SetText(Hr..":"..Min.." |cffffffffpm|r")
                   end

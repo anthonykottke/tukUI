@@ -228,7 +228,6 @@ local updateHealth = function(self, event, unit, bar, min, max)
 		else
 			bar.value:SetText(" ")
 		end
-
     end
 end
 

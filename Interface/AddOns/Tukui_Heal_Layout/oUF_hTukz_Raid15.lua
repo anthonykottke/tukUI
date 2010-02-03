@@ -80,6 +80,30 @@ local numberize_raid = function(v)
 	end
 end
 
+local updateHealth = function(self, event, unit, bar, min, max)  
+    local cur, maxhp = min, max
+    local missing = maxhp-cur
+    
+    local d = floor(cur/maxhp*100)
+    
+	if(UnitIsDead(unit)) then
+		bar:SetValue(0)
+		bar.value:SetText(ouf_deadheal)
+	elseif(UnitIsGhost(unit)) then
+		bar:SetValue(0)
+		bar.value:SetText(ouf_ghostheal)
+	elseif(not UnitIsConnected(unit)) then
+		bar.value:SetText"D/C"
+
+	elseif(self:GetParent():GetName():match"oUF_Group") then
+		if(d < 100) then
+			bar.value:SetText("|cffFFFFFF".."-"..numberize_raid(missing))
+		else
+			bar.value:SetText(" ")
+		end
+    end
+end
+
 local function auraIcon(self, icon, icons, index, debuff)
 		icons.showDebuffType = true		-- show debuff border type color 
 		icon.cd.noOCC = true		 	-- hide OmniCC CDs
@@ -128,7 +152,6 @@ local function CreateStyle(self, unit)
 	self:RegisterForClicks('AnyUp')
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
-	self:SetScript("OnUpdate", OnRangeUpdate)
 
 	self:SetAttribute('*type2', 'menu')
 	self:SetAttribute('initial-height', 32)
@@ -156,7 +179,7 @@ local function CreateStyle(self, unit)
 	self.Health.value:SetFont(fontlol, 12, "THINOUTLINE")
 	self.Health.value:SetTextColor(1,1,1)
 	self.Health.value:SetShadowOffset(1, -1)
-	
+		
 	self.Power = CreateFrame("StatusBar", nil, self)
 	self.Power:SetHeight(4)
 	self.Power:SetPoint("TOPLEFT", self.Health, "BOTTOMLEFT", 0, -1)
@@ -201,9 +224,8 @@ local function CreateStyle(self, unit)
 	end
 	
     self.PostCreateAuraIcon = auraIcon
-	self.PostUpdateHealth = PostUpdateHealth
-
-
+	self.PostUpdateHealth = updateHealth
+	
 end
 
 oUF:RegisterStyle('hRaid15', CreateStyle)

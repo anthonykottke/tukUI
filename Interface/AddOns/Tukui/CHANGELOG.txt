@@ -79,6 +79,10 @@ t9.03
 -> disable my watchframe script if *Who Framed Watcher Wabbit?* by seerah is loaded bacause it crash watchframe.
 -> rolling loot frame moved because of "release" button while death over it on some specific reso.
 -> bind action button script added and made by nightcracker! (/hb)
+
+t9.04
+-> fix hp deficit not show on party, 10, 15 mans healing layout.
+-> wow time typo fix when we have a calendar invite.
  
 
 

@@ -65,6 +65,17 @@ local UnitClassification = UnitClassification
 local UnitReactionColor = UnitReactionColor
 local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
+local numberize_raid = function(v)
+	if v <= 999 then return v end
+	if v >= 1000000 then
+		local value = string.format("%.1fm", v/1000000)
+		return value
+	elseif v >= 1000 then
+		local value = string.format("%.1fk", v/1000)
+		return value
+	end
+end
+
 local updateHealth = function(self, event, unit, bar, min, max)  
     local cur, maxhp = min, max
     local missing = maxhp-cur
@@ -86,24 +97,7 @@ local updateHealth = function(self, event, unit, bar, min, max)
 		else
 			bar.value:SetText(" ")
 		end
-
     end
-
-    self:UNIT_NAME_UPDATE(event, unit)
-end
-
--- ------------------------------------------------------------------------
--- reformat everything above 999 in raidframes
--- ------------------------------------------------------------------------
-local numberize_raid = function(v)
-	if v <= 999 then return v end
-	if v >= 1000000 then
-		local value = string.format("%.1fm", v/1000000)
-		return value
-	elseif v >= 1000 then
-		local value = string.format("%.1fk", v/1000)
-		return value
-	end
 end
 
 local function auraIcon(self, icon, icons, index, debuff)
@@ -180,7 +174,6 @@ local function CreateStyle(self, unit)
 	self:RegisterForClicks('AnyUp')
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
-	self:SetScript("OnUpdate", OnRangeUpdate)
 
 	self:SetAttribute('*type2', 'menu')
 	self:SetAttribute('initial-height', 40)
@@ -277,7 +270,7 @@ local function CreateStyle(self, unit)
 	end
 	
     self.PostCreateAuraIcon = auraIcon
-	self.PostUpdateHealth = PostUpdateHealth
+	self.PostUpdateHealth = updateHealth
 end
 
 oUF:RegisterStyle('hParty', CreateStyle)
