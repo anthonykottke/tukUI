@@ -83,6 +83,3 @@ t9.03
 t9.04
 -> fix hp deficit not show on party, 10, 15 mans healing layout.
 -> wow time typo fix when we have a calendar invite.
-
-
-

@@ -168,8 +168,3 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 		InnerFire:RegisterEvent("PLAYER_REGEN_DISABLED")
 	end
 end
-
-
-
-
-

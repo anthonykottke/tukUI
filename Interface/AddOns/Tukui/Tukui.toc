@@ -50,8 +50,4 @@ mods\mirror.lua
 mods\map.lua
 mods\bind.lua
 
-
-
 mods\class\priest.lua
-
-

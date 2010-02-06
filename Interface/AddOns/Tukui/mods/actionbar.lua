@@ -626,8 +626,3 @@ if rightbars_on_mouseover == true then
       pb:HookScript("OnLeave", function(self) rABS_showhidepet(0) rABS_showhiderightbar(0) end)
     end
 end
-
-
-
-
-

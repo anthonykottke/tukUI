@@ -10,6 +10,3 @@ oUF_hTukz_Party.lua
 oUF_hTukz_Raid10.lua
 oUF_hTukz_Raid15.lua
 oUF_hTukz_Raid40.lua
-
-
-

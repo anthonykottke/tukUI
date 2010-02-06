@@ -450,4 +450,3 @@ for i = 1, NUM_CHAT_WINDOWS do
 	tab:SetScript("OnShow", function() button:Show() end)
 	tab:SetScript("OnHide", function() button:Hide() end)
 end
-

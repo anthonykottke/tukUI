@@ -231,8 +231,3 @@ end
 
 menu:SetScript('OnEvent', onEvent)
 menu.initialize = initialize
-
-
-
-
-

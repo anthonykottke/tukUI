@@ -213,5 +213,3 @@ ChatFontSize = 12						-- set the default fontsize of chat
 PixelPerfect = true           			-- enable pixel perfect on Tukui! Warning: if set false, tukui borders can look shitty!
 LoginMsg = true               			-- enable login msg of tukui
 AutoRepairGuildFund = false				-- ninja gold from guild bank for repair.
-
-

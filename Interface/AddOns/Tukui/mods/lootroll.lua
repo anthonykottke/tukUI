@@ -341,4 +341,3 @@ anchor:SetScript("OnEvent", function(frame, event, addon)
 
 	anchor:SetPoint("CENTER", UIParent, "CENTER", 0, -200)
 end)
-

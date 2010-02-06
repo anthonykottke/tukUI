@@ -1544,6 +1544,3 @@ TestUI = function()
 end
 SlashCmdList.TestUI = TestUI
 SLASH_TestUI1 = "/testui"
-
-
-

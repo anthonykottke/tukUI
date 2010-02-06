@@ -132,14 +132,3 @@ end)
 
 -- Set Square Map Mask
 Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
-
-
-
-
-
-
-
-
-
-
-

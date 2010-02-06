@@ -155,4 +155,3 @@ local function Disable(self,unit)
 end
 
 oUF:AddElement("TotemBar",Update,Enable,Disable)
-

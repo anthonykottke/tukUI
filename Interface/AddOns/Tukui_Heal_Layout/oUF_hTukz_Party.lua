@@ -347,13 +347,3 @@ partyToggle:SetScript("OnEvent", function(self)
 		end
 	end
 end)
-
-
-
-
-
-
-
-
-
-

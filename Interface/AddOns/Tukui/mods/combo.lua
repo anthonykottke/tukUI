@@ -102,8 +102,3 @@ function tCombo_Show()
 	this.startTime = GetTime();
 	this:Show();
 end
-
-
-
-
-
