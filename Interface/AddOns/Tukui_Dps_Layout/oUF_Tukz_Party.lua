@@ -23,7 +23,7 @@ local function UpdateThreat(self, event, unit)
          self.Health.name:SetTextColor(1,0.1,0.1)
         else
          self.Health.name:SetTextColor(1,1,1)
-        end 
+        end
 end
 
 oUF.Tags['[smarthp]'] = function(u)
@@ -41,7 +41,7 @@ oUF.Tags['[offline]'] = function(u)
 		return ("|cffB1071E"..ouf_offlinedps.."|r")
 	end
 end
-	
+
 oUF.Tags['[dead]'] = function(u) return UnitIsDeadOrGhost(u) and ouf_deaddps end
 oUF.Tags['[afk]'] = function(u) return UnitIsAFK(u) and ' AFK' end
 
@@ -77,7 +77,7 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
-	
+
     self.Power = CreateFrame("StatusBar", nil, self)
     self.Power:SetHeight(3)
     self.Power:SetPoint("TOPLEFT", self.Health, "BOTTOMLEFT", 0, -1)
@@ -98,11 +98,11 @@ local function CreateStyle(self, unit)
     self.Power.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
     self.Power.bg:SetAlpha(1)
     self.Power.bg.multiplier = 0.4
-	
+
 	local health = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallRight')
 	health:SetPoint('CENTER', 0, 1)
 	self:Tag(health, '[dead][offline( )][afk( )]')
-		
+
 	--local power = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallLeft')
 	--power:SetPoint('LEFT', 3, 0)
 	--self:Tag(power, '[smartpp]')
@@ -111,14 +111,14 @@ local function CreateStyle(self, unit)
 	self.Health.name:SetFont(fontlol, 13, "THINOUTLINE")
 	self.Health.name:SetPoint('LEFT', self, 'RIGHT', 5, 1)
 	self:Tag(self.Health.name, '[name( )][leader( )]')
-	
+
 	if gridaggro == true then
       table.insert(self.__elements, UpdateThreat)
       self:RegisterEvent('PLAYER_TARGET_CHANGED', UpdateThreat)
       self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', UpdateThreat)
       self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', UpdateThreat)
     end
-	
+
 	self.LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
     self.LFDRole:SetHeight(6)
     self.LFDRole:SetWidth(6)
@@ -190,10 +190,10 @@ partyToggle:SetScript("OnEvent", function(self)
 		local numraid = GetNumRaidMembers()
 		if numraid > 0 and (numraid > 5 or numraid ~= GetNumPartyMembers() + 1) then
 			party:Hide()
-			
+
 		else
 			party:Show()
-			
+
 		end
 	end
 end)

@@ -11,11 +11,11 @@ Addon = CreateFrame("Frame")
 	mPanel:SetWidth(144)
 	mPanel:SetPoint("center",-0.5,0)
 	mPanel:SetScale(1)
-	
-	mPanel:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+
+	mPanel:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	mPanel:SetBackdropColor(unpack(TUKUI_BACKDROP_COLOR))
@@ -142,4 +142,4 @@ Minimap:SetMaskTexture('Interface\\ChatFrame\\ChatFrameBackground')
 
 
 
-	
+

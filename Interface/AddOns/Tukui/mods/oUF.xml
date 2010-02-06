@@ -70,7 +70,7 @@
 					<Attribute name="type1" type="string" value="targettarget"/>
 					<Attribute name="initial-unitWatch" type="boolean" value="true"/>
 				</Attributes>
-			</Button>			
+			</Button>
 		</Frames>
 	</Button>
 </Ui>

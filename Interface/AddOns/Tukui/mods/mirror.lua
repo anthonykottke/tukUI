@@ -76,7 +76,7 @@ do
 		bg:SetAllPoints(frame)
 		bg:SetTexture(settings.texture)
 		bg:SetVertexColor(r * .5, g * .5, b * .5)
-		
+
 		local border = CreateFrame("Frame", nil, frame)
 		border:SetFrameLevel(0)
 		border:SetFrameStrata("BACKGROUND")
@@ -84,11 +84,11 @@ do
 		border:SetWidth(settings.width + 4)
 		border:SetPoint("CENTER", frame, "CENTER",0,0)
 		border:SetScale(1)
-		
-		border:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
-		  edgeFile = BLANK_TEXTURE, 
-		  tile = false, tileSize = 0, edgeSize = 1, 
+
+		border:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
+		  edgeFile = BLANK_TEXTURE,
+		  tile = false, tileSize = 0, edgeSize = 1,
 		  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 		})
 		border:SetBackdropColor(unpack(TUKUI_BACKDROP_COLOR))

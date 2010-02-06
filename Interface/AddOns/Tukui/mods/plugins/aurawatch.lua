@@ -3,7 +3,7 @@ oUF_AuraWatch by Astromech
 Please leave comments, suggestions, and bug reports on this addon's WoWInterface page
 
 To setup, create a table with the following entries:
-	
+
 	icons
 		A table of frames to be used as icons. oUF_Aurawatch does not position
 		these frames, so you must do so yourself. Each icon needs a sid entry,
@@ -27,7 +27,7 @@ To setup, create a table with the following entries:
 		auras originating from units "player", "pet", and "vehicle."
 		You can specify this in the icons as well for individual auras.
 	anyUnit
-		Set to true for oUF_AW to to show an aura no matter what unit it 
+		Set to true for oUF_AW to to show an aura no matter what unit it
 		originates from. This will override any fromUnits setting.
 		You can specify this in the icons as well for individual auras.
 	PostCreateIcon
@@ -44,12 +44,12 @@ Here is an example of how to set oUF_AW up:
 		auras:SetWidth(24)
 		auras.SetHeight(128)
 		auras:SetPoint("BOTTOM", self, "TOP")
-		
+
 		-- A table of spellIDs to create icons for
 		-- To find spellIDs, look up a spell on www.wowhead.com and look at the URL
 		-- http://www.wowhead.com/?spell=SPELL_ID
 		local spellIDs = { ... }
-		
+
 		auras.presentAlpha = 1
 		auras.expiredAlpha = .7
 		auras.PostCreateIcon = myCustomIconSkinnerFunction
@@ -83,7 +83,7 @@ local PLAYER_UNITS = {
 }
 
 local setupGUID
-do 
+do
 	local cache = setmetatable({}, {__type = "k"})
 
 	local frame = CreateFrame"Frame"
@@ -98,7 +98,7 @@ do
 	end)
 	frame:RegisterEvent"PLAYER_REGEN_ENABLED"
 	frame:RegisterEvent"PLAYER_ENTERING_WORLD"
-	
+
 	function setupGUID(guid)
 		local t = next(cache)
 		if t then
@@ -148,23 +148,23 @@ local function Update(frame, event, unit)
 	local name, rank, texture, count, type, duration, remaining, caster, key, icon
 	local guid = UnitGUID(unit)
 	if not GUIDs[guid] then setupGUID(guid) end
-	
+
 	for key, icon in pairs(icons) do
 		icon:Hide()
 	end
-	
+
 	while true do
 		if index > 40 then
 			name, rank, texture, count, type, duration, remaining, caster = UnitDebuff(unit, index-40)
 		else
 			name, rank, texture, count, type, duration, remaining, caster = UnitBuff(unit, index)
 		end
-		if not name then 
-			if index > 40 then 
-				break 
-			else 
-				index = 40 
-			end 
+		if not name then
+			if index > 40 then
+				break
+			else
+				index = 40
+			end
 		else
 			key = name..texture
 			icon = icons[key]
@@ -176,13 +176,13 @@ local function Update(frame, event, unit)
 		end
 		index = index + 1
 	end
-	
+
 	for key in pairs(GUIDs[guid]) do
 		if icons[key] and not found[key] then
 			expireIcon(icons[key], watch)
 		end
 	end
-	
+
 	for k in pairs(found) do
 		found[k] = nil
 	end
@@ -195,13 +195,13 @@ local function setupIcons(self)
 	frame.watched = {}
 	if not frame.missingAlpha then frame.missingAlpha = 0.75 end
 	if not frame.presentAlpha then frame.presentAlpha = 1 end
-	
+
 	for _,icon in pairs(icons) do
-	
+
 		local name, _, image = GetSpellInfo(icon.spellID)
 		if not name then error("oUF_AuraWatch error: no spell with "..tostring(icon.spellID).." spell ID exists") end
 		icon.name = name
-	
+
 		if not icon.cd then
 			local cd = CreateFrame("Cooldown", nil, icon)
 			cd:SetAllPoints(icon)
@@ -243,7 +243,7 @@ local function setupIcons(self)
 		if icon.anyUnit == nil then
 			icon.anyUnit = frame.anyUnit
 		end
-		
+
 		frame.watched[name..image] = icon
 
 		if frame.PostCreateIcon then frame:PostCreateIcon(icon, icon.spellID, name) end

@@ -80,12 +80,12 @@ local numberize_raid = function(v)
 	end
 end
 
-local updateHealth = function(self, event, unit, bar, min, max)  
+local updateHealth = function(self, event, unit, bar, min, max)
     local cur, maxhp = min, max
     local missing = maxhp-cur
-    
+
     local d = floor(cur/maxhp*100)
-    
+
 	if(UnitIsDead(unit)) then
 		bar:SetValue(0)
 		bar.value:SetText(ouf_deadheal)
@@ -105,21 +105,21 @@ local updateHealth = function(self, event, unit, bar, min, max)
 end
 
 local function auraIcon(self, icon, icons, index, debuff)
-		icons.showDebuffType = true		-- show debuff border type color 
+		icons.showDebuffType = true		-- show debuff border type color
 		icon.cd.noOCC = true		 	-- hide OmniCC CDs
 		icon.cd.noCooldownCount = true	-- hide CDC CDs
 		icons.disableCooldown = true	-- hide CD spiral
-		
+
 		icon.count:SetPoint("BOTTOMRIGHT", -3, 5)
 		icon.count:SetJustifyH("RIGHT")
 		icon.count:SetFont(fontlol, 11, "THINOUTLINE")
 		icon.count:SetTextColor(0.84, 0.75, 0.65)
-				
+
 		icon.icon:SetTexCoord(.07, .93, .07, .93)
 		icon.icon:SetPoint("TOPLEFT", icon, "TOPLEFT", 2, -2)
 		icon.icon:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", -2, 2)
-		
-		icon.overlay:SetTexture(buttonTex)		
+
+		icon.overlay:SetTexture(buttonTex)
 		icon.overlay:SetTexCoord(0,1,0,1)
 		icon.overlay.Hide = function(self) self:SetVertexColor(TUKUI_BORDER_COLOR[1], TUKUI_BORDER_COLOR[2], TUKUI_BORDER_COLOR[3]) end
 end
@@ -173,13 +173,13 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
-	
+
 	self.Health.value = self.Health:CreateFontString(nil, "OVERLAY")
 	self.Health.value:SetPoint("RIGHT", self.Health, -3, 1)
 	self.Health.value:SetFont(fontlol, 12, "THINOUTLINE")
 	self.Health.value:SetTextColor(1,1,1)
 	self.Health.value:SetShadowOffset(1, -1)
-		
+
 	self.Power = CreateFrame("StatusBar", nil, self)
 	self.Power:SetHeight(4)
 	self.Power:SetPoint("TOPLEFT", self.Health, "BOTTOMLEFT", 0, -1)
@@ -222,10 +222,10 @@ local function CreateStyle(self, unit)
 	if showsmooth == true then
 		self.Health.Smooth = true
 	end
-	
+
     self.PostCreateAuraIcon = auraIcon
 	self.PostUpdateHealth = updateHealth
-	
+
 end
 
 oUF:RegisterStyle('hRaid15', CreateStyle)
@@ -260,7 +260,7 @@ local raid = {}
 for i = 1, 3 do
 	local raidgroup = oUF:Spawn('header', 'oUF_Group'..i)
 	raidgroup:SetManyAttributes('groupFilter', tostring(i), 'showRaid', true, 'yOffset', -4)
-	raidgroup:SetFrameStrata('BACKGROUND')	
+	raidgroup:SetFrameStrata('BACKGROUND')
 	table.insert(raid, raidgroup)
 	if(i == 1) then
 		raidgroup:SetPoint('TOPLEFT', UIParent, 16, -170)

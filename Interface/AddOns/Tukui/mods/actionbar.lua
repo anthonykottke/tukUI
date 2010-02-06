@@ -1,7 +1,7 @@
 
 
   -- tActionBars is based on rActionBarStyler by Zork.
-  
+
 if (not TukuiBars == true) or (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded("Macaroon") or IsAddOnLoaded("XBar")) then return end
 
   -- space between button
@@ -25,14 +25,14 @@ if (not TukuiBars == true) or (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Barten
   local fbar1 = CreateFrame("Frame","rABS_Bar1Holder",UIParent)
   fbar1:SetWidth(518)
   fbar1:SetHeight(58)
-  fbar1:SetPoint("BOTTOM",-230,15)  
+  fbar1:SetPoint("BOTTOM",-230,15)
   fbar1:Show()
-  
+
   -- Frame to hold the MultibarLeft
   local fbar2 = CreateFrame("Frame","rABS_Bar2Holder",UIParent)
   fbar2:SetWidth(518)
   fbar2:SetHeight(58)
-  fbar2:SetPoint("BOTTOM",251,15)  
+  fbar2:SetPoint("BOTTOM",251,15)
   fbar2:Show()
 
   -- Frame to hold the MultibarRight
@@ -41,41 +41,41 @@ if (not TukuiBars == true) or (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Barten
 	  fbar3:SetHeight(58)
   if Tukui4BarsBottom == true then
 	  fbar3:SetPoint("BOTTOM",-460,56)
-	  fbar3:Show()    
+	  fbar3:Show()
   else
 	  fbar3:SetPoint("RIGHT",-98,232)
-	  fbar3:Show()  
+	  fbar3:Show()
   end
-  
-  
+
+
   -- Frame to hold the right bars
   local fbar45 = CreateFrame("Frame","rABS_Bar45Holder",UIParent)
   fbar45:SetWidth(190) -- size the width here
   fbar45:SetHeight(518) -- size the height here
-  fbar45:SetPoint("RIGHT",-20,0) 
-  
-  
-  -- Frame to hold the pet bars  
+  fbar45:SetPoint("RIGHT",-20,0)
+
+
+  -- Frame to hold the pet bars
   local fpet = CreateFrame("Frame","rABS_PetBarHolder",UIParent)
   fpet:SetWidth(53) -- size the width here
   fpet:SetHeight(53) -- size the height here
   fpet:SetPoint("RIGHT",-120,163)
-  
-  
-  -- Frame to hold the shapeshift bars  
+
+
+  -- Frame to hold the shapeshift bars
   local fshift = CreateFrame("Frame","rABS_ShapeShiftHolder",UIParent)
   fshift:SetWidth(50) -- size the width here
   fshift:SetHeight(50) -- size the height here
   if Tukui4BarsBottom == true then
 	fshift:SetPoint("BOTTOM",-337,170)
   else
-	fshift:SetPoint("BOTTOM",-337,142) 
+	fshift:SetPoint("BOTTOM",-337,142)
   end
-  
+
   ---------------------------------------------------
   -- CREATE MY OWN VEHICLE EXIT BUTTON
   ---------------------------------------------------
-  
+
   local veb = CreateFrame("BUTTON", "rABS_VehicleExitButton", UIParent, "SecureActionButtonTemplate");
   veb:SetWidth(32)
   veb:SetHeight(32)
@@ -100,29 +100,29 @@ if (not TukuiBars == true) or (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Barten
       veb:SetAlpha(0)
 	  veb:SetScale(0.0001)
     end
-  end)  
+  end)
   veb:SetAlpha(0)
- 
+
   ---------------------------------------------------
   -- MOVE STUFF INTO POSITION
   ---------------------------------------------------
-  
+
   local i,f
-    
+
   --bar1
   for i=1, 12 do
     _G["ActionButton"..i]:SetParent(fbar1);
   end
   ActionButton1:ClearAllPoints()
-  ActionButton1:SetPoint("BOTTOMLEFT",fbar1,"BOTTOMLEFT",10,10);  
+  ActionButton1:SetPoint("BOTTOMLEFT",fbar1,"BOTTOMLEFT",10,10);
   for i=2, 12 do
     local b = _G["ActionButton"..i]
 	local b2 = _G["ActionButton"..i-1]
 	b:ClearAllPoints()
 	b:SetPoint("LEFT",b2,"RIGHT",padding,0)
-  end 
+  end
 
-  --bonus bar  
+  --bonus bar
   BonusActionBarFrame:SetParent(fbar1)
   BonusActionBarFrame:SetWidth(0.01)
   BonusActionBarTexture0:Hide()
@@ -135,7 +135,7 @@ for i=2, 12 do
   b:ClearAllPoints()
   b:SetPoint("LEFT",b2,"RIGHT",padding,0)
 end
-  
+
   --bar2
   MultiBarBottomLeft:SetParent(fbar2)
   MultiBarBottomLeftButton1:ClearAllPoints()
@@ -145,8 +145,8 @@ end
 	local b2 = _G["MultiBarBottomLeftButton"..i-1]
 	b:ClearAllPoints()
 	b:SetPoint("LEFT",b2,"RIGHT",padding,0)
-  end 
-  
+  end
+
   --bar3
   MultiBarBottomRight:SetParent(fbar3)
   MultiBarBottomRightButton1:ClearAllPoints()
@@ -160,8 +160,8 @@ end
 	else
 		b:SetPoint("TOP",b2,"BOTTOM",0,-4)
 	end
-  end 
-  
+  end
+
   --shift
   ShapeshiftBarFrame:SetParent(fshift)
   ShapeshiftBarFrame:SetWidth(0.01)
@@ -175,14 +175,14 @@ end
 	local b2 = _G["ShapeshiftButton"..i-1]
 	b:ClearAllPoints()
 	b:SetPoint("LEFT",b2,"RIGHT",stancepadding,0)
-  end 
-  hooksecurefunc("ShapeshiftBar_Update", rABS_MoveShapeshift); 
-  
+  end
+  hooksecurefunc("ShapeshiftBar_Update", rABS_MoveShapeshift);
+
   --possess bar
   PossessBarFrame:SetParent(fshift)
   PossessButton1:ClearAllPoints()
   PossessButton1:SetPoint("BOTTOMLEFT", fshift, "BOTTOMLEFT", 10, 10);
-  
+
     --totem bar (idea borrowed from avis57, author of Movable Totem Frame add-on)
   if UnitLevel("player") >= 30 and select(2, UnitClass("Player")) == "SHAMAN" then
     MultiCastSummonSpellButton:SetParent(fshift)
@@ -232,7 +232,7 @@ end
     MultiCastRecallSpellButton.SetParent = dummy
     MultiCastRecallSpellButton.SetPoint = dummy
   end
-  
+
   --pet
   PetActionBarFrame:SetParent(fpet)
   PetActionBarFrame:SetWidth(0.01)
@@ -243,7 +243,7 @@ end
 	local b2 = _G["PetActionButton"..i-1]
 	b:ClearAllPoints()
 	b:SetPoint("TOP",b2,"BOTTOM",0,petpadding)
-  end 
+  end
 
   --right bars
   MultiBarLeft:SetParent(fbar45);
@@ -264,7 +264,7 @@ end
 	local b2 = _G["MultiBarLeftButton"..i-1]
 	b:ClearAllPoints()
 	b:SetPoint("TOP",b2,"BOTTOM",0,-4)
-  end 
+  end
   for i=2, 12 do
     local b = _G["MultiBarRightButton"..i]
 	local b2 = _G["MultiBarRightButton"..i-1]
@@ -274,12 +274,12 @@ end
 	else
 		b:SetPoint("TOP",b2,"BOTTOM",0,-4)
 	end
-  end 
-  
+  end
+
   ---------------------------------------------------
   -- ACTIONBUTTONS MUST BE HIDDEN
   ---------------------------------------------------
-  
+
   -- hide actionbuttons when the bonusbar is visible (rogue stealth and such)
   local function rABS_showhideactionbuttons(alpha)
     local f = "ActionButton"
@@ -296,19 +296,19 @@ end
   ---------------------------------------------------
   -- MAKE THE DEFAULT BARS UNVISIBLE
   ---------------------------------------------------
-  
+
   local FramesToHide = {
     MainMenuBar,
     VehicleMenuBar,
-  }  
-  
+  }
+
   local function rABS_HideDefaultFrames()
     for _, f in pairs(FramesToHide) do
       f:SetScale(0.001)
       f:SetAlpha(0)
     end
-  end  
-  rABS_HideDefaultFrames(); 
+  end
+  rABS_HideDefaultFrames();
 
   ---------------------------------------------------
   -- SCALING
@@ -318,14 +318,14 @@ end
   fbar2:SetScale(bar2scale)
   fbar3:SetScale(bar3scale)
   fbar45:SetScale(bar45scale)
-  
+
   fpet:SetScale(petscale)
   fshift:SetScale(shapeshiftscale)
 
   ---------------------------------------------------
   -- MOVABLE FRAMES
   ---------------------------------------------------
-  
+
   -- func
   local function rABS_MoveThisFrame(f,moveit,lock)
     if moveit == true then
@@ -339,9 +339,9 @@ end
       end
     else
       f:IsUserPlaced(false)
-    end  
+    end
   end
-  
+
   -- calls
   rABS_MoveThisFrame(fshift,move_shapeshift,lock_shapeshift)
 
@@ -349,7 +349,7 @@ end
     fshift:SetScale(0.001)
     fshift:SetAlpha(0)
   end
-   
+
   if hide_pet == true then
     fpet:SetScale(0.001)
     fpet:SetAlpha(0)
@@ -375,7 +375,7 @@ if Tukui4BarsBottom == true then
 		MultiBarRight:SetScale(1)
 		MultiBarRight:SetAlpha(1)
 	end
-else 
+else
 	if rightbarnumber == 0 then
 		fpet:ClearAllPoints()
 		fpet:SetPoint("RIGHT",0,163)
@@ -414,9 +414,9 @@ else
 		MultiBarRight:SetAlpha(1)
 	end
 end
-	
+
 ------------------------------------------------------------------------
---	RIGHTBARS 
+--	RIGHTBARS
 ------------------------------------------------------------------------
 
 SlashCmdList["ABCONFIG"] = function()
@@ -426,7 +426,7 @@ SlashCmdList["ABCONFIG"] = function()
 		fpet:ClearAllPoints()
 		fpet:SetPoint("RIGHT",-60,163)
 		fpet:SetScale(petscale)
-		fpet:SetAlpha(1)	
+		fpet:SetAlpha(1)
 	else
 		MultiBarBottomRight:SetScale(1)
 		MultiBarBottomRight:SetAlpha(1)
@@ -463,7 +463,7 @@ SlashCmdList["ABSHOW"] = function()
 			MultiBarRight:SetScale(1)
 			MultiBarRight:SetAlpha(1)
 		end
-	else 
+	else
 		if rightbarnumber == 0 then
 			fpet:ClearAllPoints()
 			fpet:SetPoint("RIGHT",0,163)
@@ -628,6 +628,6 @@ if rightbars_on_mouseover == true then
 end
 
 
-  
-  
+
+
 

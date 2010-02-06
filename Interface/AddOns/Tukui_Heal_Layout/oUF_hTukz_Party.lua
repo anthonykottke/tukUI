@@ -76,12 +76,12 @@ local numberize_raid = function(v)
 	end
 end
 
-local updateHealth = function(self, event, unit, bar, min, max)  
+local updateHealth = function(self, event, unit, bar, min, max)
     local cur, maxhp = min, max
     local missing = maxhp-cur
-    
+
     local d = floor(cur/maxhp*100)
-    
+
 	if(UnitIsDead(unit)) then
 		bar:SetValue(0)
 		bar.value:SetText(ouf_deadheal)
@@ -101,21 +101,21 @@ local updateHealth = function(self, event, unit, bar, min, max)
 end
 
 local function auraIcon(self, icon, icons, index, debuff)
-		icons.showDebuffType = true		-- show debuff border type color 
+		icons.showDebuffType = true		-- show debuff border type color
 		icon.cd.noOCC = true		 	-- hide OmniCC CDs
 		icon.cd.noCooldownCount = true	-- hide CDC CDs
 		icons.disableCooldown = true	-- hide CD spiral
-		
+
 		icon.count:SetPoint("BOTTOMRIGHT", -3, 5)
 		icon.count:SetJustifyH("RIGHT")
 		icon.count:SetFont(fontlol, 11, "THINOUTLINE")
 		icon.count:SetTextColor(0.84, 0.75, 0.65)
-				
+
 		icon.icon:SetTexCoord(.07, .93, .07, .93)
 		icon.icon:SetPoint("TOPLEFT", icon, "TOPLEFT", 2, -2)
 		icon.icon:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", -2, 2)
-		
-		icon.overlay:SetTexture(buttonTex)		
+
+		icon.overlay:SetTexture(buttonTex)
 		icon.overlay:SetTexCoord(0,1,0,1)
 		icon.overlay.Hide = function(self) self:SetVertexColor(TUKUI_BORDER_COLOR[1], TUKUI_BORDER_COLOR[2], TUKUI_BORDER_COLOR[3]) end
 end
@@ -168,7 +168,7 @@ local function CreateStyle(self, unit)
 	self.Debuffs.num = 5
 	self.Debuffs.numBuffs = 5
 	self.Debuffs.numDebuffs = 5
-	
+
 	self.menu = menu
 	self.colors = colors
 	self:RegisterForClicks('AnyUp')
@@ -196,7 +196,7 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture(normTex)
 	self.Health.bg:SetAlpha(1)
 	self.Health.bg.multiplier = 0.3
-	
+
 	self.Health.value = self.Health:CreateFontString(nil, "OVERLAY")
 	self.Health.value:SetPoint("RIGHT", self.Health, -3, 1)
 	self.Health.value:SetFont(fontlol, 12, "THINOUTLINE")
@@ -223,13 +223,13 @@ local function CreateStyle(self, unit)
 	self.Power.bg:SetTexture(normTex)
 	self.Power.bg:SetAlpha(1)
 	self.Power.bg.multiplier = 0.4
-	
+
 
 	local name = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightLeft')
 	name:SetFont(fontlol, 12, "THINOUTLINE")
 	name:SetPoint('LEFT', 5, 1)
 	self:Tag(name, '[name( )][leader( )]')
-	
+
     self.Leader = self.Health:CreateTexture(nil, "OVERLAY")
     self.Leader:SetHeight(12)
     self.Leader:SetWidth(12)
@@ -268,7 +268,7 @@ local function CreateStyle(self, unit)
 	if showsmooth == true then
 		self.Health.Smooth = true
 	end
-	
+
     self.PostCreateAuraIcon = auraIcon
 	self.PostUpdateHealth = updateHealth
 end
@@ -311,12 +311,12 @@ party:SetAttribute("showPlayer", showplayerinparty)
 party:SetAttribute("yOffset", -8)
 
 
-local pets = {} 
-pets[1] = oUF:Spawn('partypet1', 'oUF_PartyPet1') 
-pets[1]:SetPoint('TOPLEFT', party, 'TOPLEFT', 0, -240) 
-for i =2, 4 do 
-  pets[i] = oUF:Spawn('partypet'..i, 'oUF_PartyPet'..i) 
-  pets[i]:SetPoint('TOP', pets[i-1], 'BOTTOM', 0, -8) 
+local pets = {}
+pets[1] = oUF:Spawn('partypet1', 'oUF_PartyPet1')
+pets[1]:SetPoint('TOPLEFT', party, 'TOPLEFT', 0, -240)
+for i =2, 4 do
+  pets[i] = oUF:Spawn('partypet'..i, 'oUF_PartyPet'..i)
+  pets[i]:SetPoint('TOP', pets[i-1], 'BOTTOM', 0, -8)
 end
 
 
@@ -337,7 +337,7 @@ partyToggle:SetScript("OnEvent", function(self)
 			for i,v in ipairs(pets) do v:Disable() end
 			--for i, pet in ipairs(pets) do
 			--pet:Hide()
-			--end		
+			--end
 		else
 			party:Show()
 			for i,v in ipairs(pets) do v:Enable() end

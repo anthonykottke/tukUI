@@ -21,7 +21,7 @@ local replaceschan = {
 	['Объявление рейду'] = '[ОР]',
 	['Офицер'] = '[О]',
 	['Поле боя'] = '[ПБ]',
-	['Лидер поля боя'] = '[ЛПБ]', 
+	['Лидер поля боя'] = '[ЛПБ]',
 	['Guilde'] = '[G]',
 	['Groupe'] = '[GR]',
 	['Chef de raid'] = '[RL]',
@@ -50,10 +50,10 @@ x[8]:SetAlpha(0)
 -- Player entering the world
 local function PLAYER_ENTERING_WORLD()
 	local TimeNotAtBottom = { }
-	
+
 	ChatFrameMenuButton:Hide()
 	ChatFrameMenuButton:SetScript("OnShow", function(self) self:Hide() end)
-	
+
 	for i = 1, NUM_CHAT_WINDOWS do
 		-- Hide chat buttons
 		_G["ChatFrame"..i.."UpButton"]:Hide()
@@ -62,7 +62,7 @@ local function PLAYER_ENTERING_WORLD()
 		_G["ChatFrame"..i.."UpButton"]:SetScript("OnShow", function(self) self:Hide() end)
 		_G["ChatFrame"..i.."DownButton"]:SetScript("OnShow", function(self) self:Hide() end)
 		_G["ChatFrame"..i.."BottomButton"]:SetScript("OnShow", function(self) self:Hide() end)
-		
+
 		-- Hide chat textures backdrop
 
 		for j = 1, #CHAT_FRAME_TEXTURES do
@@ -72,9 +72,9 @@ local function PLAYER_ENTERING_WORLD()
 		-- Stop the chat frame from fading out
 		_G["ChatFrame"..i]:SetFading(false)
 
-		-- Change the chat frame font 
+		-- Change the chat frame font
 		_G["ChatFrame"..i]:SetFont(chatfont, ChatFontSize)
-		
+
 		-- Allow for scrolling through the chat
 		-- Also force chat to the bottom after 30 seconds
 		TimeNotAtBottom[i] = 0
@@ -107,35 +107,35 @@ local function PLAYER_ENTERING_WORLD()
 		_G["ChatFrame"..i]:EnableMouseWheel(true)
 		_G["ChatFrame"..i]:SetFrameStrata("LOW")
 		_G["ChatFrame"..i]:SetUserPlaced(true)
-			
+
 	end
-	
+
 	-- Remember last channel
 	ChatTypeInfo.WHISPER.sticky = 1
 	ChatTypeInfo.OFFICER.sticky = 1
 	ChatTypeInfo.RAID_WARNING.sticky = 1
 	ChatTypeInfo.CHANNEL.sticky = 1
-	
+
 	-- Texture and align the chat edit box
 	local left, mid, right = select(6, ChatFrameEditBox:GetRegions())
 	left:Hide(); mid:Hide(); right:Hide()
 	ChatFrameEditBox:ClearAllPoints();
-	
+
 	ChatFrameEditBox:SetPoint("BOTTOMLEFT", ChatFrame1, "BOTTOMLEFT", -2, -34)
 	ChatFrameEditBox:SetPoint("BOTTOMRIGHT", ChatFrame1, "BOTTOMRIGHT", 4, -34)
 
 	-- Disable alt key usage
 	ChatFrameEditBox:SetAltArrowKeyMode(false)
-	
+
 	-- Align the text to the right on cf4
 	ChatFrame4:SetJustifyH("RIGHT")
-	
+
 	-- Position the general chat frame
 	ChatFrame1:ClearAllPoints()
 	ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, 31, 48)
 	ChatFrame1:SetWidth(tinfowidth + 1)
 	ChatFrame1:SetHeight(111)
-		
+
 		-- Position the combatlog
 	ChatFrame4:ClearAllPoints()
 	ChatFrame4:SetPoint("BOTTOMRIGHT", UIParent, -31, 48)
@@ -161,11 +161,11 @@ function CHAT_MSG_SYSTEM(...)
 	local login = select(3, find(arg1, "^|Hplayer:(.+)|h%[(.+)%]|h has come online."))
 	local classColor = "999999"
 	local foundColor = true
-			
+
 	if login then
 		local found = false
 		if GetNumFriends() > 0 then ShowFriends() end
-		
+
 		for friendIndex = 1, GetNumFriends() do
 			local friendName, _, class = GetFriendInfo(friendIndex)
 			if friendName == login then
@@ -174,7 +174,7 @@ function CHAT_MSG_SYSTEM(...)
 				break
 			end
 		end
-		
+
 		if not found then
 			if IsInGuild() then GuildRoster() end
 			for guildIndex = 1, GetNumGuildMembers(true) do
@@ -185,9 +185,9 @@ function CHAT_MSG_SYSTEM(...)
 				end
 			end
 		end
-		
+
 	end
-	
+
 	if login then
 		-- Hook the message function
 		local AddMessageOriginal = ChatFrame1.AddMessage
@@ -198,7 +198,7 @@ function CHAT_MSG_SYSTEM(...)
 		end
 		ChatFrame1.AddMessage = AddMessageHook
 	end
-	
+
 end
 AddOn:RegisterEvent("CHAT_MSG_SYSTEM")
 AddOn["CHAT_MSG_SYSTEM"] = CHAT_MSG_SYSTEM
@@ -213,8 +213,8 @@ local function AddMessageHook(frame, text, ...)
 	text = replace(text, "has come online.", "is now |cff298F00online|r !")
 	text = replace(text, "|Hplayer:(.+)|h%[(.+)%]|h has earned", "|Hplayer:%1|h%2|h has earned")
 	text = replace(text, "|Hplayer:(.+):(.+)|h%[(.+)%]|h whispers:", "From [|Hplayer:%1:%2|h%3|h]:")
-	text = replace(text, "|Hplayer:(.+):(.+)|h%[(.+)%]|h says:", "[|Hplayer:%1:%2|h%3|h]:")	
-	text = replace(text, "|Hplayer:(.+):(.+)|h%[(.+)%]|h yells:", "[|Hplayer:%1:%2|h%3|h]:")	
+	text = replace(text, "|Hplayer:(.+):(.+)|h%[(.+)%]|h says:", "[|Hplayer:%1:%2|h%3|h]:")
+	text = replace(text, "|Hplayer:(.+):(.+)|h%[(.+)%]|h yells:", "[|Hplayer:%1:%2|h%3|h]:")
 	return AddMessageOriginal(frame, text, ...)
 end
 ChatFrame1.AddMessage = AddMessageHook
@@ -247,7 +247,7 @@ local function AddTime(frame, msg, ...)
 	if msg and msg ~= '' then
 		msg = format("[%02d:%02d] %s", date('%H'), date('%M'), msg)
 	end
-	
+
 	frame:tChat_Original_AddMessage(msg, ...)
 end
 
@@ -308,14 +308,14 @@ function ChatFrame_OnHyperlinkShow(self, link, text, button)
 	local type, value = link:match("(%a+):(.+)")
 	if ( type == "url" ) then
 		local dialog = StaticPopup_Show("LINKME")
-		local editbox = _G[dialog:GetName().."WideEditBox"]  
+		local editbox = _G[dialog:GetName().."WideEditBox"]
 		editbox:SetText(value)
 		editbox:SetFocus()
 		editbox:HighlightText()
 		local button = _G[dialog:GetName().."Button2"]
-            
+
 		button:ClearAllPoints()
-           
+
 		button:SetPoint("CENTER", editbox, "CENTER", 0, -30)
 	else
 		f(self, link, text, button)
@@ -371,9 +371,9 @@ local isf = nil
 local function CreatCopyFrame()
 	frame = CreateFrame("Frame", "CopyFrame", UIParent)
 	frame:SetBackdrop({
-			bgFile = BLANK_TEXTURE, 
-			edgeFile = BLANK_TEXTURE, 
-			tile = 0, tileSize = 0, edgeSize = 1, 
+			bgFile = BLANK_TEXTURE,
+			edgeFile = BLANK_TEXTURE,
+			tile = 0, tileSize = 0, edgeSize = 1,
 			insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	frame:SetBackdropColor(unpack(TUKUI_BACKDROP_COLOR))
@@ -441,8 +441,8 @@ for i = 1, NUM_CHAT_WINDOWS do
 	button:SetAlpha(0)
 	button:SetNormalTexture("Interface\\Vehicles\\UI-Vehicles-Button-Exit-Down")
 	button:SetScript("OnClick", function() Copy(cf) end)
-	button:SetScript("OnEnter", function() 
-		button:SetAlpha(1) 
+	button:SetScript("OnEnter", function()
+		button:SetAlpha(1)
 		end)
 	button:SetScript("OnLeave", function() button:SetAlpha(0) end)
 	button:Hide()

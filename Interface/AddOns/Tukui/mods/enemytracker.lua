@@ -111,11 +111,11 @@ if not IsAddOnLoaded("Afflicted3") then
 		tCooldownTracker:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 		tCooldownTracker:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 		tCooldownTracker_Saved = { ["x"] = 677, ["y"] = 383, ["orientation"] = "VERTICALUP" }
-		tCooldownTracker.Orientations = { 
+		tCooldownTracker.Orientations = {
 			["HORIZONTALRIGHT"] = { ["point"] = "TOPLEFT", ["rpoint"] = "TOPRIGHT", ["x"] = 3, ["y"] = 0 },
-			["HORIZONTALLEFT"] = { ["point"] = "TOPRIGHT", ["rpoint"] = "TOPLEFT", ["x"] = -3, ["y"] = 0 }, 
+			["HORIZONTALLEFT"] = { ["point"] = "TOPRIGHT", ["rpoint"] = "TOPLEFT", ["x"] = -3, ["y"] = 0 },
 			["VERTICALDOWN"] = { ["point"] = "TOPLEFT", ["rpoint"] = "BOTTOMLEFT", ["x"] = 0, ["y"] = -3 },
-			["VERTICALUP"] = { ["point"] = "BOTTOMLEFT", ["rpoint"] = "TOPLEFT", ["x"] = 0, ["y"] = 3 }, 
+			["VERTICALUP"] = { ["point"] = "BOTTOMLEFT", ["rpoint"] = "TOPLEFT", ["x"] = 0, ["y"] = 3 },
 		}
 
 		------------------------------------------------------------
@@ -137,11 +137,11 @@ if not IsAddOnLoaded("Afflicted3") then
 
 		function tCooldownTracker.CreateIcon()
 			local i = (#tCooldownTracker.Icons)+1
-		   
+
 			tCooldownTracker.Icons[i] = CreateFrame("frame","tCooldownTrackerIcon"..i,UIParent)
 			tCooldownTracker.Icons[i]:SetHeight(28.5)
 			tCooldownTracker.Icons[i]:SetWidth(28.5)
-			  
+
 			tCooldownTracker.Icons[i]:Hide()
 
 			tCooldownTracker.Icons[i].Texture = tCooldownTracker.Icons[i]:CreateTexture(nil,"BACKGROUND")
@@ -161,7 +161,7 @@ if not IsAddOnLoaded("Afflicted3") then
 			tCooldownTracker.Icons[i].TimerText:SetShadowOffset(1,-1)
 			tCooldownTracker.Icons[i].TimerText:SetPoint("CENTER", tCooldownTracker.Icons[i], "CENTER")
 			tCooldownTracker.Icons[i].TimerText:SetText(5)
-		   
+
 			return i
 		end
 
@@ -169,8 +169,8 @@ if not IsAddOnLoaded("Afflicted3") then
 		tCooldownTracker.Icons[1]:RegisterForDrag("LeftButton")
 		tCooldownTracker.Icons[1]:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", tCooldownTracker_Saved.x, tCooldownTracker_Saved.y)
 		tCooldownTracker.Icons[1]:SetScript("OnDragStart", function() tCooldownTracker.Icons[1]:StartMoving() end)
-		tCooldownTracker.Icons[1]:SetScript("OnDragStop", function() 
-			tCooldownTracker.Icons[1]:StopMovingOrSizing() 
+		tCooldownTracker.Icons[1]:SetScript("OnDragStop", function()
+			tCooldownTracker.Icons[1]:StopMovingOrSizing()
 			tCooldownTracker_Saved.x = math.floor(tCooldownTracker.Icons[1]:GetLeft())
 			tCooldownTracker_Saved.y = math.floor(tCooldownTracker.Icons[1]:GetTop())
 			end)
@@ -239,12 +239,12 @@ if not IsAddOnLoaded("Afflicted3") then
 			DEFAULT_CHAT_FRAME:AddMessage("|cFFFFFF33[Tukui Cooldown Tracker]|r "..format(msg, ...))
 		end
 
-		--  
+		--
 
 		function tCooldownTracker.COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID)
 				isArena, isRegistered = IsActiveBattlefieldArena();
 				if isArena then
-					if (event == "SPELL_CAST_SUCCESS" and not tCooldownTracker.Icons[1]:IsMouseEnabled() and (bit.band(sourceFlags,COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE)) then			
+					if (event == "SPELL_CAST_SUCCESS" and not tCooldownTracker.Icons[1]:IsMouseEnabled() and (bit.band(sourceFlags,COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE)) then
 						if (sourceName ~= UnitName("player")) then
 							if (tCooldownTracker.Spells[spellID]) then
 								local _,_,texture = GetSpellInfo(spellID)
@@ -266,7 +266,7 @@ if not IsAddOnLoaded("Afflicted3") then
 
 		tCooldownTracker.Timers = { }
 		function tCooldownTracker.StartTimer(icon, duration, texture, spellID)
-			
+
 			tCooldownTracker.Timers[(icon)] = {
 				["Start"] = GetTime(),
 				["Duration"] = duration,
@@ -303,7 +303,7 @@ if not IsAddOnLoaded("Afflicted3") then
 		function tCooldownTracker.Reposition()
 			local sorttable = { }
 			local indexes = { }
-			
+
 			for i in pairs(tCooldownTracker.Timers) do
 				tinsert(sorttable, tCooldownTracker.Timers[i].Start)
 				indexes[tCooldownTracker.Timers[i].Start] = i
@@ -320,10 +320,10 @@ if not IsAddOnLoaded("Afflicted3") then
 				if (currentactive == 0) then
 					tCooldownTracker.Icons[i]:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", tCooldownTracker_Saved.x, tCooldownTracker_Saved.y)
 				else
-					tCooldownTracker.Icons[i]:SetPoint(tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].point, 
-						tCooldownTracker.Icons[currentactive], 
-						tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].rpoint, 
-						tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].x, 
+					tCooldownTracker.Icons[i]:SetPoint(tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].point,
+						tCooldownTracker.Icons[currentactive],
+						tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].rpoint,
+						tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].x,
 						tCooldownTracker.Orientations[tCooldownTracker_Saved.orientation].y)
 				end
 				currentactive = i
@@ -351,7 +351,7 @@ if not IsAddOnLoaded("Afflicted3") then
 
 		function tCooldownTracker:ZONE_CHANGED_NEW_AREA()
 				local pvpType = GetZonePVPInfo()
-				
+
 				if not pvpType ~= "Arena" then
 					for i in pairs(tCooldownTracker.Timers) do
 					tCooldownTracker.StopTimer(i)

@@ -1,10 +1,10 @@
 --[[--------------------------------------------------------------------
 	oUF_Tukz
-	
-	I'd like to thank Haste for his awesome oUF framework, without which 
-	this layout would do absolutely nothing. I'd also like to thank Caellian 
-	for his cleanly written oUF_Caellian which helped me as a guide to write 
-	this layout. 
+
+	I'd like to thank Haste for his awesome oUF framework, without which
+	this layout would do absolutely nothing. I'd also like to thank Caellian
+	for his cleanly written oUF_Caellian which helped me as a guide to write
+	this layout.
 
 	Supported Units:
 		Player
@@ -12,7 +12,7 @@
 		Target
 		Target Target
 		Focus
-		Party 
+		Party
 		Vehicule
 		Raid10
 		Raid25
@@ -21,7 +21,7 @@
 
 	Required Dependencies:
 		oUF
-	
+
 ----------------------------------------------------------------------]]
 
 if not TukuiUF == true then return end
@@ -54,8 +54,8 @@ local backdrop = {
 
 local backdrop2 = {
 	bgFile = BLANK_TEXTURE,
-	edgeFile = BLANK_TEXTURE, 
-	tile = false, tileSize = 0, edgeSize = 1, 
+	edgeFile = BLANK_TEXTURE,
+	tile = false, tileSize = 0, edgeSize = 1,
 	insets = {top = -1, left = -1, bottom = -1, right = -1},
 }
 
@@ -244,7 +244,7 @@ end
 local PreUpdatePower = function(self, event, unit)
 	if(self.unit ~= unit) then return end
 	local _, pType = UnitPowerType(unit)
-	
+
 	local color = self.colors.power[pType]
 	if color then
 		self.Power:SetStatusBarColor(color[1], color[2], color[3])
@@ -318,7 +318,7 @@ do
 
 	f:RegisterEvent("UNIT_ENTERED_VEHICLE")
 	f:RegisterEvent("UNIT_EXITED_VEHICLE")
-	
+
 	local delay = 0.5
 	local OnUpdate = function(self, elapsed)
 		self.elapsed = (self.elapsed or delay) - elapsed
@@ -493,24 +493,24 @@ local CancelAura = function(self, button)
 end
 
 local function auraIcon(self, icon, icons, index, debuff)
-		icons.showDebuffType = true		-- show debuff border type color 
+		icons.showDebuffType = true		-- show debuff border type color
 		icon.cd.noOCC = true		 	-- hide OmniCC CDs
 		icon.cd.noCooldownCount = true	-- hide CDC CDs
 		icons.disableCooldown = true	-- hide CD spiral
-	
+
 		icon.count:SetPoint("BOTTOMRIGHT", -3, 5)
 		icon.count:SetJustifyH("RIGHT")
 		icon.count:SetFont(fontn, 11, "THINOUTLINE")
 		icon.count:SetTextColor(0.84, 0.75, 0.65)
-			
+
 		icon.icon:SetTexCoord(.07, .93, .07, .93)
 		icon.icon:SetPoint("TOPLEFT", icon, "TOPLEFT", 2, -2)
 		icon.icon:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", -2, 2)
-		
-		icon.overlay:SetTexture(buttonTex)		
+
+		icon.overlay:SetTexture(buttonTex)
 		icon.overlay:SetTexCoord(0,1,0,1)
 		icon.overlay.Hide = function(self) self:SetVertexColor(TUKUI_BORDER_COLOR[1], TUKUI_BORDER_COLOR[2], TUKUI_BORDER_COLOR[3]) end
-		
+
 		if icons ~= self.Enchant then
 			icon.remaining = SetFontString(icon, fontn, auratextscale, "OUTLINE")
 			if self.unit == "player" then
@@ -521,11 +521,11 @@ local function auraIcon(self, icon, icons, index, debuff)
 			icon.overlay:SetVertexColor(0.33, 0.59, 0.33)
 		end
 		icon.remaining:SetPoint("TOPLEFT", 2, -4)
-		
+
 		icon.Glow = CreateFrame("Frame", nil, icon)
 		icon.Glow:SetPoint("TOPLEFT", icon, "TOPLEFT", -2.5, 2.5)
 		icon.Glow:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -1.5)
-		icon.Glow:SetFrameStrata("BACKGROUND")	
+		icon.Glow:SetFrameStrata("BACKGROUND")
 		icon.Glow:SetBackdrop{edgeFile = glowTex, edgeSize = 5, insets = {left = 3, right = 3, top = 3, bottom = 3}}
 		icon.Glow:SetBackdropColor(0, 0, 0, 0)
 		icon.Glow:SetBackdropBorderColor(0, 0, 0)
@@ -563,7 +563,7 @@ local function auraUpdateIcon(self, icons, unit, icon, index, offset, filter, is
 		end
 		icon.overlay:SetVertexColor(1, 1, 1)
 	end
- 
+
 	if duration and duration > 0 then
 		if auratimer == true then
 			icon.remaining:Show()
@@ -573,7 +573,7 @@ local function auraUpdateIcon(self, icons, unit, icon, index, offset, filter, is
 	else
 		icon.remaining:Hide()
 	end
- 
+
 	icon.duration = duration
 	icon.timeLeft = expirationTime
 	icon.first = true
@@ -613,7 +613,7 @@ local SetStyle = function(self, unit)
 
 	self:SetScript("OnEnter", UnitFrame_OnEnter)
 	self:SetScript("OnLeave", UnitFrame_OnLeave)
-	
+
 	self:SetBackdrop(backdrop)
 	self:SetBackdropColor(0, 0, 0)
 	self.Health = CreateFrame("StatusBar", self:GetName().."_Health", self)
@@ -624,8 +624,8 @@ local SetStyle = function(self, unit)
 	elseif not unit then
 		self.Health:SetFrameLevel(2)
 	end
-	
-	self.Health:SetHeight((unit == "player" or unit == "target") and 26  
+
+	self.Health:SetHeight((unit == "player" or unit == "target") and 26
 	or self:GetParent():GetName():match("oUF_Party") and 37
 		or (unit == "focus") and 19
 		or (unit == "targettarget" or unit == "focustarget") and 18
@@ -633,7 +633,7 @@ local SetStyle = function(self, unit)
 		or (unit and unit:find("arena%d")) and 22
 		or (unit and unit:find("boss%d")) and 22
 		or self:GetAttribute("unitsuffix") == "pet" and 10 or 16)
-	
+
 	self.Health:SetPoint("TOPLEFT")
 	self.Health:SetPoint("TOPRIGHT")
 	self.Health:SetStatusBarTexture(normTex)
@@ -643,13 +643,13 @@ local SetStyle = function(self, unit)
 	if showsmooth == true then
 		self.Health.colorSmooth = true
 		self.Health.Smooth = true
-	end	
+	end
 	self.Health.colorReaction = true
 	self.Health.frequentUpdates = true
 
-	self.Health.colorClassPet = false    
+	self.Health.colorClassPet = false
 	self.Health.colorClass = true
-	
+
 	self.Health.bg = self.Health:CreateTexture(nil, "BORDER")
 	self.Health.bg:SetAllPoints(self.Health)
 	self.Health.bg:SetTexture(normTex)
@@ -657,7 +657,7 @@ local SetStyle = function(self, unit)
 	self.Health.bg.multiplier = 0.3
 
 
-	
+
 	self.Health.value = SetFontString(self.Health, font,(unit == "player" or unit == "target") and 12 or 12)
 	if unit == "player" or unit == "target" then
 		self.Health.value:SetPoint("RIGHT", -4, -32.5)
@@ -680,7 +680,7 @@ local SetStyle = function(self, unit)
 		elseif (self:GetParent():GetName():match"oUF_MainTank" or self:GetParent():GetName():match"oUF_MainAssist") then
 			self.Info = SetFontString(self.Health, font, 12, "OUTLINE")
 			self.Info:SetPoint("CENTER", 0, 1)
-			self:Tag(self.Info, "[GetNameColor][NameLong]")		
+			self:Tag(self.Info, "[GetNameColor][NameLong]")
 		elseif unit == "pet" then
 			self.Info:SetPoint("CENTER", 0, -23)
 			self:Tag(self.Info, "[GetNameColor][NameLong] [DiffColor][level] [shortclassification]")
@@ -755,19 +755,19 @@ local SetStyle = function(self, unit)
 
 		self.FlashInfo.ManaLevel = SetFontString(self.FlashInfo, font, 12)
 		self.FlashInfo.ManaLevel:SetPoint("CENTER", 0, -32.5)
-				
+
 		self.Status = SetFontString(self.Power, font, 12)
 		self.Status:SetPoint("CENTER", 0, -14)
 		self.Status:SetTextColor(0.69, 0.31, 0.31, 0)
 		self:Tag(self.Status, "[pvp]")
-	
+
 		self:SetScript("OnEnter", function(self) self.FlashInfo.ManaLevel:Hide() self.Status:SetAlpha(1); UnitFrame_OnEnter(self) end)
 		self:SetScript("OnLeave", function(self) self.FlashInfo.ManaLevel:Show() self.Status:SetAlpha(0); UnitFrame_OnLeave(self) end)
 
 		------------------------------------------------------------------------
-		--	Runes 
-		------------------------------------------------------------------------	
-	
+		--	Runes
+		------------------------------------------------------------------------
+
 		if class == "DEATHKNIGHT" then
 			self.Runes = CreateFrame('Frame', nil, self)
 			self.Runes:SetPoint('BOTTOMLEFT', self, 'TOPLEFT', 0, 0.5)
@@ -780,14 +780,14 @@ local SetStyle = function(self, unit)
             self.Runes.height = 7
             self.Runes.width = 252 / 6 - 0.85
             self.Runes.spacing = 1
-			self.Runes.runeMap = {[3] = 3} 
+			self.Runes.runeMap = {[3] = 3}
 
 			for i = 1, 6 do
 				self.Runes[i] = CreateFrame('StatusBar', nil, self.Runes)
 				self.Runes[i]:SetStatusBarTexture(normTex)
 				self.Runes[i]:SetStatusBarColor(unpack(runeloadcolors[i]))
 			end
-			
+
 			self.Runes.FrameBackdrop = CreateFrame("Frame", nil, self.Runes)
 			self.Runes.FrameBackdrop:SetPoint("TOPLEFT", self.Runes, "TOPLEFT", -3.5, 3)
 			self.Runes.FrameBackdrop:SetPoint("BOTTOMRIGHT", self.Runes, "BOTTOMRIGHT", 3.5, -3)
@@ -822,7 +822,7 @@ local SetStyle = function(self, unit)
 
 	------------------------------------------------------------------------
 	--	Experience / reputation
-	------------------------------------------------------------------------	
+	------------------------------------------------------------------------
 
 	if unit == "player" or unit =="pet" then
 			self.Experience = CreateFrame("StatusBar", self:GetName().."_Experience", self)
@@ -875,43 +875,43 @@ local SetStyle = function(self, unit)
 			self.Reputation.Tooltip = true
 		end
 	end
-	
+
 	------------------------------------------------------------------------
 	--   Threat Bar (this idea is from Zakriel)
 	------------------------------------------------------------------------
-	
+
 	-- since t9, added a condition to threat bar, generally we don't care
 	-- about this bar when levelling a character, so bar only enabled at max level
-	
+
 	if (showthreat == true) then
-	   if (unit == "player") then 
+	   if (unit == "player") then
 		  self.ThreatBar = CreateFrame("StatusBar", self:GetName()..'_ThreatBar', UIParent)
 		  self.ThreatBar:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 34, 20)
 		  self.ThreatBar:SetHeight(19)
 		  self.ThreatBar:SetWidth(tinfowidth - 4)
-		  
+
 		  self.ThreatBar:SetStatusBarTexture(normTex)
 		  self.ThreatBar:SetBackdrop(backdrop)
 		  self.ThreatBar:SetBackdropColor(0, 0, 0, 0)
-	   
+
 		  self.ThreatBar.Text = SetFontString(self.ThreatBar, font2, 12)
 		  self.ThreatBar.Text:SetPoint("RIGHT", self.ThreatBar, "RIGHT", -30, 1 )
-	
+
 		  self.ThreatBar.Title = SetFontString(self.ThreatBar, font2, 12)
 		  self.ThreatBar.Title:SetText(ouf_threattext)
 		  self.ThreatBar.Title:SetPoint("LEFT", self.ThreatBar, "LEFT", 30, 1 )
-				  
+
 		  self.ThreatBar.bg = self.ThreatBar:CreateTexture(nil, 'BORDER')
 		  self.ThreatBar.bg:SetAllPoints(self.ThreatBar)
 		  self.ThreatBar.bg:SetTexture(0.1,0.1,0.1)
-	   
+
 		  self.ThreatBar.useRawThreat = false
 	   end
 	end
-	
+
 	------------------------------------------------------------------------
 	--   Totems
-	------------------------------------------------------------------------   
+	------------------------------------------------------------------------
 
     if class == "SHAMAN" and unit == "player" then
         self.TotemBar = {}
@@ -934,7 +934,7 @@ local SetStyle = function(self, unit)
                 self.TotemBar[i].bg:SetAllPoints(self.TotemBar[i])
                 self.TotemBar[i].bg:SetTexture(normTex)
                 self.TotemBar[i].bg.multiplier = 0.6
-                				
+
 				self.TotemBar[i].FrameBackdrop = CreateFrame("Frame", nil, self.TotemBar[i])
 				self.TotemBar[i].FrameBackdrop:SetPoint("TOPLEFT", self.TotemBar[i], "TOPLEFT", -3.5, 3.5)
 				self.TotemBar[i].FrameBackdrop:SetPoint("BOTTOMRIGHT", self.TotemBar[i], "BOTTOMRIGHT", 3.5, -3)
@@ -950,25 +950,25 @@ local SetStyle = function(self, unit)
 
 	------------------------------------------------------------------------
 	--	Auras
-	------------------------------------------------------------------------	
-	
+	------------------------------------------------------------------------
+
 	if unit == "player" or unit == "target" or unit == "targettarget" or (unit and unit:find("arena%d")) or (unit and unit:find("boss%d")) then
 		self.Debuffs = CreateFrame("Frame", nil, self)
 		self.Debuffs:SetHeight(32)
 		self.Debuffs:SetWidth(32*8)
 		self.Debuffs.size = 32
-		self.Debuffs.spacing = 0 
+		self.Debuffs.spacing = 0
 		self.Debuffs.num = 16
 		self.Debuffs.numDebuffs = 16
 
-		self.Buffs = CreateFrame("Frame", nil, self)		
+		self.Buffs = CreateFrame("Frame", nil, self)
 		self.Buffs:SetHeight(32)
 		self.Buffs:SetWidth(260)
 		self.Buffs.size = 32
 		self.Buffs.spacing = 0
 		self.Buffs.num = 8
 		self.Buffs.numBuffs = 8
-		
+
 			if (unit and unit:find("arena%d")) or (unit and unit:find("boss%d")) then
 				if (unit and unit:find("boss%d")) then
 					self.Buffs:SetPoint("TOPRIGHT", self, "TOPLEFT", -4, 1)
@@ -987,8 +987,8 @@ local SetStyle = function(self, unit)
 				self.Debuffs:SetWidth(200)
 				self.Debuffs.spacing = 0
 				self.Debuffs.onlyShowPlayer = playerdebuffsonly
-			end	
-			
+			end
+
 			if unit == "targettarget" and totdebuffs == true then
 				self.Debuffs:SetHeight(26)
 				self.Debuffs:SetWidth(28 * 6)
@@ -996,30 +996,30 @@ local SetStyle = function(self, unit)
 				self.Debuffs.spacing = 0
 				self.Debuffs.num = 5
 				self.Debuffs.numDebuffs = 5
-							
+
 				self.Debuffs:SetPoint("TOPLEFT", self, "TOPLEFT", -1, 28)
 				self.Debuffs.initialAnchor = "TOPLEFT"
 				self.Debuffs["growth-y"] = "UP"
 			end
-			
+
 			if unit == "player" and PlayerDebuffs == true then
 				if class == "SHAMAN" or class == "DEATHKNIGHT" then
 					self.Debuffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 44)
-				else			
+				else
 					self.Debuffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 36)
 				end
 				self.Debuffs.initialAnchor = "TOPRIGHT"
 				self.Debuffs["growth-y"] = "UP"
 				self.Debuffs["growth-x"] = "LEFT"
 			end
-			
+
 			if unit == "target" then
 				if TargetBuffs == true then
 					self.Buffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 36)
 					self.Buffs.initialAnchor = "TOPLEFT"
 					self.Buffs["growth-y"] = "UP"
 				end
-				
+
 				if TargetBuffs == true then
 					self.Debuffs:SetPoint("TOPLEFT", self.Health, "TOPLEFT", -2, 68)
 				else
@@ -1029,7 +1029,7 @@ local SetStyle = function(self, unit)
 				self.Debuffs["growth-y"] = "UP"
 				self.Debuffs["growth-x"] = "LEFT"
 				self.Debuffs.onlyShowPlayer = playerdebuffsonly
-	
+
 				self.CPoints = {}
 				self.CPoints.unit = PlayerFrame.unit
 				for i = 1, 5 do
@@ -1050,7 +1050,7 @@ local SetStyle = function(self, unit)
 				self.CPoints[5]:SetVertexColor(0.33, 0.59, 0.33)
 				self:RegisterEvent("UNIT_COMBO_POINTS", UpdateCPoints)
 			end
-					
+
 			if (unit == "player" or unit == "target") and (charportrait == true) then
 				self.Portrait = CreateFrame("PlayerModel", nil, self)
 				self.Portrait:SetFrameLevel(8)
@@ -1073,7 +1073,7 @@ local SetStyle = function(self, unit)
 
 		------------------------------------------------------------------------
 		--	Combat text over HealthBar
-		------------------------------------------------------------------------	
+		------------------------------------------------------------------------
 
 		self.CombatFeedbackText = SetFontString(self.Health, font, 18, "OUTLINE")
 		self.CombatFeedbackText:SetPoint("CENTER", 0, 1)
@@ -1098,7 +1098,7 @@ local SetStyle = function(self, unit)
 
 	------------------------------------------------------------------------
 	--	Castbar
-	------------------------------------------------------------------------	
+	------------------------------------------------------------------------
 
 	if unitcastbar == true then
 		self.Castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
@@ -1109,7 +1109,7 @@ local SetStyle = function(self, unit)
 		self.Castbar.bg:SetAllPoints(self.Castbar)
 		self.Castbar.bg:SetTexture(normTex)
 		self.Castbar.bg:SetVertexColor(0.15, 0.15, 0.15)
-								
+
 		if unit == "player" then
 			self.Castbar:SetFrameLevel(6)
 			self.Castbar:SetHeight(17)
@@ -1120,7 +1120,7 @@ local SetStyle = function(self, unit)
 			self.Castbar:SetHeight(17)
 			self.Castbar:SetPoint("TOPLEFT", self.Power, "BOTTOMLEFT", 2, -3)
 			self.Castbar:SetPoint("TOPRIGHT", self.Power, "BOTTOMRIGHT", -2, -3)
-			
+
 		elseif unit == "focus" then
 			self.Castbar:SetFrameLevel(6)
 			self.Castbar:SetHeight(20)
@@ -1129,7 +1129,7 @@ local SetStyle = function(self, unit)
 			self.Castbar:SetBackdrop(backdrop)
 			self.Castbar:SetStatusBarColor(6/255, 137/255, 0/255)
 			self.Castbar:SetBackdropColor(.6,.6,.6,1)
-						
+
 			self.Castbar.bg = self.Castbar:CreateTexture(nil, "BORDER")
 			self.Castbar.bg:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -1, 1)
 			self.Castbar.bg:SetPoint("TOPRIGHT", self.Castbar, "TOPRIGHT", 1, 1)
@@ -1137,7 +1137,7 @@ local SetStyle = function(self, unit)
 			self.Castbar.bg:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", -1, -1)
 			self.Castbar.bg:SetTexture(normTex)
 			self.Castbar.bg:SetVertexColor(0.1, 0.1, 0.1)
-			
+
 			self.CastbarBackdrop = CreateFrame("Frame", nil, self)
 			self.CastbarBackdrop:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -6, 6)
 			self.CastbarBackdrop:SetPoint("BOTTOMRIGHT", self.Castbar, "BOTTOMRIGHT", 6, -6)
@@ -1150,7 +1150,7 @@ local SetStyle = function(self, unit)
 			})
 			self.CastbarBackdrop:SetBackdropColor(0, 0, 0, 0)
 			self.CastbarBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
-			
+
 			self.CastbarBorder = CreateFrame("Frame", nil, self)
 			self.CastbarBorder:SetPoint("TOPLEFT", self.Castbar, "TOPLEFT", -2, 2)
 			self.CastbarBorder:SetPoint("TOPRIGHT", self.Castbar, "TOPRIGHT", 2, 2)
@@ -1163,7 +1163,7 @@ local SetStyle = function(self, unit)
 			})
 			self.CastbarBorder:SetBackdropColor(0.1, 0.1, 0.1, 1)
 			self.CastbarBorder:SetBackdropBorderColor(0.6, 0.6, 0.6, 1)
-						
+
 		elseif(unit and unit:find("arena%d")) or (unit and unit:find("boss%d")) then
 			self.Castbar:SetFrameLevel(6)
 			self.Castbar:SetHeight(6)
@@ -1225,7 +1225,7 @@ local SetStyle = function(self, unit)
 				self.IconBackdrop:SetBackdropBorderColor(0, 0, 0, 0.7)
 			end
 		end
-		
+
 		if unit == "player" and cblatency == true then
 			self.Castbar.SafeZone = self.Castbar:CreateTexture(nil, "ARTWORK")
 			self.Castbar.SafeZone:SetTexture(normTex)
@@ -1243,7 +1243,7 @@ local SetStyle = function(self, unit)
 		self.Leader:SetWidth(14)
 		self.Leader:SetPoint("TOPLEFT", 2, 8)
 	end
-		
+
 	------------------------------------------------------------------------
 	--      Master Looter
 	------------------------------------------------------------------------
@@ -1273,13 +1273,13 @@ local SetStyle = function(self, unit)
 				self.Trinket = CreateFrame("Frame", nil, self)
 				self.Trinket:SetHeight(31)
 				self.Trinket:SetWidth(31)
-				self.Trinket:SetPoint("TOPRIGHT", self, "TOPLEFT", -4, 1)			
+				self.Trinket:SetPoint("TOPRIGHT", self, "TOPLEFT", -4, 1)
 				self.Trinket.trinketUseAnnounce = true
 				self.Trinket.trinketUpAnnounce = true
 			end
 		end
 	end
-	
+
 	------------------------------------------------------------------------
 	--	Unitframes Width/Height
 	------------------------------------------------------------------------
@@ -1290,7 +1290,7 @@ local SetStyle = function(self, unit)
 	elseif unit == "targettarget" or unit == "focustarget" then
 		self:SetAttribute("initial-height", 37)
 		self:SetAttribute("initial-width", 127)
-        self.Power:Hide()        
+        self.Power:Hide()
 	elseif unit == "focus" then
 		self:SetAttribute("initial-height", 19)
 		self:SetAttribute("initial-width", tinfowidth - 4)
@@ -1310,14 +1310,14 @@ local SetStyle = function(self, unit)
 			self.Power:Hide()
 			self.Health:SetHeight(20)
 		end
-		
+
 		self:SetAttribute("initial-height", 20)
 		self:SetAttribute("initial-width", 100)
 	else
 		self:SetAttribute("initial-height", 37)
-		self:SetAttribute("initial-width", 249)		
+		self:SetAttribute("initial-width", 249)
 	end
-		
+
 	------------------------------------------------------------------------
 	--	RaidIcons
 	------------------------------------------------------------------------
@@ -1326,7 +1326,7 @@ local SetStyle = function(self, unit)
 	self.RaidIcon:SetHeight(14)
 	self.RaidIcon:SetWidth(14)
 	self.RaidIcon:SetPoint("TOP", 0, 8)
-	
+
 	------------------------------------------------------------------------
 	-- LFD Roles
 	------------------------------------------------------------------------
@@ -1364,7 +1364,7 @@ local SetStyle = function(self, unit)
 		Panel1:SetBackdropColor(0.1,0.1,0.1,0)
 		Panel1:SetBackdropBorderColor(0.4,0.4,0.4,1)
 		self.FrameBackdrop:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 4.5, -4)
-		
+
 		local Panel2 = CreateFrame("Frame", nil, self)
 		Panel2:SetFrameLevel(2)
 		Panel2:SetFrameStrata("MEDIUM")
@@ -1376,7 +1376,7 @@ local SetStyle = function(self, unit)
 		Panel2:SetBackdropColor(0.1,0.1,0.1,1)
 		Panel2:SetBackdropBorderColor(0.4,0.4,0.4,0)
 
-	
+
 	elseif unit == "targettarget" or unit == "focustarget" then
 		local Panel3 = CreateFrame("Frame", nil, self)
 		Panel3:SetFrameLevel(20)
@@ -1389,7 +1389,7 @@ local SetStyle = function(self, unit)
 		Panel3:SetBackdropColor(0.1,0.1,0.1,0)
 		Panel3:SetBackdropBorderColor(0.4,0.4,0.4,1)
 		self.FrameBackdrop:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 4.5, -4)
-		
+
 		local Panel4 = CreateFrame("Frame", nil, self)
 		Panel4:SetFrameLevel(2)
 		Panel4:SetFrameStrata("MEDIUM")
@@ -1400,7 +1400,7 @@ local SetStyle = function(self, unit)
 		Panel4:SetBackdrop(backdrop2)
 		Panel4:SetBackdropColor(0.1,0.1,0.1,1)
 		Panel4:SetBackdropBorderColor(0.4,0.4,0.4,0)
-	
+
 	elseif unit == "pet" then
 		local Panel5 = CreateFrame("Frame", nil, self)
 		Panel5:SetFrameLevel(20)
@@ -1413,7 +1413,7 @@ local SetStyle = function(self, unit)
 		Panel5:SetBackdropColor(0.1,0.1,0.1,0)
 		Panel5:SetBackdropBorderColor(0.4,0.4,0.4,1)
 		self.FrameBackdrop:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 4.5, -4)
-		
+
 		local Panel6 = CreateFrame("Frame", nil, self)
 		Panel6:SetFrameLevel(2)
 		Panel6:SetFrameStrata("MEDIUM")
@@ -1432,7 +1432,7 @@ local SetStyle = function(self, unit)
 		self.FrameBackdrop:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", 4.5, -4.5)
 	end
 	self.ThreatFeedbackFrame = self.FrameBackdrop
-	
+
 	self.outsideRangeAlpha = 0.3
 	self.inRangeAlpha = 1
 	self.SpellRange = true
@@ -1519,7 +1519,7 @@ for i = 1, MAX_BOSS_FRAMES do
    if i == 1 then
       boss[i]:SetPoint("BOTTOM", UIParent, "BOTTOM", 252, 260)
    else
-      boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)             
+      boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 10)
    end
 end
 

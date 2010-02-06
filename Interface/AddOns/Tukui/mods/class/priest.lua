@@ -2,7 +2,7 @@
 
 if select(2, UnitClass("Player")) == "PRIEST" then
 	if not TukuiUF == true then return end
-	
+
 	local FONT					= "Fonts\\ARIALN.ttf"
 	-------------------------------------------------
 	-- Code start here
@@ -15,14 +15,14 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 		Panel:SetHeight(height)
 		Panel:SetWidth(width)
 		Panel:SetPoint(anchorPoint, anchor, anchorPointRel, x, y)
-		Panel:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		Panel:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		  insets = { left = 0, right = 0, top = 0, bottom = 0 }
 		})
 		Panel:SetBackdropColor(0.1, 0.1, 0.1, 1)
 		Panel:Show()
 		return Panel
-	end 
+	end
 
 	-- Function to update each bar
 	local function UpdateBar(self)
@@ -30,10 +30,10 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 		local timeLeft = self.EndTime-GetTime()
 		local roundedt = math.floor(timeLeft*10.5)/10
 		self.Bar:SetValue(timeLeft/duration)
-		if roundedt % 1 == 0 then 
+		if roundedt % 1 == 0 then
 		self.Time:SetText(roundedt .. ".0")
 		else self.Time:SetText(roundedt) end
-		
+
 		if timeLeft < 0 then
 			self.Panel:Hide()
 			self:SetScript("OnUpdate", nil)
@@ -55,13 +55,13 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 		f.Time:SetShadowColor(0.1, 0.1, 0.1, 1)
 		f.Time:SetFont(FONT, 10)
 		f.Time:SetJustifyH("LEFT")
-		
+
 		if ws_show_time == true then
 			f.Time:Show()
 		else
 			f.Time:Hide()
 		end
-		
+
 		f.Panel:Hide()
 	end
 
@@ -81,7 +81,7 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 
 	-- On Target Change or Weakened Soul check on the friendly target
 	local function WeakenedTargetCheck(self, event, unit, spell)
-			if (event == "PLAYER_TARGET_CHANGED") or (unit == "target" and UnitIsFriend("player", "target") and UnitDebuff("target", wsdebuff)) then		
+			if (event == "PLAYER_TARGET_CHANGED") or (unit == "target" and UnitIsFriend("player", "target") and UnitDebuff("target", wsdebuff)) then
 				local name, _, _, _, _, duration, expirationTime, unitCaster = UnitDebuff("target", wsdebuff)
 				if (event == "PLAYER_TARGET_CHANGED" and (not name)) or not UnitIsFriend("player", "target") then
 					self.Panel:Hide()
@@ -122,7 +122,7 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 
 	WeakenedPlayerFrame:SetScript("OnEvent", WeakenedPlayerCheck)
 	WeakenedPlayerFrame:RegisterEvent("UNIT_AURA")
-	
+
 	if if_warning == true then
 		local InnerFire = CreateFrame("Frame", _, UIParent)
 			InnerFire:SetPoint("CENTER", UIParent, "CENTER", 0,200);
@@ -145,7 +145,7 @@ if select(2, UnitClass("Player")) == "PRIEST" then
 			InnerFire.icon:SetPoint("center",InnerFire,"center",0,0)
 			InnerFire.icon:SetWidth(40);
 			InnerFire.icon:SetHeight(40);
-			
+
 
 		local function InnerFireCheck(self, event, unit, spell)
 				inCombat = UnitAffectingCombat("player")

@@ -72,13 +72,13 @@ local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 local function createAuraWatch(self,unit)
 	local auras = CreateFrame("Frame", nil, self)
     auras:SetAllPoints(self.Health)
-	
+
 	local debuffs = spellIDs
 
     auras.presentAlpha = 1
     auras.missingAlpha = 0
     auras.icons = {}
-    
+
     for i, sid in pairs(debuffs) do
       local icon = CreateFrame("Frame", nil, auras)
       icon.spellID = sid
@@ -99,7 +99,7 @@ local function createAuraWatch(self,unit)
 		local count = icon:CreateFontString(nil, "OVERLAY")
         count:SetFont(fontlol, 12, "THINOUTLINE")
         count:SetPoint("CENTER", 6, 1)
-        icon.count = count	  
+        icon.count = count
 	  else
         icon:SetWidth(8)
         icon:SetHeight(8)
@@ -113,7 +113,7 @@ local function createAuraWatch(self,unit)
 			elseif i==2 then
 				icon:SetPoint("BOTTOMLEFT",1,1)
 				tex:SetVertexColor(50/255,200/255,50/255)
-			elseif i==3 then          
+			elseif i==3 then
 				icon:SetPoint("TOPLEFT", 1, -1)
 				tex:SetVertexColor(100/255,200/255,50/255)
 				local count = icon:CreateFontString(nil, "OVERLAY")
@@ -142,7 +142,7 @@ local function createAuraWatch(self,unit)
 			 elseif i == 8 then
 				  icon.anyUnit = true
 				  icon:SetPoint("TOPLEFT", 1, -1)
-				  tex:SetVertexColor(0.7, 0.4, 0)          
+				  tex:SetVertexColor(0.7, 0.4, 0)
 			 end
 		elseif class == "SHAMAN" then
 			 if i==9 then
@@ -151,7 +151,7 @@ local function createAuraWatch(self,unit)
 			 elseif i==10 then
 				  icon:SetPoint("BOTTOMLEFT",1,1)
 				  tex:SetVertexColor(0.2, 0.7, 0.2)
-			 elseif i==11 then          
+			 elseif i==11 then
 				  icon:SetPoint("TOPLEFT", 1, -1)
 				  tex:SetVertexColor(0.4, 0.7, 0.2)
 			 elseif i==12 then
@@ -162,7 +162,7 @@ local function createAuraWatch(self,unit)
 			 if i==13 then
 				  icon:SetPoint("TOPRIGHT",-1,-1)
 				  tex:SetVertexColor(0.7, 0.3, 0.7)
-			 elseif i==14 then          
+			 elseif i==14 then
 				  icon:SetPoint("TOPLEFT", 1, -1)
 				  tex:SetVertexColor(0.4, 0.7, 0.2)
 			 end
@@ -203,16 +203,16 @@ local function UpdateThreat(self, event, unit)
 			self.np:SetBackdropBorderColor(1,0.1,0.1,1)
 		  else
 			self.np:SetBackdropBorderColor(0.6,0.6,0.6,1)
-		  end  
+		  end
 end
 
 
-local updateHealth = function(self, event, unit, bar, min, max)  
+local updateHealth = function(self, event, unit, bar, min, max)
     local cur, maxhp = min, max
     local missing = maxhp-cur
-    
+
     local d = floor(cur/maxhp*100)
-    
+
 	if(UnitIsDead(unit)) then
 		bar:SetValue(0)
 		bar.value:SetText(ouf_deadheal)
@@ -238,13 +238,13 @@ local function menu(self)
 end
 
 local function CreateStyle(self, unit)
-		
+
 	self.menu = menu
 	self.colors = colors
 	self:RegisterForClicks('AnyUp')
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
-	
+
 	self:SetAttribute('*type2', 'menu')
 	self:SetAttribute('initial-height', 40)
 	self:SetAttribute('initial-width', 55)
@@ -262,20 +262,20 @@ local function CreateStyle(self, unit)
 	self.Health:SetStatusBarTexture(normTex)
 	self.Health.colorDisconnected = true
 	self.Health.colorClass = true
-	 
+
 
 	self.Health.bg = self.Health:CreateTexture(nil, 'BORDER')
 	self.Health.bg:SetAllPoints(self.Health)
 	self.Health.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
-		
+
 	self.Health.value = self.Health:CreateFontString(nil, "OVERLAY")
 	self.Health.value:SetPoint("CENTER", self.Health, 0, 1)
 	self.Health.value:SetFont(fontlol, 11, "THINOUTLINE")
 	self.Health.value:SetTextColor(1,1,1)
 	self.Health.value:SetShadowOffset(1, -1)
-	
+
 	self.Power = CreateFrame("StatusBar", nil, self)
 	self.Power:SetHeight(3)
 	self.Power:SetPoint("TOPLEFT", self.Health, "BOTTOMLEFT", 0, -1)
@@ -296,7 +296,7 @@ local function CreateStyle(self, unit)
 	self.Power.bg:SetTexture(normTex)
 	self.Power.bg:SetAlpha(1)
 	self.Power.bg.multiplier = 0.4
-	
+
 	self.np = CreateFrame("Frame", nameplate, self)
     self.np:SetFrameLevel(3)
     self.np:SetFrameStrata("background")
@@ -312,14 +312,14 @@ local function CreateStyle(self, unit)
     })
     self.np:SetBackdropColor(0.1,0.1,0.1,1)
     self.np:SetBackdropBorderColor(0.6,0.6,0.6,1)
-				
+
 	self.Name = self.Health:CreateFontString(nil, "OVERLAY")
     self.Name:SetPoint("CENTER", self.np, 0, 1)
     self.Name:SetJustifyH("CENTER")
 	self.Name:SetFont(fontlol, 10)
 	self.Name:SetShadowOffset(1, -1)
 	self:Tag(self.Name, "[GetNameColor][NameShort]")
-		
+
     if gridaggro == true then
 		table.insert(self.__elements, UpdateThreat)
 		self:RegisterEvent('PLAYER_TARGET_CHANGED', UpdateThreat)
@@ -334,13 +334,13 @@ local function CreateStyle(self, unit)
 		self.RaidIcon:SetHeight(18)
 		self.RaidIcon:SetWidth(18)
 		self.RaidIcon:SetPoint('CENTER', self, 'TOP')
-		self.RaidIcon:SetTexture('Interface\\TargetingFrame\\UI-RaidTargetingIcons')	
+		self.RaidIcon:SetTexture('Interface\\TargetingFrame\\UI-RaidTargetingIcons')
 	end
-	
+
 	self.DebuffHighlightAlpha = 1
 	self.DebuffHighlightBackdrop = true
 	self.DebuffHighlightFilter = true
-	
+
 	self.outsideRangeAlpha = raidalphaoor
 	self.inRangeAlpha = 1.0
 	if showrange == true then
@@ -352,9 +352,9 @@ local function CreateStyle(self, unit)
 	if showsmooth == true then
 		self.Health.Smooth = true
 	end
-	
+
 	self.PostUpdateHealth = updateHealth
-	
+
 	if not unit and raidunitdebuffwatch == true then
 		createAuraWatch(self,unit)
     end
@@ -396,7 +396,7 @@ local raid = {}
 for i = 1, 8 do
 	local raidgroup = oUF:Spawn('header', 'oUF_Group'..i)
 	raidgroup:SetManyAttributes('groupFilter', tostring(i), 'showRaid', true, 'xOffset', 4, "point", "LEFT")
-	raidgroup:SetFrameStrata('BACKGROUND')	
+	raidgroup:SetFrameStrata('BACKGROUND')
 	table.insert(raid, raidgroup)
 	if(i == 1) then
 		raidgroup:SetPoint(gridposZ, UIParent, gridposZ, gridposX, gridposY)

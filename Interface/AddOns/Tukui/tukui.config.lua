@@ -62,7 +62,7 @@ raidalphaoor = 0.3							-- set alpha opacity when unit is out of range (between
 gridposX = 18								-- horizontal unit #1 position value
 gridposY = -290								-- vertical unit #1 position value
 gridposZ = "TOPLEFT"						-- position grid X,Y values from
-gridonly = false							-- Replace 10, 15 mans default layout by grid layout 
+gridonly = false							-- Replace 10, 15 mans default layout by grid layout
 showsymbols = true 							-- for grid mode only (healer layout only)
 gridaggro = true							-- show "aggro" text on grid unit if a player have aggro from a creature.
 raidunitdebuffwatch = true					-- show "dangerous unit debuff" in raid on different encounter. (note: PVE SUX LOL)
@@ -85,7 +85,7 @@ t_mt_power = false							-- enable power bar on main assist frame
 -- ARENA OPTIONS
 -------------------------------------------------------------------------------------------------------------------------------
 
-arenatracker = true							-- enemy cooldown tracker in arena (mostly interrupt by default, see tukui.aurawatch.lua and TrakerIDs section)							
+arenatracker = true							-- enemy cooldown tracker in arena (mostly interrupt by default, see tukui.aurawatch.lua and TrakerIDs section)
 t_arena = true								-- enable arena enemy unitframe, Alpha, feel free to complete finnish it if you want
 
 -- set mouseover focus keybind
@@ -109,43 +109,43 @@ end
 
 -- alternative setup on specific character name
 if myname == "Tukz" or myname == "Tùkz" or myname == "putyourname" then
-	fps_ms = 5	
-	mem = 4	
-	armor = 2	
-	gold = 6	
-	wowtime = 8	
-	friends = 1	
-	guild = 3	
-	bags = 0	
-	playerap = 0	
-	playersp = 7	
-	playerhaste = 0	
-	dps_text = 0	
-	hps_text = 0	
-	playerarp = 0	
-	
+	fps_ms = 5
+	mem = 4
+	armor = 2
+	gold = 6
+	wowtime = 8
+	friends = 1
+	guild = 3
+	bags = 0
+	playerap = 0
+	playersp = 7
+	playerhaste = 0
+	dps_text = 0
+	hps_text = 0
+	playerarp = 0
+
 	-- default config on all characters
-else 
-	fps_ms = 5	
-	mem = 4	
-	armor = 2	
-	gold = 6	
-	wowtime = 8	
-	friends = 1	
-	guild = 3	
-	bags = 0	
-	playerap = 0	
-	playersp = 0	
-	playerhaste = 0	
-	dps_text = 7	
-	hps_text = 0	
+else
+	fps_ms = 5
+	mem = 4
+	armor = 2
+	gold = 6
+	wowtime = 8
+	friends = 1
+	guild = 3
+	bags = 0
+	playerap = 0
+	playersp = 0
+	playerhaste = 0
+	dps_text = 7
+	hps_text = 0
 	playerarp = 0
 end
 
-tfontsize = 12							-- font size of stats 
+tfontsize = 12							-- font size of stats
 bar345rightpanels = true				-- show panels background on buttons, right side
 time24 = false 							-- set the local or server time in 12h or 24h mode
-localtime = true 						-- set local or server time 
+localtime = true 						-- set local or server time
 tinfowidth = 370						-- set de width of left and right infos bars + chatframe width
 
 -------------------------------------------------------------------------------------------------------------------------------

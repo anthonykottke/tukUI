@@ -31,7 +31,7 @@ T9 changelog
 -> Loot frame fixed for "Master Looter" mode.
 -> Player frame is removed from party. (Healer layout)
 -> exhaustion and breath default bar reskinned to look like Tukui.
--> Boss Frames added to Tukui Unit Frames. 
+-> Boss Frames added to Tukui Unit Frames.
 -> Party and Raid layout should now show vehicule unit frame. (It's about time!)
 -> Health text added to Boss Frames.
 -> Rewrite of Tukui Check in !Tukui.lua, now looking on each Character if it's the first time we run tukui.
@@ -59,7 +59,7 @@ T9 changelog
 t9.01
 -> added power bar on dps party
 -> threatbar is now only show in raid or party. (yes we don't care about this bar when solo)
--> FR localization fix. 
+-> FR localization fix.
 -> removed some useless option in tukui.config.lua that we don't need anymore.
 -> fix player debuff when portrait is enabled.
 -> fix player debuff on deathknight and shaman with totem bar or rune bar.
@@ -83,6 +83,6 @@ t9.03
 t9.04
 -> fix hp deficit not show on party, 10, 15 mans healing layout.
 -> wow time typo fix when we have a calendar invite.
- 
+
 
 

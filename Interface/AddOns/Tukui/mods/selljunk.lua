@@ -1,7 +1,7 @@
 if not TukuiSellGray == true then return end
 
 --------------------------------------------------------------------
--- CREDIT : FatalEntity 
+-- CREDIT : FatalEntity
 --------------------------------------------------------------------
 
 local AddOn = CreateFrame("Frame")
@@ -17,7 +17,7 @@ local function MERCHANT_SHOW(...)
 			for slotIndex = 1, GetContainerNumSlots(bagIndex) do
 				if select(2,GetContainerItemInfo(bagIndex, slotIndex)) then
 					local quality = select(3, string.find(GetContainerItemLink(bagIndex, slotIndex), "(|c%x+)"))
-					
+
 					if quality == ITEM_QUALITY_COLORS[0].hex then
 						UseContainerItem(bagIndex, slotIndex)
 					end

@@ -45,30 +45,30 @@ if(L=="ruRU") then
        [10] = {17, "Левая рука", 1000},
        [11] = {18, "Дальний бой", 1000}
     }
-       
+
        -- weakened soul plugin
     wsdebuff = "Ослабленная душа"
-       
+
     -- innerfire plugin
     ifbuff = "Внутренний огонь"
-       
+
     -- ouf_tukz
     ouf_offline = "Вне сети"
     ouf_dead = "Мертв"
     ouf_ghost = "Дух"
     ouf_lowmana = "МАНА"
     ouf_threattext = "Угроза на цели:"
-       
+
     -- ouf_tukz_raid_dps
     ouf_offlinedps = "Вне сети"
     ouf_deaddps = "Мертв"
-       
+
     -- ouf_tukz_raid_heal
     ouf_ghostheal = "ДУХ"
     ouf_deadheal = "МЕРТВ"
-	
+
 	targetyou = "|cffff4444>>СМОТРИТ НА ВАС<<|r"
-	
+
   	-- bags
 	bags_noslots = "Невозможно купить дополнительные ячейки"
 	bags_costs = "Цена: %.2f Золото"
@@ -87,7 +87,7 @@ if(L=="ruRU") then
 	bags_nothingsort= "Нечего сортировать."
 	bags_bids = "Использование сумок: "
 	bags_stackend = "Упаковка завершена."
-	
+
 elseif(L=="deDE") then
    -- tpanels
 	tp_guild = "Gilde"
@@ -129,29 +129,29 @@ elseif(L=="deDE") then
       [10] = {17, "Nebenhand", 1000},
       [11] = {18, "Fernwaffe", 1000}
    }
-   
+
    -- weakened soul plugin
    wsdebuff = "Geschwächte Seele"
-   
+
    -- inner fire plugin
    ifbuff = "Inneres Feuer"
-   
+
    ouf_offline = "Offline"
    ouf_dead = "Tot"
    ouf_ghost = "Geist"
    ouf_lowmana = "WENIG MANA"
    ouf_threattext = "Aggro am aktuellen Ziel:"
-   
+
    -- ouf_tukz_raid_dps
    ouf_offlinedps = "Offline"
    ouf_deaddps = "Tot"
-   
+
    -- ouf_tukz_raid_heal
    ouf_ghostheal = "GEIST"
    ouf_deadheal = "TOT"
-   
+
    targetyou = "|cffff4444>>DICH<<|r"
-   
+
   	-- bags
     bags_noslots = "kann keine weiteren Slots kaufen!"
     bags_costs = "Kosten: %.2f gold"
@@ -170,7 +170,7 @@ elseif(L=="deDE") then
 	bags_nothingsort= "Es gibt nichts zu sortieren."
 	bags_bids = "Benutzte Taschen: "
 	bags_stackend = "Restacking finished."
-		
+
 elseif(L=="frFR") then
 	-- tpanels
 	tp_guild = "Guilde"
@@ -198,7 +198,7 @@ elseif(L=="frFR") then
 	tp_server = "Serveur: "
 	tp_totalgold = "total: "
 	tp_savedraid = "Raid(s) enregistré(s)"
-	
+
 
 	Slots = {
 	[1] = {1, "Tête", 1000},
@@ -213,30 +213,30 @@ elseif(L=="frFR") then
 	[10] = {17, "Main gauche", 1000},
 	[11] = {18, "À Distance", 1000}
 	}
-	
+
 	-- weakened soul plugin
 	wsdebuff = "Ame affaiblie"
-	
+
 	-- innerfire plugin
 	ifbuff = "Feu Intérieur"
-	
+
 	-- ouf_tukz
 	ouf_offline = "Hors ligne"
 	ouf_dead = "Mort"
 	ouf_ghost = "Fantome"
 	ouf_lowmana = "MANA FAIBLE"
 	ouf_threattext = "Menace sur la cible actuelle:"
-	
+
 	-- ouf_tukz_raid_dps
 	ouf_offlinedps = "Hors ligne"
 	ouf_deaddps = "Mort"
-	
+
 	-- ouf_tukz_raid_heal
 	ouf_ghostheal = "FANTOME"
 	ouf_deadheal = "MORT"
-	
+
 	targetyou = "|cffff4444>>VOUS CIBLE<<|r"
-	
+
 	-- bags
 	bags_noslots = "Vous ne pouvez pas acheter plus de place!"
 	bags_costs = "Prix: %.2f or"
@@ -255,7 +255,7 @@ elseif(L=="frFR") then
 	bags_nothingsort= "Rien à trier."
 	bags_bids = "Emplacements utilisés: "
 	bags_stackend = "Empiler terminé."
-	
+
 else
 	--tpanels
 	tp_guild = "Guild"
@@ -283,7 +283,7 @@ else
 	tp_server = "Server: "
 	tp_totalgold = "total: "
 	tp_savedraid = "Saved Raid(s)"
-	
+
 	Slots = {
 		[1] = {1, "Head", 1000},
 		[2] = {3, "Shoulder", 1000},
@@ -297,30 +297,30 @@ else
 		[10] = {17, "Off Hand", 1000},
 		[11] = {18, "Ranged", 1000}
 	}
-	
+
 	-- weakened soul plugin
 	wsdebuff = "Weakened Soul"
-	
+
 	-- inner fire plugin
 	ifbuff = "Inner Fire"
-	
+
 	ouf_offline = "Offline"
 	ouf_dead = "Dead"
 	ouf_ghost = "Ghost"
 	ouf_lowmana = "LOW MANA"
 	ouf_threattext = "Threat on current target:"
-	
+
 	-- ouf_tukz_raid_dps
 	ouf_offlinedps = "Offline"
 	ouf_deaddps = "Dead"
-	
+
 	-- ouf_tukz_raid_heal
 	ouf_ghostheal = "GHOST"
 	ouf_deadheal = "DEAD"
-	
+
 	-- tooltip
 	targetyou = "|cffff4444>>TARGETING YOU<<|r"
-	
+
 	-- bags
 	bags_noslots = "can't buy anymore slots!"
 	bags_costs = "Cost: %.2f gold"
@@ -339,5 +339,5 @@ else
 	bags_nothingsort= "Nothing to sort."
 	bags_bids = "Using bags: "
 	bags_stackend = "Restacking finished."
-	
+
 end

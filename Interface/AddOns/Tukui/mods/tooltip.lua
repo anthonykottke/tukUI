@@ -33,11 +33,11 @@ local StatusBar = CreateFrame("StatusBar", nil, GameTooltip);
 
 local function gtUpdate(self, ...)
 	local owner = self:GetOwner()
-		
+
 	if hide_all_tooltips == true then
 		self:Hide()
 	end
-		
+
 	-- Update Health bar for world units
 	if unitExists then
 			local currentHealth = UnitHealth("mouseover")
@@ -113,7 +113,7 @@ local function unitInformation(unit)
 		LevelColor = "ff0000"
 	end
 
-	
+
 
 	if Player then
 		local Color = string.format("%02x%02x%02x", RAID_CLASS_COLORS[engClass].r*255, RAID_CLASS_COLORS[engClass].g*255, RAID_CLASS_COLORS[engClass].b*255)
@@ -141,12 +141,12 @@ end
 
 -- Get Unit Target
 
-local function unitTarget(unit)	
+local function unitTarget(unit)
 	if UnitExists(unit.."target") then
 		local mouseoverTarget, _ = UnitName(unit.."target")
 		if mouseoverTarget == UnitName("Player") and not UnitIsPlayer(unit) then
 			return targetyou
-		else 
+		else
 			if UnitCanAttack("player", unit.."target") or UnitIsPlayer(unit.."target") then
 			local Color = string.format("%02x%02x%02x", RAID_CLASS_COLORS[select(2, UnitClass(unit.."target"))].r*255, RAID_CLASS_COLORS[select(2, UnitClass(unit.."target"))].g*255, RAID_CLASS_COLORS[select(2, UnitClass(unit.."target"))].b*255)
 				return "|cff"..Color..mouseoverTarget.."|r"
@@ -177,7 +177,7 @@ local function gtUnit(self, ...)
 	local gtUnitGuild, gtUnitTarget = unitGuild(unit), unitTarget(unit)
 	local gtIdx, gtText = 1, {}
 	GameTooltipTextLeft1:SetText(unitName(unit))
-	
+
 	if gtUnitGuild then
 		GameTooltipTextLeft2:SetText(gtUnitGuild)
 		GameTooltipTextLeft3:SetText(unitInformation(unit))

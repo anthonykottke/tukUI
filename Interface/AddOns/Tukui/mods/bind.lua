@@ -26,11 +26,11 @@ function bind:Update(b, spellmacro)
 	self:ClearAllPoints()
 	self:SetAllPoints(b)
 	self:Show()
-	
+
 	if spellmacro=="SPELL" then
 		self.button.id = SpellBook_GetSpellID(self.button:GetID())
 		self.button.name = GetSpellName(self.button.id, SpellBookFrame.bookType)
-		
+
 		GameTooltip:AddLine("Trigger")
 		GameTooltip:Show()
 		GameTooltip:SetScript("OnHide", function(self)
@@ -51,15 +51,15 @@ function bind:Update(b, spellmacro)
 		end)
 	elseif spellmacro=="MACRO" then
 		self.button.id = self.button:GetID()
-		
+
 		if localmacros==1 then self.button.id = self.button.id + 36 end
-		
+
 		self.button.name = GetMacroInfo(self.button.id)
-		
+
 		GameTooltip:SetOwner(bind, "ANCHOR_NONE")
 		GameTooltip:SetPoint("BOTTOM", bind, "TOP", 0, 1)
 		GameTooltip:AddLine(bind.button.name, 1, 1, 1)
-		
+
 		bind.button.bindings = {GetBindingKey(spellmacro.." "..bind.button.name)}
 			if #bind.button.bindings == 0 then
 				GameTooltip:AddLine("No bindings set.", .6, .6, .6)
@@ -73,7 +73,7 @@ function bind:Update(b, spellmacro)
 	else
 		self.button.id = b:GetAttribute("action")
 		self.button.name = b:GetName()
-		
+
 		GameTooltip:AddLine("Trigger")
 		GameTooltip:Show()
 		GameTooltip:SetScript("OnHide", function(self)
@@ -93,13 +93,13 @@ function bind:Update(b, spellmacro)
 			self:SetScript("OnHide", nil)
 		end)
 	end
-	
+
 	--[[
 	elseif spellmacro=="MACRO" then
 		self.button.id = self.button:GetID()
 		if localmacros==1 then self.button.id = self.button.id + 36 end
 		self.button.name = GetMacroInfo(self.button.id)
-		
+
 		GameTooltip:SetOwner(bind, "ANCHOR_NONE")
 		GameTooltip:SetPoint("BOTTOM", bind, "TOP", 0, 1)
 		GameTooltip:AddLine(bind.button.name, 0, 1, 0)
@@ -127,7 +127,7 @@ function bind:Listener(key)
 		if self.spellmacro~="MACRO" then GameTooltip:Hide() end
 		return
 	end
-	
+
 	if key == "LSHIFT"
 	or key == "RSHIFT"
 	or key == "LCTRL"
@@ -138,14 +138,14 @@ function bind:Listener(key)
 	or key == "LeftButton"
 	or key == "MiddleButton"
 	then return end
-	
+
 	if key == "Button4" then key = "BUTTON4" end
 	if key == "Button5" then key = "BUTTON5" end
-	
+
 	local alt = IsAltKeyDown() and "ALT-" or ""
 	local ctrl = IsControlKeyDown() and "CTRL-" or ""
 	local shift = IsShiftKeyDown() and "SHIFT-" or ""
-	
+
 	if not self.spellmacro then
 		SetBinding(alt..ctrl..shift..key, "CLICK "..self.button.name..":LeftButton")
 	else

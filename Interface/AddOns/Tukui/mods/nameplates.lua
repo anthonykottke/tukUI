@@ -127,7 +127,7 @@ local OnValueChanged = function(self, curValue)
 end
 
 local OnShow = function(self)
-	self.channeling  = UnitChannelInfo("target") 
+	self.channeling  = UnitChannelInfo("target")
 	FixCastbar(self)
 	ColorCastBar(self, self.shieldedRegion:IsShown())
 end
@@ -213,12 +213,12 @@ local CreateFrame = function(frame)
 	castBar.cbGlow:SetBackdrop(backdrop)
 	castBar.cbGlow:SetBackdropColor(0, 0, 0)
 	castBar.cbGlow:SetBackdropBorderColor(0, 0, 0)
-		
+
 	spellIconRegion:ClearAllPoints()
 	spellIconRegion:SetPoint("TOPLEFT", healthBar, "TOPRIGHT", 5, 0)
 	spellIconRegion:SetHeight(15)
 	spellIconRegion:SetWidth(15)
-		
+
 	castBar.cbIcon = CreateFrame("Frame", nil, castBar)
 	castBar.cbIcon:SetFrameLevel(0)
 	castBar.cbIcon:SetFrameStrata("BACKGROUND")
@@ -227,7 +227,7 @@ local CreateFrame = function(frame)
 	castBar.cbIcon:SetBackdrop(backdrop)
 	castBar.cbIcon:SetBackdropColor(0, 0, 0)
 	castBar.cbIcon:SetBackdropBorderColor(0, 0, 0)
-		
+
 	highlightRegion:SetTexture(barTexture)
 	highlightRegion:SetVertexColor(0.25, 0.25, 0.25)
 	frame.highlight = highlightRegion

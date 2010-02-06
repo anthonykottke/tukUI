@@ -23,23 +23,23 @@ TemporaryEnchantFrame.SetPoint = dummy
 
 for i = 1, 2 do
 	local TempBG = CreatePanel(30, 30, -2, 2, "TOPLEFT", "TOPLEFT", _G["TempEnchant"..i], 0, _G["TempEnchant"..i], "BACKGROUND")
-	
+
 	_G["TempEnchant"..i.."Border"]:Hide()
 	_G["TempEnchant"..i.."Icon"]:SetTexCoord(.1, .9, .1, .9)
-	
+
 	if i == 1 then
 		TempEnchant1:ClearAllPoints()
 		TempEnchant2:ClearAllPoints()
 		TempEnchant1:SetPoint("TOPRIGHT")
 		TempEnchant2:SetPoint("RIGHT", TempEnchant1, "LEFT", -9,0)
 	end
-	
+
 	_G["TempEnchant"..i]:SetHeight(26)
 	_G["TempEnchant"..i]:SetWidth(26)
-	
+
 	_G["TempEnchant"..i.."Duration"]:ClearAllPoints()
 	_G["TempEnchant"..i.."Duration"]:SetPoint("BOTTOM", 0, -16)
-	_G["TempEnchant"..i.."Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 12)	
+	_G["TempEnchant"..i.."Duration"]:SetFont("Fonts\\FRIZQT__.TTF", 12)
 end
 
 local function UpdateBuffAnchors()
@@ -51,28 +51,28 @@ local function UpdateBuffAnchors()
 		local border	= _G["BuffButton"..index.."Border"]
 		local duration	= _G["BuffButton"..index.."Duration"]
 		local count		= _G["BuffButton"..index.."Count"]
-		
+
 		if icon and not _G["BuffButton"..index.."Panel"] then
 			icon:SetTexCoord(.1, .9, .1, .9)
 			icon:SetDrawLayer("OVERLAY")
-			
+
 			duration:SetFont("Fonts\\FRIZQT__.TTF",12)
 			duration:ClearAllPoints()
 			duration:SetDrawLayer("OVERLAY")
 			duration:SetPoint("BOTTOM", .5, -16)
-			
+
 			count:SetFont(FONT, 12, "OUTLINE")
 			count:ClearAllPoints()
 			count:SetDrawLayer("OVERLAY")
 			count:SetPoint("TOPLEFT", 0, 0)
-			
+
 			buff:SetHeight(26)
 			buff:SetWidth(26)
-		
+
 			_G["BuffButton"..index.."Panel"] = CreatePanel(30, 30, -2, 2, "TOPLEFT", "TOPLEFT", buff, 0, buff, "BACKGROUND")
 			_G["BuffButton"..index.."Panel"] = true
 		end
-		
+
 		if ( buff.consolidated ) then
 			if ( buff.parent == BuffFrame ) then
 				buff:SetParent(ConsolidatedBuffsContainer);
@@ -108,7 +108,7 @@ local function UpdateBuffAnchors()
 			end
 			previousBuff = buff;
 		end
-		
+
 	end
 end
 
@@ -118,29 +118,29 @@ local function UpdateDebuffAnchors(buttonName, index)
 	local border	= _G[buttonName..index.."Border"]
 	local duration	= _G[buttonName..index.."Duration"]
 	local count		= _G[buttonName..index.."Count"]
-	
+
 	if icon and not _G[buttonName..index.."Panel"] then
 		icon:SetTexCoord(.1, .9, .1, .9)
 		icon:SetDrawLayer("OVERLAY")
-		
+
 		debuff:SetHeight(26)
 		debuff:SetWidth(26)
-		
+
 		duration:SetFont("Fonts\\FRIZQT__.TTF",12)
 		duration:ClearAllPoints()
 		duration:SetDrawLayer("OVERLAY")
 		duration:SetPoint("BOTTOM", .5, -16)
-			
+
 		count:SetFont(FONT, 12, "OUTLINE")
 		count:ClearAllPoints()
 		count:SetDrawLayer("OVERLAY")
 		count:SetPoint("TOPRIGHT", -1, -1)
-		
+
 		_G[buttonName..index.."Panel"] = CreatePanel(30, 30, -2, 2, "TOPLEFT", "TOPLEFT", debuff, 0, debuff, "BACKGROUND")
 		_G[buttonName..index.."Panel"]:SetBackdropBorderColor(134/255, 12/255, 12/255)
 		_G[buttonName..index.."Panel"] = true
 	end
-	
+
 	if border then border:Hide() end
 	debuff:ClearAllPoints()
 	if index == 1 then

@@ -2,13 +2,13 @@
 --[[
 		This file is for adding of deleting a spellID for a specific encounter on Grid layout
 		or enemy cooldown in Arena displayed on screen.
-		
+
 		The best way to add or delete spell is to go at www.wowhead.com, search for a spell :
 		Example : Incinerate Flesh from Lord Jaraxxus -> http://www.wowhead.com/?spell=67049
 		Take the number ID at the end of the URL, and add it to the list
-		
-		That's it, That's all! 
-		
+
+		That's it, That's all!
+
 		Tukz
 --]]
 
@@ -33,7 +33,7 @@ if arenatracker == true then
 		[16190] = 300, -- Mana Tide Totem
 		[51514] = 45, -- Hex
 		[15487] = 45, -- Silence
-		[2094] = 120, -- Blind 
+		[2094] = 120, -- Blind
 	}
 end
 
@@ -57,7 +57,7 @@ if raidunitdebuffwatch == true then
 		48068, --Renew
 		48066, --Power Word: Shield
 		--Shaman spells
-		61301, --Riptide 
+		61301, --Riptide
 		49284, --Earthliving Weapon
 		16237, --Ancestral Fortitude
 		52000, --Earthliving
@@ -67,8 +67,8 @@ if raidunitdebuffwatch == true then
 		--For all
 		2893,  --Abolish Poison
 		23333, --Warsong flag xD
-		
-		-- NOTE! spell #17 to #~ is icon debuff watch!	  
+
+		-- NOTE! spell #17 to #~ is icon debuff watch!
 		--Naxxramas
 		27808, --Frost Blast
 		32407, --Strange Aura

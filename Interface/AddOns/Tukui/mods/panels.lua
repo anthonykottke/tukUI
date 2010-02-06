@@ -17,15 +17,15 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petbg:SetWidth(38)
 		petbg:SetPoint("TOP", PetActionButton1,"TOP",0,5)
 		petbg:SetScale(1)
-		petbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
-		  edgeFile = BLANK_TEXTURE, 
-		  tile = false, tileSize = 0, edgeSize = 1, 
+		petbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
+		  edgeFile = BLANK_TEXTURE,
+		  tile = false, tileSize = 0, edgeSize = 1,
 		  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 		})
 		petbg:SetBackdropColor(.1,.1,.1,1)
 		petbg:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
-			
+
 		-- Bars 4, 5 and 6 textures
 
 		local bar5bg = CreateFrame("Frame", bar5bg, MultiBarLeft)
@@ -35,15 +35,15 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		bar5bg:SetWidth(40)
 		bar5bg:SetPoint("TOP", MultiBarLeft,"TOP",1,6)
 		bar5bg:SetScale(1.25)
-		bar5bg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
-		  edgeFile = BLANK_TEXTURE, 
-		  tile = false, tileSize = 0, edgeSize = 1, 
+		bar5bg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
+		  edgeFile = BLANK_TEXTURE,
+		  tile = false, tileSize = 0, edgeSize = 1,
 		  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 		})
 		bar5bg:SetBackdropColor(.1,.1,.1,1)
 		bar5bg:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
-		if not Tukui4BarsBottom == true then		
+		if not Tukui4BarsBottom == true then
 			local bar4bg = CreateFrame("Frame", bar4bg, MultiBarRight)
 			bar4bg:SetFrameLevel(5)
 			bar4bg:SetFrameStrata("BACKGROUND")
@@ -51,16 +51,16 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 			bar4bg:SetWidth(72)
 			bar4bg:SetPoint("TOP", MultiBarRight,"TOP",17,6)
 			bar4bg:SetScale(1.25)
-			bar4bg:SetBackdrop( { 
-			  bgFile = BLANK_TEXTURE, 
-			  edgeFile = BLANK_TEXTURE, 
-			  tile = false, tileSize = 0, edgeSize = 1, 
+			bar4bg:SetBackdrop( {
+			  bgFile = BLANK_TEXTURE,
+			  edgeFile = BLANK_TEXTURE,
+			  tile = false, tileSize = 0, edgeSize = 1,
 			  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 			})
 			bar4bg:SetBackdropColor(.1,.1,.1,1)
 			bar4bg:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
-			
-			
+
+
 			local bar3bg = CreateFrame("Frame", bar3bg, MultiBarBottomRight)
 			bar3bg:SetFrameLevel(6)
 			bar3bg:SetFrameStrata("BACKGROUND")
@@ -72,10 +72,10 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 			-- end of fix
 			bar3bg:SetPoint("TOP", MultiBarBottomRight,"TOP",209,5)
 			bar3bg:SetScale(1.25)
-			bar3bg:SetBackdrop( { 
-			  bgFile = BLANK_TEXTURE, 
-			  edgeFile = BLANK_TEXTURE, 
-			  tile = false, tileSize = 0, edgeSize = 1, 
+			bar3bg:SetBackdrop( {
+			  bgFile = BLANK_TEXTURE,
+			  edgeFile = BLANK_TEXTURE,
+			  tile = false, tileSize = 0, edgeSize = 1,
 			  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 			})
 			bar3bg:SetBackdropColor(.1,.1,.1,1)
@@ -90,11 +90,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petline:SetWidth(2)
 		petline:SetPoint("CENTER", bar5bg,"CENTER",20,0)
 		petline:SetScale(1)
-		petline:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petline:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petline:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local petlinebg = CreateFrame("Frame", petlinebg, petline)
 		petlinebg:SetFrameLevel(0)
 		petlinebg:SetFrameStrata("background")
@@ -102,11 +102,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlinebg:SetWidth(4)
 		petlinebg:SetPoint("CENTER", petline,"CENTER",0,0)
 		petlinebg:SetScale(1)
-		petlinebg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlinebg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlinebg:SetBackdropColor(.1,.1,.1,1)
-		
+
 		local cubeuppet = CreateFrame("Frame", cubeuppet, petlinebg)
 		cubeuppet:SetFrameLevel(1)
 		cubeuppet:SetFrameStrata("background")
@@ -114,11 +114,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		cubeuppet:SetWidth(8)
 		cubeuppet:SetPoint("CENTER", petlinebg,"TOP",0,0)
 		cubeuppet:SetScale(1)
-		cubeuppet:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		cubeuppet:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		cubeuppet:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local cubeuppetbg = CreateFrame("Frame", cubeuppetbg, cubeuppet)
 		cubeuppetbg:SetFrameLevel(0)
 		cubeuppetbg:SetFrameStrata("background")
@@ -126,8 +126,8 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		cubeuppetbg:SetWidth(10)
 		cubeuppetbg:SetPoint("CENTER", cubeuppet,"CENTER",0,0)
 		cubeuppetbg:SetScale(1)
-		cubeuppetbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		cubeuppetbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		cubeuppetbg:SetBackdropColor(.1,.1,.1,1)
 
@@ -138,11 +138,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		cubedownpet:SetWidth(8)
 		cubedownpet:SetPoint("CENTER", petlinebg,"BOTTOM",0,0)
 		cubedownpet:SetScale(1)
-		cubedownpet:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		cubedownpet:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		cubedownpet:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local cubedownpetbg = CreateFrame("Frame", cubedownpetbg, cubedownpet)
 		cubedownpetbg:SetFrameLevel(0)
 		cubedownpetbg:SetFrameStrata("background")
@@ -150,11 +150,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		cubedownpetbg:SetWidth(10)
 		cubedownpetbg:SetPoint("CENTER", cubedownpet,"CENTER",0,0)
 		cubedownpetbg:SetScale(1)
-		cubedownpetbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		cubedownpetbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		cubedownpetbg:SetBackdropColor(.1,.1,.1,1)
-		
+
 		local petlineupver = CreateFrame("Frame", petlineupver, petbg)
 		petlineupver:SetFrameLevel(2)
 		petlineupver:SetFrameStrata("background")
@@ -162,11 +162,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlineupver:SetWidth(2)
 		petlineupver:SetPoint("CENTER", petbg,"CENTER",0,0)
 		petlineupver:SetScale(1)
-		petlineupver:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlineupver:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlineupver:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local petlineupverbg = CreateFrame("Frame", petlineupverbg, petlineupver)
 		petlineupverbg:SetFrameLevel(0)
 		petlineupverbg:SetFrameStrata("background")
@@ -174,11 +174,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlineupverbg:SetWidth(4)
 		petlineupverbg:SetPoint("CENTER", petlineupver,"CENTER",0,0)
 		petlineupverbg:SetScale(1)
-		petlineupverbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlineupverbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlineupverbg:SetBackdropColor(.1,.1,.1,1)
-		
+
 		local petlineuphon = CreateFrame("Frame", petlineuphon, petbg)
 		petlineuphon:SetFrameLevel(2)
 		petlineuphon:SetFrameStrata("background")
@@ -186,11 +186,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlineuphon:SetWidth(50)
 		petlineuphon:SetPoint("TOP", petbg,"TOP",12,12)
 		petlineuphon:SetScale(1)
-		petlineuphon:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlineuphon:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlineuphon:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local petlineuphonbg = CreateFrame("Frame", petlineuphonbg, petlineuphon)
 		petlineuphonbg:SetFrameLevel(0)
 		petlineuphonbg:SetFrameStrata("background")
@@ -198,11 +198,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlineuphonbg:SetWidth(52)
 		petlineuphonbg:SetPoint("CENTER", petlineuphon,"CENTER",-0.5,0)
 		petlineuphonbg:SetScale(1)
-		petlineuphonbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlineuphonbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlineuphonbg:SetBackdropColor(.1,.1,.1,1)
-		
+
 		local petlinedownhon = CreateFrame("Frame", petlinedownhon, petbg)
 		petlinedownhon:SetFrameLevel(2)
 		petlinedownhon:SetFrameStrata("background")
@@ -210,11 +210,11 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlinedownhon:SetWidth(50)
 		petlinedownhon:SetPoint("BOTTOM", petbg,"BOTTOM",12,-12)
 		petlinedownhon:SetScale(1)
-		petlinedownhon:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlinedownhon:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlinedownhon:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-		
+
 		local petlinedownhonbg = CreateFrame("Frame", petlinedownhonbg, petlinedownhon)
 		petlinedownhonbg:SetFrameLevel(0)
 		petlinedownhonbg:SetFrameStrata("background")
@@ -222,13 +222,13 @@ if not (IsAddOnLoaded("Dominos") or IsAddOnLoaded("Bartender4") or IsAddOnLoaded
 		petlinedownhonbg:SetWidth(52)
 		petlinedownhonbg:SetPoint("CENTER", petlinedownhon,"CENTER",-0.5,0)
 		petlinedownhonbg:SetScale(1)
-		petlinedownhonbg:SetBackdrop( { 
-		  bgFile = BLANK_TEXTURE, 
+		petlinedownhonbg:SetBackdrop( {
+		  bgFile = BLANK_TEXTURE,
 		})
 		petlinedownhonbg:SetBackdropColor(.1,.1,.1,1)
 	end
 end
-	
+
 --------------------------------------------------------------------
 -- ACTION BAR TEXTURE
 --------------------------------------------------------------------
@@ -237,18 +237,18 @@ end
 	abt:SetFrameLevel(2)
 	abt:SetFrameStrata("background")
 	if Tukui4BarsBottom == true then
-		abt:SetHeight(66)	
+		abt:SetHeight(66)
 	else
 		abt:SetHeight(37)
 	end
 	abt:SetWidth(700)
 	abt:SetPoint("bottom",0,12)
 	abt:SetScale(1)
-	
-	abt:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+
+	abt:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	abt:SetBackdropColor(.1,.1,.1,1)
@@ -265,11 +265,11 @@ end
 	ileft:SetWidth(tinfowidth)
 	ileft:SetPoint("bottomleft",32,18)
 	ileft:SetScale(1)
-	
-	ileft:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+
+	ileft:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	ileft:SetBackdropColor(.1,.1,.1,1)
@@ -287,11 +287,11 @@ end
 	iright:SetWidth(tinfowidth)
 	iright:SetPoint("bottomright",-32,18)
 	iright:SetScale(1)
-	
-	iright:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+
+	iright:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	iright:SetBackdropColor(.1,.1,.1,1)
@@ -308,11 +308,11 @@ end
 	lineleft:SetWidth(320)
 	lineleft:SetPoint("RIGHT", abt,"BOTTOMLEFT",1,17)
 	lineleft:SetScale(1)
-	lineleft:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	lineleft:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	lineleft:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local lineleftbg = CreateFrame("Frame", lineleftbg, abt)
 	lineleftbg:SetFrameLevel(0)
 	lineleftbg:SetFrameStrata("background")
@@ -320,11 +320,11 @@ end
 	lineleftbg:SetWidth(320)
 	lineleftbg:SetPoint("RIGHT", abt,"BOTTOMLEFT",1,17)
 	lineleftbg:SetScale(1)
-	lineleftbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	lineleftbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	lineleftbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- ACTIONBAR LINE TO INFOSRIGHT
 --------------------------------------------------------------------
@@ -336,8 +336,8 @@ end
 	lineright:SetWidth(320)
 	lineright:SetPoint("LEFT", abt,"BOTTOMRIGHT",-1,17)
 	lineright:SetScale(1)
-	lineright:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	lineright:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	lineright:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
 
@@ -348,11 +348,11 @@ end
 	linerightbg:SetWidth(320)
 	linerightbg:SetPoint("LEFT", abt,"BOTTOMRIGHT",-1,17)
 	linerightbg:SetScale(1)
-	linerightbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	linerightbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	linerightbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- ACTIONBAR LINE LEFT
 --------------------------------------------------------------------
@@ -364,11 +364,11 @@ end
 	line14left:SetWidth(14)
 	line14left:SetPoint("RIGHT", ileft,"LEFT",1,0)
 	line14left:SetScale(1)
-	line14left:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	line14left:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	line14left:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local line14leftbg = CreateFrame("Frame", line14leftbg, ileft)
 	line14leftbg:SetFrameLevel(0)
 	line14leftbg:SetFrameStrata("background")
@@ -376,11 +376,11 @@ end
 	line14leftbg:SetWidth(14)
 	line14leftbg:SetPoint("RIGHT", ileft,"LEFT",1,0)
 	line14leftbg:SetScale(1)
-	line14leftbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	line14leftbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	line14leftbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 	--------------------------------------------------------------------
 -- ACTIONBAR LINE TO INFOSRIGHT
 --------------------------------------------------------------------
@@ -392,8 +392,8 @@ end
 	line14right:SetWidth(14)
 	line14right:SetPoint("LEFT", iright,"RIGHT",-1,0)
 	line14right:SetScale(1)
-	line14right:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	line14right:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	line14right:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
 
@@ -404,11 +404,11 @@ end
 	line14rightbg:SetWidth(14)
 	line14rightbg:SetPoint("LEFT", iright,"RIGHT",-1,0)
 	line14rightbg:SetScale(1)
-	line14rightbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	line14rightbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	line14rightbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- ACTIONBAR VERTICAL LEFT
 --------------------------------------------------------------------
@@ -420,11 +420,11 @@ end
 	avl:SetWidth(2)
 	avl:SetPoint("BOTTOMLEFT", line14left,"BOTTOMLEFT",0,-0.5)
 	avl:SetScale(1)
-	avl:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	avl:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	avl:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local av1bg = CreateFrame("Frame", av1bg, avl)
 	av1bg:SetFrameLevel(0)
 	av1bg:SetFrameStrata("background")
@@ -432,11 +432,11 @@ end
 	av1bg:SetWidth(4)
 	av1bg:SetPoint("CENTER", avl,"CENTER",0,0)
 	av1bg:SetScale(1)
-	av1bg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	av1bg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	av1bg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- ACTIONBAR VERTICAL RIGHT
 --------------------------------------------------------------------
@@ -448,11 +448,11 @@ end
 	avr:SetWidth(2)
 	avr:SetPoint("BOTTOMRIGHT", line14right,"BOTTOMRIGHT",0,-0.5)
 	avr:SetScale(1)
-	avr:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	avr:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	avr:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local avrbg = CreateFrame("Frame", avrbg, avl)
 	avrbg:SetFrameLevel(0)
 	avrbg:SetFrameStrata("background")
@@ -460,11 +460,11 @@ end
 	avrbg:SetWidth(4)
 	avrbg:SetPoint("CENTER", avr,"CENTER",0,0)
 	avrbg:SetScale(1)
-	avrbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	avrbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	avrbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- CUBE LEFT
 --------------------------------------------------------------------
@@ -476,11 +476,11 @@ end
 	cubeleft:SetWidth(8)
 	cubeleft:SetPoint("CENTER", avl,"TOP",0,0)
 	cubeleft:SetScale(1)
-	cubeleft:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	cubeleft:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	cubeleft:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local cubeleftbg = CreateFrame("Frame", cubeleftbg, cubeleft)
 	cubeleftbg:SetFrameLevel(0)
 	cubeleftbg:SetFrameStrata("background")
@@ -488,11 +488,11 @@ end
 	cubeleftbg:SetWidth(10)
 	cubeleftbg:SetPoint("CENTER", cubeleft,"CENTER",0,0)
 	cubeleftbg:SetScale(1)
-	cubeleftbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	cubeleftbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	cubeleftbg:SetBackdropColor(.1,.1,.1,1)
-	
+
 --------------------------------------------------------------------
 -- CUBE RIGHT
 --------------------------------------------------------------------
@@ -504,11 +504,11 @@ end
 	cuberight:SetWidth(8)
 	cuberight:SetPoint("CENTER", avr,"TOP",0,0)
 	cuberight:SetScale(1)
-	cuberight:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	cuberight:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	cuberight:SetBackdropColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 	local cuberightbg = CreateFrame("Frame", cuberightbg, cuberight)
 	cuberightbg:SetFrameLevel(0)
 	cuberightbg:SetFrameStrata("background")
@@ -516,12 +516,12 @@ end
 	cuberightbg:SetWidth(10)
 	cuberightbg:SetPoint("CENTER", cuberight,"CENTER",0,0)
 	cuberightbg:SetScale(1)
-	cuberightbg:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
+	cuberightbg:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
 	})
 	cuberightbg:SetBackdropColor(.1,.1,.1,1)
-	
-	
+
+
 --------------------------------------------------------------------
 -- CHATEDITBOX
 --------------------------------------------------------------------
@@ -533,15 +533,15 @@ end
 	ceb:SetPoint("TOPLEFT", ChatFrameEditBox, "BOTTOMLEFT", 3, 27)
 	ceb:SetPoint("TOPRIGHT", ChatFrameEditBox, "BOTTOMRIGHT", -4, 27)
 	ceb:SetScale(1)
-	
-	ceb:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+
+	ceb:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	ceb:SetBackdropColor(.1,.1,.1,1)
-	
+
 	-- idea from haleth
 	-- above code was "stolen" from neonchat
 	-- credit to neonchat and mikma
@@ -559,7 +559,7 @@ end
          else colorize(ChatTypeInfo[type].r,ChatTypeInfo[type].g,ChatTypeInfo[type].b)
          end
     end)
-	
+
 ----------------------------------------------------------------------------------------
 -- panel for stat #7 and #8
 ----------------------------------------------------------------------------------------
@@ -580,7 +580,7 @@ local statpanel7 = CreateFrame("frame",leftrectanglelol, abt)
 	})
 	statpanel7:SetBackdropColor(.1,.1,.1,1)
 	statpanel7:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
-	
+
 
 	local statpanel8 = CreateFrame("frame",rightrectanglelol, Minimap)
 	statpanel8:SetFrameLevel(2)
@@ -598,7 +598,7 @@ local statpanel7 = CreateFrame("frame",leftrectanglelol, abt)
 	statpanel8:SetBackdropColor(.1,.1,.1,1)
 	statpanel8:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
 
-	
+
 	local linemiddle7to8 = CreateFrame("Frame", line7to8, Minimap)
 	linemiddle7to8:SetFrameLevel(0)
 	linemiddle7to8:SetFrameStrata("BACKGROUND")
@@ -617,7 +617,7 @@ local statpanel7 = CreateFrame("frame",leftrectanglelol, abt)
 
 --------------------------------------------------------------------
 -- CREDIT: FatalEntity for some part of this code
---------------------------------------------------------------------	
+--------------------------------------------------------------------
 local L = GetLocale()
 
 local function panel_setpoint(p, obj)
@@ -666,10 +666,10 @@ if fps_ms > 0 then
 			end
 			int = 1
 		end
-		
+
 	end
 
-	Stat1:SetScript("OnUpdate", Update) 
+	Stat1:SetScript("OnUpdate", Update)
 	Update(Stat1, 10)
 end
 
@@ -708,7 +708,7 @@ if mem > 0 then
 					return mem..string.format(".0 %smo%s", unpack(statColor))
 				else
 					return mem..string.format(" %smo%s", unpack(statColor))
-				end		
+				end
 			else
 				if mem % 1 == 0 then
 					return mem..string.format(".0 %smb%s", unpack(statColor))
@@ -723,13 +723,13 @@ if mem > 0 then
 					return mem..string.format(".0 %sКб%s", unpack(statColor))
 				else
 					return mem..string.format(" %sКб%s", unpack(statColor))
-				end	
+				end
 			elseif(L=="frFR") then
 				if mem % 1 == 0 then
 					return mem..string.format(".0 %sko%s", unpack(statColor))
 				else
 					return mem..string.format(" %sko%s", unpack(statColor))
-				end			
+				end
 			else
 				if mem % 1 == 0 then
 					return mem..string.format(".0 %skb%s", unpack(statColor))
@@ -751,14 +751,14 @@ if mem > 0 then
 			Memory[i] = { select(2, GetAddOnInfo(i)), Mem, IsAddOnLoaded(i) }
 			Total = Total + Mem
 		end
-		
+
 		MEMORY_TEXT = formatMem(Total, true)
 		table.sort(Memory, function(a, b)
 			if a and b then
 				return a[2] > b[2]
 			end
 		end)
-		
+
 		-- Setup Memory tooltip
 		self:SetAllPoints(Text)
 		self:SetScript("OnEnter", function()
@@ -768,10 +768,10 @@ if mem > 0 then
 				GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, Stats.TTSpacing)
 				GameTooltip:ClearLines()
 				for i = 1, #Memory do
-					if Memory[i][3] then 
+					if Memory[i][3] then
 						local red = Memory[i][2]/Total*2
 						local green = 1 - red
-						GameTooltip:AddDoubleLine(Memory[i][1], formatMem(Memory[i][2], false), 1, 1, 1, red, green+1, 0)						
+						GameTooltip:AddDoubleLine(Memory[i][1], formatMem(Memory[i][2], false), 1, 1, 1, red, green+1, 0)
 					end
 				end
 				GameTooltip:Show()
@@ -795,18 +795,18 @@ if mem > 0 then
 	end
 
 	Stat2:SetScript("OnMouseDown", function() collectgarbage("collect") Update(Stat2, 10) end)
-	Stat2:SetScript("OnUpdate", Update) 
+	Stat2:SetScript("OnUpdate", Update)
 	Update(Stat2, 10)
 end
 
 --------------------------------------------------------------------
 -- GUILD ROSTER
 --------------------------------------------------------------------
-	
+
 if guild > 0 then
 	local Stat3 = CreateFrame("Frame")
 	Stat3:EnableMouse(true)
-	
+
 	local tthead = {r=0.4,g=0.78,b=1}
 	local ttsubh = {r=0.75,g=0.9,b=1}
 
@@ -815,17 +815,17 @@ if guild > 0 then
 	panel_setpoint(guild, Text)
 	Text:SetHeight(26)
 
-	local function Update(self, event, ...)	
+	local function Update(self, event, ...)
 		if IsInGuild() then
 			GuildRoster()
-			local numOnline = (GetNumGuildMembers())			
+			local numOnline = (GetNumGuildMembers())
 			self:SetAllPoints(Text)
 			Text:SetText(tp_guild .. ": " .. numOnline)
 		else
 			Text:SetText(tp_noguild)
 		end
 	end
-		
+
 	Stat3:RegisterEvent("GUILD_ROSTER_SHOW")
 	Stat3:RegisterEvent("PLAYER_ENTERING_WORLD")
 	Stat3:RegisterEvent("GUILD_ROSTER_UPDATE")
@@ -840,7 +840,7 @@ if guild > 0 then
 				local name, rank, level, zone, note, officernote, connected, status, class, zone_r, zone_g, zone_b, classc, levelc
 				local online, total, gmotd = 0, GetNumGuildMembers(true), GetGuildRosterMOTD()
 				for i = 0, total do if select(9, GetGuildRosterInfo(i)) then online = online + 1 end end
-				
+
 				GameTooltip:SetOwner(this, "ANCHOR_NONE");
 				GameTooltip:ClearAllPoints()
 				GameTooltip:SetPoint("BOTTOM", self, "TOP", 0, Stats.TTSpacing)
@@ -900,7 +900,7 @@ if bags > 0 then
 			Text:SetText(tp_bags..used.."/"..total)
 			self:SetAllPoints(Text)
 	end
-		
+
 	Stat4:RegisterEvent("PLAYER_LOGIN")
 	Stat4:RegisterEvent("BAG_UPDATE")
 	Stat4:SetScript("OnEvent", OnEvent)
@@ -910,11 +910,11 @@ end
 --------------------------------------------------------------------
 -- FRIEND
 --------------------------------------------------------------------
-	
+
 if friends > 0 then
 	local Stat5 = CreateFrame("Frame")
 	Stat5:EnableMouse(true)
-	
+
 	local tthead = {r=0.4,g=0.78,b=1}
 	local ttsubh = {r=0.75,g=0.9,b=1}
 
@@ -974,7 +974,7 @@ end
 --------------------------------------------------------------------
 -- DURABILITY
 --------------------------------------------------------------------
-	
+
 if armor > 0 then
 	local Stat6 = CreateFrame("Frame")
 	Stat6:EnableMouse(true)
@@ -991,14 +991,14 @@ if armor > 0 then
 		for i = 1, 11 do
 			if GetInventoryItemLink("player", Slots[i][1]) ~= nil then
 				current, max = GetInventoryItemDurability(Slots[i][1])
-				if current then 
+				if current then
 					Slots[i][3] = current/max
 					Total = Total + 1
 				end
 			end
 		end
 		table.sort(Slots, function(a, b) return a[3] < b[3] end)
-		
+
 		if Total > 0 then
 			Text:SetText(floor(Slots[1][3]*100).."% |cffffffff"..tp_armor.."|r")
 		else
@@ -1069,7 +1069,7 @@ if gold > 0 then
 				return format("%s|cffc7c7cfs|r %s|cffeda55fk|r", silver, copper)
 			else
 				return format("%s|cffeda55f k|r", copper)
-			end			
+			end
 		 elseif(L=="ruRU") then
 			 if gold ~= 0 then
 				return format("%s|cffffd700з|r %s|cffc7c7cfс|r %s|cffeda55fм|r", gold, silver, copper)
@@ -1092,7 +1092,7 @@ if gold > 0 then
 	local function FormatTooltipMoney(money)
 		local gold, silver, copper = abs(money / 10000), abs(mod(money / 100, 100)), abs(mod(money, 100))
 		local cash = ""
-		
+
 		if(L=="frFR") then
 			cash = format("%d|cffffd700po|r %d|cffc7c7cfpa|r %d|cffeda55fpc|r", gold, silver, copper)
 		elseif(L=="deDE") then
@@ -1102,24 +1102,24 @@ if gold > 0 then
 		else
 			cash = format("%d|cffffd700g|r %d|cffc7c7cfs|r %d|cffeda55fc|r", gold, silver, copper)
 		end
-		
+
 		return cash
-	end	
+	end
 
 	local function OnEvent(self, event)
 		if event == "PLAYER_ENTERING_WORLD" then
 			OldMoney = GetMoney()
 		end
-		
+
 		local NewMoney	= GetMoney()
 		local Change = NewMoney-OldMoney -- Positive if we gain money
-		
+
 		if OldMoney>NewMoney then		-- Lost Money
 			Spent = Spent - Change
 		else							-- Gained Moeny
 			Profit = Profit + Change
 		end
-		
+
 		Text:SetText(formatMoney(NewMoney))
 		-- Setup Money Tooltip
 		self:SetAllPoints(Text)
@@ -1136,29 +1136,29 @@ if gold > 0 then
 					GameTooltip:AddDoubleLine(tp_deficit, formatMoney(Profit-Spent), 1, 0, 0, 1, 1, 1)
 				elseif (Profit-Spent)>0 then
 					GameTooltip:AddDoubleLine(tp_profit, formatMoney(Profit-Spent), 0, 1, 0, 1, 1, 1)
-				end				
-				GameTooltip:AddLine' '								
+				end
+				GameTooltip:AddLine' '
 				local myPlayerRealm = GetCVar("realmName");
-				local myPlayerName  = UnitName("player");				
+				local myPlayerName  = UnitName("player");
 				if (tgoldDB == nil) then tgoldDB = {}; end
 				if (tgoldDB[myPlayerRealm]==nil) then tgoldDB[myPlayerRealm]={}; end
-				tgoldDB[myPlayerRealm][myPlayerName] = GetMoney();				
-				local totalGold = 0				
-				GameTooltip:AddLine(tp_character)				
+				tgoldDB[myPlayerRealm][myPlayerName] = GetMoney();
+				local totalGold = 0
+				GameTooltip:AddLine(tp_character)
 				local thisRealmList = tgoldDB[myPlayerRealm];
 				for k,v in pairs(thisRealmList) do
 					GameTooltip:AddDoubleLine(k, FormatTooltipMoney(v), 1, 1, 1, 1, 1, 1)
 					totalGold=totalGold+v;
-				end 
+				end
 				GameTooltip:AddLine' '
 				GameTooltip:AddLine(tp_server)
 				GameTooltip:AddDoubleLine(tp_totalgold, FormatTooltipMoney(totalGold), 1, 1, 1, 1, 1, 1)
-				
-				GameTooltip:Show()				
+
+				GameTooltip:Show()
 			end
 		end)
 		self:SetScript("OnLeave", function() GameTooltip:Hide() end)
-		
+
 		OldMoney = NewMoney
 	end
 
@@ -1219,9 +1219,9 @@ if wowtime > 0 then
             local Hr, Min = GetGameTime()
             if Hr == 0 then Hr = 12 end
             if Min<10 then Min = "0"..Min end
-            if time24 == true then         
+            if time24 == true then
                Text:SetText(Hr..":"..Min.." |cffffffff|r")
-            else             
+            else
                if Hr>=12 then
                  Hr = Hr-12
                  if pendingCalendarInvites > 0 then
@@ -1259,10 +1259,10 @@ if wowtime > 0 then
                else
                   local hour = tonumber(format("%01.f", floor(wgtime/3600)))
                   local min = format(hour>0 and "%02.f" or "%01.f", floor(wgtime/60 - (hour*60)))
-                  local sec = format("%02.f", floor(wgtime - hour*3600 - min *60))            
-                  wgtime = (hour>0 and hour..":" or "")..min..":"..sec            
+                  local sec = format("%02.f", floor(wgtime - hour*3600 - min *60))
+                  wgtime = (hour>0 and hour..":" or "")..min..":"..sec
                end
-			   
+
                GameTooltip:AddDoubleLine(tp_wg,wgtime)
                local oneraid
                   for i = 1, GetNumSavedInstances() do
@@ -1310,7 +1310,7 @@ if playersp > 0 then
    Text:SetFont(FONT, tfontsize)
    panel_setpoint(playersp, Text)
    Text:SetHeight(26)
-   
+
    local int = 1
 
    local function Update(self, t)
@@ -1319,7 +1319,7 @@ if playersp > 0 then
          Text:SetText(GetSpellBonusDamage(7) .. " " .. tp_playersp)
          int = 1
       end
-     
+
    end
 
    Stat9:SetScript("OnUpdate", Update)
@@ -1337,7 +1337,7 @@ if playerap > 0 then
    Text:SetFont(FONT, tfontsize)
    panel_setpoint(playerap, Text)
    Text:SetHeight(26)
-   
+
    local int = 1
 
    local function Update(self, t)
@@ -1348,7 +1348,7 @@ if playerap > 0 then
          Text:SetText(effective .. " " .. tp_playerap)
          int = 1
       end
-     
+
    end
 
    Stat10:SetScript("OnUpdate", Update)
@@ -1366,7 +1366,7 @@ if playerhaste > 0 then
    Text:SetFont(FONT, tfontsize)
    panel_setpoint(playerhaste, Text)
    Text:SetHeight(26)
-   
+
    local int = 1
 
    local function Update(self, t)
@@ -1374,7 +1374,7 @@ if playerhaste > 0 then
       if int < 0 then
          Text:SetText(GetCombatRating(20) .. " " .. tp_playerhaste)
          int = 1
-      end     
+      end
    end
 
    Stat11:SetScript("OnUpdate", Update)
@@ -1392,7 +1392,7 @@ if playerarp > 0 then
    Text:SetFont(FONT, tfontsize)
    panel_setpoint(playerarp, Text)
    Text:SetHeight(26)
-   
+
    local int = 1
 
    local function Update(self, t)
@@ -1400,7 +1400,7 @@ if playerarp > 0 then
       if int < 0 then
          Text:SetText(GetCombatRating(25) .. " " .. tp_playerarp)
          int = 1
-      end     
+      end
    end
 
    Stat12:SetScript("OnUpdate", Update)
@@ -1408,7 +1408,7 @@ if playerarp > 0 then
 end
 
 --------------------------------------------------------------------
--- SUPPORT FOR DPS Feed... 
+-- SUPPORT FOR DPS Feed...
 --------------------------------------------------------------------
 
 if dps_text > 0 then
@@ -1419,7 +1419,7 @@ if dps_text > 0 then
     local cmbt_time = 0
 
     local pet_id = UnitGUID("pet")
-     
+
     dText = ileft:CreateFontString(nil, "OVERLAY")
     dText:SetFont(FONT, tfontsize)
     dText:SetText("0.0 dps")
@@ -1432,7 +1432,7 @@ if dps_text > 0 then
     DPS_FEED:SetWidth(100)
     DPS_FEED:SetAllPoints(dText)
 
-     
+
     DPS_FEED:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
     DPS_FEED:RegisterEvent("PLAYER_LOGIN")
 
@@ -1440,46 +1440,46 @@ if dps_text > 0 then
         if UnitAffectingCombat("player") then
 			cmbt_time = cmbt_time + elap
         end
-       
+
         dText:SetText(getDPS())
     end)
-     
+
     function DPS_FEED:PLAYER_LOGIN()
 		DPS_FEED:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 		DPS_FEED:RegisterEvent("PLAYER_REGEN_ENABLED")
 		DPS_FEED:RegisterEvent("PLAYER_REGEN_DISABLED")
 		DPS_FEED:RegisterEvent("UNIT_PET")
-    
+
 		player_id = UnitGUID("player")
-       
+
 		DPS_FEED:UnregisterEvent("PLAYER_LOGIN")
     end
-     
+
     function DPS_FEED:UNIT_PET(unit)
 		if unit == "player" then
 			pet_id = UnitGUID("pet")
 		end
 	end
-     
+
     -- handler for the combat log. used http://www.wowwiki.com/API_COMBAT_LOG_EVENT for api
-    function DPS_FEED:COMBAT_LOG_EVENT_UNFILTERED(...)		   
+    function DPS_FEED:COMBAT_LOG_EVENT_UNFILTERED(...)
 		-- filter for events we only care about. i.e heals
 		if not events[select(2, ...)] then return end
 
 		-- only use events from the player
 		local id = select(3, ...)
-		   
+
 		if id == player_id or id == pet_id then
 			if select(2, ...) == "SWING_DAMAGE" then
 				last_dmg_amount = select(9, ...)
 			else
 				last_dmg_amount = select(12, ...)
 			end
-			 
+
 			dmg_total = dmg_total + last_dmg_amount
-		end       
+		end
     end
-     
+
     function getDPS()
         if (dmg_total == 0) then
 			return ("0.0 " .. tp_dps)
@@ -1488,17 +1488,17 @@ if dps_text > 0 then
         end
     end
 
-     
+
     function DPS_FEED:PLAYER_REGEN_ENABLED()
         dText:SetText(getDPS())
     end
-	
+
 	function DPS_FEED:PLAYER_REGEN_DISABLED()
         cmbt_time = 0
         dmg_total = 0
         last_dmg_amount = 0
     end
-     
+
     DPS_FEED:SetScript("OnMouseDown", function (self, button, down)
         cmbt_time = 0
         dmg_total = 0
@@ -1507,7 +1507,7 @@ if dps_text > 0 then
 end
 
 --------------------------------------------------------------------
--- SUPPORT FOR HPS Feed... 
+-- SUPPORT FOR HPS Feed...
 --------------------------------------------------------------------
 
 if hps_text > 0 then
@@ -1515,22 +1515,22 @@ if hps_text > 0 then
   local HPS_FEED = CreateFrame("Frame")
   local player_id = UnitGUID("player")
   local actual_heals_total, cmbt_time = 0
- 
+
   hText = ileft:CreateFontString(nil, "OVERLAY")
   hText:SetFont(FONT,tfontsize)
   hText:SetText("0.0 hps")
   hText:SetHeight(26)
- 
+
   panel_setpoint(hps_text, hText)
- 
+
   HPS_FEED:EnableMouse(true)
   HPS_FEED:SetHeight(20)
   HPS_FEED:SetWidth(100)
   HPS_FEED:SetAllPoints(hText)
- 
+
   HPS_FEED:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
   HPS_FEED:RegisterEvent("PLAYER_LOGIN")
- 
+
   HPS_FEED:SetScript("OnUpdate", function(self, elap)
       if UnitAffectingCombat("player") then
 		HPS_FEED:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
@@ -1540,18 +1540,18 @@ if hps_text > 0 then
 	  end
 	  hText:SetText(get_hps())
   end)
- 
+
   function HPS_FEED:PLAYER_LOGIN()
      HPS_FEED:RegisterEvent("PLAYER_REGEN_ENABLED")
      HPS_FEED:RegisterEvent("PLAYER_REGEN_DISABLED")
- 
+
      player_id = UnitGUID("player")
-     
+
      HPS_FEED:UnregisterEvent("PLAYER_LOGIN")
   end
- 
+
   -- handler for the combat log. used http://www.wowwiki.com/API_COMBAT_LOG_EVENT for api
-  function HPS_FEED:COMBAT_LOG_EVENT_UNFILTERED(...)         
+  function HPS_FEED:COMBAT_LOG_EVENT_UNFILTERED(...)
      -- filter for events we only care about. i.e heals
      if not events[select(2, ...)] then return end
 	 if event == "PLAYER_REGEN_DISABLED" then return end
@@ -1565,21 +1565,21 @@ if hps_text > 0 then
        actual_heals_total = actual_heals_total + math.max(0, amount_healed - amount_over_healed)
     end
   end
- 
+
   function HPS_FEED:PLAYER_REGEN_ENABLED()
     hText:SetText(get_hps)
   end
-   
+
    function HPS_FEED:PLAYER_REGEN_DISABLED()
     cmbt_time = 0
     actual_heals_total = 0
   end
-     
+
   HPS_FEED:SetScript("OnMouseDown", function (self, button, down)
     cmbt_time = 0
     actual_heals_total = 0
   end)
- 
+
   function get_hps()
     if (actual_heals_total == 0) then
 		return ("0.0 " .. tp_hps)

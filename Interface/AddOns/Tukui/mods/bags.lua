@@ -1,8 +1,8 @@
 --[[
-	A featureless, 'pure' version of Stuffing. 
-	This version should work on absolutely everything, 
+	A featureless, 'pure' version of Stuffing.
+	This version should work on absolutely everything,
 	but I've removed pretty much all of the options.
-	
+
 	All credits of this bags script is by Stuffing and his author Hungtar.
 --]]
 
@@ -304,7 +304,7 @@ end
 
 
 -- from OneBag
-local BAGTYPE_QUIVER = 0x0001 + 0x0002 
+local BAGTYPE_QUIVER = 0x0001 + 0x0002
 local BAGTYPE_SOUL = 0x004
 local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400
 

@@ -2,7 +2,7 @@
 	Elements handled:
 	.ThreatBar - StatusBar
 	.Text - Text value of threat percentage
-	
+
 	Options:
 	.Colors - Table of colors to use for threat coloring
 	.useRawThreat - Use raw threat percentage instead of normalized
@@ -23,18 +23,18 @@ local aggroColors = {
 local function update(self, event, unit)
 	if( UnitAffectingCombat(self.unit) ) then
 		local _, _, threatpct, rawthreatpct, _ = UnitDetailedThreatSituation(self.unit, self.tar)
-		
+
 		if( self.useRawThreat ) then
 			threatval = rawthreatpct or 0
 		else
 			threatval = threatpct or 0
 		end
-		
+
 		self:SetValue(threatval)
 		if( self.Text ) then
 			self.Text:SetFormattedText("%3.1f", threatval)
 		end
-		
+
 		if( threatval < 30 ) then
 			self:SetStatusBarColor(unpack(self.Colors[1]))
 		elseif( threatval >= 30 and threatval < 70 ) then
@@ -42,19 +42,19 @@ local function update(self, event, unit)
 		else
 			self:SetStatusBarColor(unpack(self.Colors[3]))
 		end
-		
+
 		local numParty = GetNumPartyMembers()
-		local numRaid = GetNumRaidMembers() 
+		local numRaid = GetNumRaidMembers()
 
 		-- this part is an addition by tukz because he is tired
-		-- to see this fucking bar appear when pvp'ing or in solo		
+		-- to see this fucking bar appear when pvp'ing or in solo
 		if (threatval > 0) and (numParty > 0 or numRaid > 0) then
 			self:SetAlpha(1)
 		else
 			self:SetAlpha(0)
 		end
 		-- end of hack
-		
+
 	end
 end
 
@@ -66,12 +66,12 @@ local function enable(self)
 
 		self:RegisterEvent("PLAYER_REGEN_ENABLED", function(self) self.ThreatBar:Hide() end)
 		self:RegisterEvent("PLAYER_REGEN_DISABLED", function(self) self.ThreatBar:Show() end)
-		
+
 		bar:SetScript("OnUpdate", update)
-		
+
 		bar.Colors = (self.ThreatBar.Colors or aggroColors)
 		bar.unit = self.unit
-		
+
 		if( self.usePlayerTarget ) then
 			bar.tar = "playertarget"
 		else

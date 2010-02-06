@@ -81,7 +81,7 @@ local createSlot = function(id)
 	iconFrame:SetWidth(iconsize)
 	iconFrame:ClearAllPoints()
 	iconFrame:SetPoint("RIGHT", frame)
-	
+
 	local tex = iconFrame:CreateTexture(nil, "OVERLAY")
 	tex:SetAllPoints(iconFrame)
     tex:SetTexture("Interface\\Addons\\Tukui\\media\\aurawatch.tga")

@@ -23,7 +23,7 @@ local function UpdateThreat(self, event, unit)
          self.Health.name:SetTextColor(1,0.1,0.1)
         else
          self.Health.name:SetTextColor(1,1,1)
-        end 
+        end
 end
 
 local function CreateStyle(self, unit)
@@ -54,7 +54,7 @@ local function CreateStyle(self, unit)
 	self.Health.bg:SetTexture([=[Interface\ChatFrame\ChatFrameBackground]=])
 	self.Health.bg:SetTexture(0.3, 0.3, 0.3)
 	self.Health.bg.multiplier = (0.3)
-		
+
 	local health = self.Health:CreateFontString(nil, 'OVERLAY', 'GameFontHighlightSmallRight')
 	health:SetPoint('CENTER', 0, 1)
 	self:Tag(health, '[dead][offline( )][afk( )]')
@@ -111,7 +111,7 @@ local raid = {}
 for i = 1, 2 do
 	local raidgroup = oUF:Spawn('header', 'oUF_Group'..i)
 	raidgroup:SetManyAttributes('groupFilter', tostring(i), 'showRaid', true, 'yOffset', -4)
-	raidgroup:SetFrameStrata('BACKGROUND')	
+	raidgroup:SetFrameStrata('BACKGROUND')
 	table.insert(raid, raidgroup)
 	if(i == 1) then
 		raidgroup:SetPoint('TOPLEFT', UIParent, 15, -350)

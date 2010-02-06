@@ -20,7 +20,7 @@ if not TukuiMap == true or (IsAddOnLoaded("Mapster")) then return end
   movebutton:SetHeight(32)
   movebutton:SetWidth(32)
   movebutton:SetPoint("TOP",WorldMapFrameSizeUpButton,"BOTTOM",-1,4)
-  movebutton:SetBackdrop( { 
+  movebutton:SetBackdrop( {
 	  bgFile = "Interface\\AddOns\\Tukui\\media\\cross",})
 	WORLDMAP_RATIO_MINI=1
  local qfix = 0
@@ -28,16 +28,16 @@ if not TukuiMap == true or (IsAddOnLoaded("Mapster")) then return end
 	 local ald = CreateFrame ("Frame",nil,WorldMapButton)
 	ald:SetFrameStrata("TOOLTIP")
     local mapbg = CreateFrame ("Frame",nil, WorldMapDetailFrame)
-	 mapbg:SetBackdrop( { 
-	  bgFile = blanke, 
-	  edgeFile = blanke, 
-	  tile = false, edgeSize = 1, 
+	 mapbg:SetBackdrop( {
+	  bgFile = blanke,
+	  edgeFile = blanke,
+	  tile = false, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	 local mapbgfix = CreateFrame ("Frame",nil, WorldMapDetailFrame)
-	  mapbgfix:SetBackdrop( {  
-	  edgeFile = blanke, 
-	  tile = false, edgeSize = 1, 
+	  mapbgfix:SetBackdrop( {
+	  edgeFile = blanke,
+	  tile = false, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	mapbg:SetScale (1/mapscale)
@@ -59,7 +59,7 @@ if not TukuiMap == true or (IsAddOnLoaded("Mapster")) then return end
 	WorldMapDetailFrame:SetPoint(smallmapposposition.point,UIParent,smallmapposposition.point,smallmapposposition.x,smallmapposposition.y)
 	WorldMapFrame:SetFrameStrata("MEDIUM")
 	WorldMapDetailFrame:SetFrameStrata("MEDIUM")
-	mapbg:SetFrameStrata("LOW")	
+	mapbg:SetFrameStrata("LOW")
 	mapbgfix:SetFrameStrata("HIGH")
 	WorldMapTitleButton:Show()
 	WorldMapFrameMiniBorderLeft:Hide()
@@ -135,9 +135,9 @@ local function OnUpdate(player, cursor)
 	end
 	if ( WatchFrame.showObjectives ) and qfix == 1 then
 	WorldMapFrame_UpdateQuests() qfix=0 end
-	if InCombatLockdown() then	WorldMapFrameSizeDownButton:Disable() 
+	if InCombatLockdown() then	WorldMapFrameSizeDownButton:Disable()
 								WorldMapFrameSizeUpButton:Disable()	end
-	if not InCombatLockdown() then 
+	if not InCombatLockdown() then
 								WorldMapFrameSizeDownButton:Enable()
 								WorldMapFrameSizeUpButton:Enable() end
 	local cx, cy = MouseXY()
@@ -185,7 +185,7 @@ WorldMapFrame:SetAttribute("UIPanelLayout-allowOtherPanels", true)
  end
  WorldMapFrame:HookScript("OnShow", function(self) self:SetScale(mapscale) self:SetAlpha(mapalpha) WorldMapTooltip:SetScale(1/mapscale) shown = 1 qfix = 1 end)
  WorldMapFrame:HookScript("OnHide", function(self) shown = 0 WorldMapFrame_UpdateQuests() end)
-corl = function() 
+corl = function()
 WorldMapQuestShowObjectives:SetParent(WorldMapPositioningGuide)
 WorldMapQuestShowObjectives:ClearAllPoints()
 WorldMapQuestShowObjectives:SetPoint("BOTTOMRIGHT",WorldMapPositioningGuide,"BOTTOMRIGHT",-6, 5)

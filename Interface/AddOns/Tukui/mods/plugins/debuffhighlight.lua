@@ -30,7 +30,7 @@ local function Update(object, event, unit)
 	if object.unit ~= unit  then return end
 	local debuffType, texture  = GetDebuffType(unit, object.DebuffHighlightFilter)
 	if debuffType then
-		local color = DebuffTypeColor[debuffType] 
+		local color = DebuffTypeColor[debuffType]
 		if object.DebuffHighlightBackdrop then
 			object:SetBackdropColor(color.r, color.g, color.b, object.DebuffHighlightAlpha or 1)
 		elseif object.DebuffHighlightUseTexture then
@@ -62,10 +62,10 @@ local function Enable(object)
 	if object.DebuffHighlightFilter and not CanDispel[playerClass] then
 		return
 	end
-	
+
 	-- make sure aura scanning is active for this object
 	object:RegisterEvent("UNIT_AURA", Update)
-	
+
 	if object.DebuffHighlightBackdrop then
 		local r, g, b, a = object:GetBackdropColor()
 		origColors[object] = { r = r, g = g, b = b, a = a}

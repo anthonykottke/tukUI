@@ -120,7 +120,7 @@ local function CreateRollFrame()
 	buttonborder:SetPoint("CENTER", button, "CENTER")
 	buttonborder:SetBackdrop(backdrop)
 	buttonborder:SetBackdropColor(1, 1, 1, 0)
-	
+
 	local buttonborder2 = CreateFrame("Frame", nil, button)
 	buttonborder2:SetWidth(24)
 	buttonborder2:SetHeight(24)
@@ -129,7 +129,7 @@ local function CreateRollFrame()
 	buttonborder2:SetBackdrop(backdrop)
 	buttonborder2:SetBackdropColor(0, 0, 0, 0)
 	buttonborder2:SetBackdropBorderColor(0,0,0,1)
-	
+
 
 	frame.buttonborder = buttonborder
 
@@ -304,11 +304,11 @@ local rollpairs = locale == "deDE" and {
 local function ParseRollChoice(msg)
 	for i,v in pairs(rollpairs) do
 		local _, _, playername, itemname = string.find(msg, i)
-		if locale == "ruRU" and (v == "greed" or v == "need" or v == "disenchant")  then 
+		if locale == "ruRU" and (v == "greed" or v == "need" or v == "disenchant")  then
 			local temp = playername
 			playername = itemname
 			itemname = temp
-		end 
+		end
 		if playername and itemname and playername ~= "Everyone" then return playername, itemname, v end
 	end
 end

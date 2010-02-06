@@ -4,7 +4,7 @@ local arenaUnits = {}
 local arenaGUID  = {}
 local usedTrinkets = {}
 local trinketFrame = {}
- 
+
 local TrinketUpdate = function(self, elapsed)
 	if ( self.endTime < GetTime() ) then
 		local object = self:GetParent()
@@ -12,7 +12,7 @@ local TrinketUpdate = function(self, elapsed)
 			SendChatMessage("Trinket ready: "..UnitName(object.unit).." "..UnitClass(object.unit), "PARTY")
 		end
 		self:SetScript("OnUpdate", nil)
-	end	
+	end
 end
 
 local UpdateTag = function(self, elapsed)
@@ -30,10 +30,10 @@ local TrinketUsed = function(guid, time)
 		arenaUnits[unit].Trinket.endTime = GetTime() + time
 		CooldownFrame_SetTimer(arenaUnits[unit].Trinket.cooldownFrame, GetTime(), time, 1)
 		if ( arenaUnits[unit].Trinket.trinketUseAnnounce ) then
-			if ( time == 120 ) then 
+			if ( time == 120 ) then
 				message = "Trinket used: "..UnitName(unit).." "..UnitClass(unit)
-			else 
-				message = "WotF used: "..UnitName(unit).." "..UnitClass(unit) 
+			else
+				message = "WotF used: "..UnitName(unit).." "..UnitClass(unit)
 			end
 			SendChatMessage(message, "PARTY")
 		end
@@ -111,11 +111,11 @@ local Enable = function(self)
 		arenaUnits[self.unit] = self
 	end
 end
- 
+
 local Disable = function(self)
 	if ( self.Trinket ) then
 		arenaUnits[self.unit] = nil
 	end
 end
- 
+
 oUF:AddElement('Trinket', function() return end, Enable, Disable)

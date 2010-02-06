@@ -21,16 +21,16 @@ function CreatePanel(height, width, x, y, anchorPoint, anchorPointRel, anchor, l
 	Panel:SetHeight(height)
 	Panel:SetWidth(width)
 	Panel:SetPoint(anchorPoint, anchor, anchorPointRel, x, y)
-	Panel:SetBackdrop( { 
-	  bgFile = BLANK_TEXTURE, 
-	  edgeFile = BLANK_TEXTURE, 
-	  tile = false, tileSize = 0, edgeSize = 1, 
+	Panel:SetBackdrop( {
+	  bgFile = BLANK_TEXTURE,
+	  edgeFile = BLANK_TEXTURE,
+	  tile = false, tileSize = 0, edgeSize = 1,
 	  insets = { left = -1, right = -1, top = -1, bottom = -1 }
 	})
 	Panel:SetBackdropColor(unpack(TUKUI_BACKDROP_COLOR))
 	Panel:SetBackdropBorderColor(unpack(TUKUI_BORDER_COLOR))
 	return Panel
-end 
+end
 
 
 -- we look if tukui can run on your current reso, if not, a popup is show
@@ -52,7 +52,7 @@ tukuicheck:SetScript("OnEvent", function()
 				print("Разрешение вашего экрана поддерживается.. Наслаждайтесь!")
 				print(" ")
 				print("Введите |cffFF0000/uihelp|r для большей информации!")
-				print(" ")					
+				print(" ")
 			elseif(L=="frFR") then
 				print("Bienvenue sur Tukui V9 pour le patch 3.3 ! www.tukui.org")
 				print(" ")
@@ -62,7 +62,7 @@ tukuicheck:SetScript("OnEvent", function()
 				print(" ")
 				print("Pour plus d'informations, tapez /uihelp")
 				print(" ")
-			elseif(L=="deDE") then	
+			elseif(L=="deDE") then
 				print(" ")
 				print("Willkommen bei Tukui V9 für Patch 3.3 !  www.tukui.org")
 				print(" ")
@@ -71,7 +71,7 @@ tukuicheck:SetScript("OnEvent", function()
 				print("Deine Auflösung wird unterstützt... Viel Spass !")
 				print(" ")
 				print("Für mehr Infos |cffFF0000/uihelp|r eintippen!")
-				print(" ")						
+				print(" ")
 			else
 				print(" ")
 				print("Welcome on Tukui V9 for patch 3.3 !  www.tukui.org")
@@ -112,17 +112,17 @@ tukuicheck:SetScript("OnEvent", function()
 	-- yeah, because tukui already have this shit so we disable some blizzard ugly frame.
 	SetCVar("showClock", 0)
 	SetCVar("showArenaEnemyFrames", 0)
-	
+
 	if TukuiMap == true and not IsAddOnLoaded("Mapster") then
 		WorldMap_ToggleSizeDown()
 	end
-			
+
 	-- we don't need this anymore :)
 	tukuicheck:UnregisterEvent("PLAYER_LOGIN")
 end)
 
 
-local function install()			
+local function install()
 			SetCVar("buffDurations", 1)
 			SetCVar("lootUnderMouse", 1)
 			SetCVar("autoSelfCast", 1)
@@ -139,8 +139,8 @@ local function install()
 			SetCVar("cameraDistanceMax", 50)
 			SetCVar("cameraDistanceMaxFactor", 3.4)
 			SetCVar("chatLocked", 0)
-			
-			-- Var ok, now setting chat frames.					
+
+			-- Var ok, now setting chat frames.
 			FCF_ResetChatWindows()
 			FCF_DockFrame(ChatFrame2)
 			FCF_OpenNewWindow("Spam")
@@ -149,7 +149,7 @@ local function install()
 			FCF_UnDockFrame(ChatFrame4)
 			FCF_SetLocked(ChatFrame4, 0);
 			ChatFrame4:Show();
-			
+
 			ChatFrame_RemoveAllMessageGroups(ChatFrame1)
 			ChatFrame_RemoveChannel(ChatFrame1, "Trade")
 			ChatFrame_RemoveChannel(ChatFrame1, "General")
@@ -183,13 +183,13 @@ local function install()
 			ChatFrame_AddMessageGroup(ChatFrame1, "DND")
 			ChatFrame_AddMessageGroup(ChatFrame1, "IGNORED")
 			ChatFrame_AddMessageGroup(ChatFrame1, "ACHIEVEMENT")
-				
+
 			-- Setup the spam chat frame
 			ChatFrame_RemoveAllMessageGroups(ChatFrame3)
 			ChatFrame_AddChannel(ChatFrame3, "Trade")
 			ChatFrame_AddChannel(ChatFrame3, "General")
 			ChatFrame_AddChannel(ChatFrame3, "LookingForGroup")
-			
+
 			-- Setup the right chat
 			ChatFrame_RemoveAllMessageGroups(ChatFrame4);
 			ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_XP_GAIN")
@@ -197,9 +197,9 @@ local function install()
 			ChatFrame_AddMessageGroup(ChatFrame4, "COMBAT_FACTION_CHANGE")
 			ChatFrame_AddMessageGroup(ChatFrame4, "LOOT")
 			ChatFrame_AddMessageGroup(ChatFrame4, "MONEY")
-		   
+
 			t9install = true
-			
+
 			ReloadUI()
 end
 
@@ -248,10 +248,10 @@ tukuicheckinstall:SetScript("OnEvent", function()
     if event == "PLAYER_ENTERING_WORLD" then
         tukuicheckinstall:UnregisterEvent("PLAYER_ENTERING_WORLD")
         tukuicheckinstall:SetScript("OnEvent", nil)
-		
+
 		--need a.b. to always be enabled
 		SetActionBarToggles( 1, 1, 1, 1, 1 )
-		
+
 		-- set default var if tukui not found on that character
         if not (t9install) then
 			StaticPopup_Show("Tukui")
@@ -264,7 +264,7 @@ tukuicheckinstall:SetScript("OnEvent", function()
 end)
 
 local function DisableTukui()
-        DisableAddOn("Tukui"); 
+        DisableAddOn("Tukui");
 		ReloadUI()
 end
 
@@ -333,7 +333,7 @@ elseif(L=="frFR") then
 	  timeout = 0,
 	  whileDead = 1,
 	}
-elseif(L=="deDE") then	
+elseif(L=="deDE") then
 	StaticPopupDialogs["DISABLE_RAID"] = {
 	  text = "2 Raid Layouts sind aktiv, bitte wähle ein Layout aus.",
 	  button1 = "DPS - TANK",
@@ -342,7 +342,7 @@ elseif(L=="deDE") then
 	  OnCancel = function() EnableAddOn("Tukui_Heal_Layout"); DisableAddOn("Tukui_Dps_Layout"); ReloadUI(); end,
 	  timeout = 0,
 	  whileDead = 1,
-	}	
+	}
 else
 	StaticPopupDialogs["DISABLE_RAID"] = {
 	  text = "2 raid layouts are active, please select a layout.",
@@ -372,7 +372,7 @@ hooksecurefunc(DurabilityFrame,"SetPoint",function(self,_,parent) -- durability 
     if (parent == "MinimapCluster") or (parent == _G["MinimapCluster"]) then
         DurabilityFrame:ClearAllPoints();
 		if Tukui4BarsBottom == true then
-			DurabilityFrame:SetPoint("BOTTOM",UIParent,"BOTTOM",0,228);		
+			DurabilityFrame:SetPoint("BOTTOM",UIParent,"BOTTOM",0,228);
 		else
 			DurabilityFrame:SetPoint("BOTTOM",UIParent,"BOTTOM",0,200);
 		end
@@ -393,10 +393,10 @@ end);
 -- damn watchframe since 3.3 not movable
 if not IsAddOnLoaded("Who Framed Watcher Wabbit?") then -- conflict with a seerah mod
 	local wf = WatchFrame
-	local wfmove = false 
+	local wfmove = false
 
 	wf:SetMovable(true);
-	wf:SetClampedToScreen(false); 
+	wf:SetClampedToScreen(false);
 	wf:ClearAllPoints()
 	wf:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -6, -300)
 	wf:SetWidth(250)
@@ -409,8 +409,8 @@ if not IsAddOnLoaded("Who Framed Watcher Wabbit?") then -- conflict with a seera
 			wfmove = true
 			print("WatchFrame unlocked for drag")
 			wf:EnableMouse(true);
-			wf:RegisterForDrag("LeftButton"); 
-			wf:SetScript("OnDragStart", wf.StartMoving); 
+			wf:RegisterForDrag("LeftButton");
+			wf:SetScript("OnDragStart", wf.StartMoving);
 			wf:SetScript("OnDragStop", wf.StopMovingOrSizing);
 		elseif wfmove == true then
 			wf:EnableMouse(false);
@@ -459,7 +459,7 @@ local function UIHelp()
 		print("|cffFF0000>|r Левый клик на индикаторе УВС для сброса значения УВС.")
 		print("|cffFF0000>|r Shift+наведениие мыши на панели гильдии для показа дополнительной информации в подсказке. ")
 		print(" ")
-		print("(Прокрутка вверх для показа комманд...)")	
+		print("(Прокрутка вверх для показа комманд...)")
 	elseif(L=="frFR") then
 		print(" ")
 		print("|cff00ff00Commandes slash général|r")
@@ -521,7 +521,7 @@ local function UIHelp()
           print("|cffFF0000>|r Linksknick auf die DPS-Anzeige zum resetten.")
           print("|cffFF0000>|r Shift drücken und mit der Maus über die Gildenanzeige fahren, um einen erweiterten Gildeninfo Tooltip zu zeigen.")
           print(" ")
-          print("(Hochscrollen um alle Befehle zu lesen ...)")		
+          print("(Hochscrollen um alle Befehle zu lesen ...)")
 	else
 		print(" ")
 		print("|cff00ff00General Slash Commands|r")
@@ -577,15 +577,15 @@ SLASH_TUKZSETSCALE1 = "/setscale";
 
 
 local function FRAME()
-	ChatFrame1:AddMessage(GetMouseFocus():GetName()) 
+	ChatFrame1:AddMessage(GetMouseFocus():GetName())
 end
 
 SLASH_FRAME1 = "/frame"
 SlashCmdList["FRAME"] = FRAME
 
 local function HEAL()
-	DisableAddOn("Tukui_Dps_Layout"); 
-	EnableAddOn("Tukui_Heal_Layout"); 
+	DisableAddOn("Tukui_Dps_Layout");
+	EnableAddOn("Tukui_Heal_Layout");
 	ReloadUI();
 end
 
@@ -593,7 +593,7 @@ SLASH_HEAL1 = "/heal"
 SlashCmdList["HEAL"] = HEAL
 
 local function DPS()
-	DisableAddOn("Tukui_Heal_Layout"); 
+	DisableAddOn("Tukui_Heal_Layout");
 	EnableAddOn("Tukui_Dps_Layout");
 	ReloadUI();
 end
@@ -675,11 +675,11 @@ local function Hex(r, g, b)
 	if(type(r) == "table") then
 		if(r.r) then r, g, b = r.r, r.g, r.b else r, g, b = unpack(r) end
 	end
-	
+
 	if(not r or not g or not b) then
 		r, g, b = 1, 1, 1
 	end
-	
+
 	return format("|cff%02x%02x%02x", r*255, g*255, b*255)
 end
 
@@ -692,7 +692,7 @@ local function ColorGradient(perc, ...)
 		local r, g, b = ...
 		return r, g, b
 	end
-	
+
 	local num = select("#", ...) / 3
 
 	local segment, relperc = math.modf(perc*(num-1))
@@ -755,7 +755,7 @@ hooksecurefunc("FriendsList_Update", function()
 	local friendOffset = FauxScrollFrame_GetOffset(FriendsFrameFriendsScrollFrame)
 	local friendIndex
 	local playerArea = GetRealZoneText()
-	
+
 	for i=1, FRIENDS_TO_DISPLAY, 1 do
 		friendIndex = friendOffset + i
 		local name, level, class, area, connected, status, note, RAF = GetFriendInfo(friendIndex)
@@ -781,11 +781,11 @@ end)
 
 hooksecurefunc("GuildStatus_Update", function()
 	local playerArea = GetRealZoneText()
-	
+
 	if ( FriendsFrame.playerStatusFrame ) then
 		local guildOffset = FauxScrollFrame_GetOffset(GuildListScrollFrame)
 		local guildIndex
-		
+
 		for i=1, GUILDMEMBERS_TO_DISPLAY, 1 do
 			guildIndex = guildOffset + i
 			local name, rank, rankIndex, level, class, zone, note, officernote, online, status, classFileName = GetGuildRosterInfo(guildIndex)
@@ -795,7 +795,7 @@ hooksecurefunc("GuildStatus_Update", function()
 				local zoneText = getglobal("GuildFrameButton"..i.."Zone")
 				local levelText = getglobal("GuildFrameButton"..i.."Level")
 				local classText = getglobal("GuildFrameButton"..i.."Class")
-				
+
 				nameText:SetVertexColor(unpack(classColors[class]))
 				if playerArea == zone then
 					zoneText:SetFormattedText("|cff00ff00%s|r", zone)
@@ -806,7 +806,7 @@ hooksecurefunc("GuildStatus_Update", function()
 	else
 		local guildOffset = FauxScrollFrame_GetOffset(GuildListScrollFrame)
 		local guildIndex
-		
+
 		for i=1, GUILDMEMBERS_TO_DISPLAY, 1 do
 			guildIndex = guildOffset + i
 			local name, rank, rankIndex, level, class, zone, note, officernote, online, status, classFileName = GetGuildRosterInfo(guildIndex)
@@ -814,7 +814,7 @@ hooksecurefunc("GuildStatus_Update", function()
 			if online then
 				local nameText = getglobal("GuildFrameGuildStatusButton"..i.."Name")
 				nameText:SetVertexColor(unpack(classColors[class]))
-				
+
 				local rankText = getglobal("GuildFrameGuildStatusButton"..i.."Rank")
 				rankText:SetVertexColor(unpack(guildRankColor[rankIndex]))
 			end
@@ -826,18 +826,18 @@ end)
 hooksecurefunc("WhoList_Update", function()
 	local whoIndex
 	local whoOffset = FauxScrollFrame_GetOffset(WhoListScrollFrame)
-	
+
 	local playerZone = GetRealZoneText()
 	local playerGuild = GetGuildInfo"player"
 	local playerRace = UnitRace"player"
-	
+
 	for i=1, WHOS_TO_DISPLAY, 1 do
 		whoIndex = whoOffset + i
 		local nameText = getglobal("WhoFrameButton"..i.."Name")
 		local levelText = getglobal("WhoFrameButton"..i.."Level")
 		local classText = getglobal("WhoFrameButton"..i.."Class")
 		local variableText = getglobal("WhoFrameButton"..i.."Variable")
-		
+
 		local name, guild, level, race, class, zone, classFileName = GetWhoInfo(whoIndex)
 		if not name then return end
 		if zone == playerZone then
@@ -850,7 +850,7 @@ hooksecurefunc("WhoList_Update", function()
 			race = "|cff00ff00" .. race
 		end
 		local columnTable = { zone, guild, race }
-		
+
 		nameText:SetVertexColor(unpack(classColors[class]))
 		levelText:SetText(diffColor[level] .. level)
 		variableText:SetText(columnTable[UIDropDownMenu_GetSelectedID(WhoFrameDropDown)])
@@ -860,7 +860,7 @@ end)
 
 hooksecurefunc("LFRBrowseFrameListButton_SetData", function(button, index)
 	local name, level, areaName, className, comment, partyMembers, status, class, encountersTotal, encountersComplete, isLeader, isTank, isHealer, isDamage = SearchLFGGetResults(index)
-	
+
 	local c = class and classColors[class]
 	if c then
 		button.name:SetTextColor(unpack(c))
@@ -884,7 +884,7 @@ hooksecurefunc("WorldStateScoreFrame_Update", function()
 			if n == myName then
 				n = "> " .. n .. " <"
 			end
-			
+
 			if r then
 				local color
 				if inArena then
@@ -903,7 +903,7 @@ hooksecurefunc("WorldStateScoreFrame_Update", function()
 				r = color .. r .. "|r"
 				n = n .. "|cffffffff-|r" .. r
 			end
-			
+
 			local buttonNameText = getglobal("WorldStateScoreButton" .. i .. "NameText")
 			buttonNameText:SetText(n)
 		end
@@ -942,7 +942,7 @@ local function update()
 	local numButtons = #buttons
 	local scrollOffset = HybridScrollFrame_GetOffset(QuestLogScrollFrame)
 	local numEntries, numQuests = GetNumQuestLogEntries()
-	
+
 	for i = 1, numButtons do
 		local questIndex = i + scrollOffset
 		local questLogTitle = buttons[i]
